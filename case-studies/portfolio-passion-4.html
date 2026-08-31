@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ankita Chakrabarty — My Portfolio Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/oqx8vve.css">
+  <style>
+    :root {
+      --accent: #8f0a0a;
+      --bg: #fff;
+      --text-main: #333;
+      --text-secondary: #595959;
+      --soft-bg: #faf7f5;
+      --placeholder-bg: #f2f1ef;
+      --placeholder-text: #888;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    header.case-nav {
+      position: fixed;
+      inset: 0 0 auto;
+      width: 100%;
+      height: 70px;
+      background: var(--bg);
+      border-bottom: 1px solid #eaeaea;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+    }
+
+    .nav-left { display: flex; align-items: center; height: 100%; }
+    .back-to-work { height: 100%; padding: 0 40px; display: flex; align-items: center; gap: 12px; background: #631b17; color: #fff; font-size: 14px; font-weight: 300; letter-spacing: 0.04em; text-decoration: none; transition: background 0.2s ease, padding 0.2s ease; }
+    .back-to-work:hover { background: #511613; padding-left: 32px; padding-right: 48px; }
+    .nav-right { display: flex; gap: 40px; padding-right: 50px; }
+    .nav-right a { color: var(--text-main); font-size: 14px; font-weight: 400; text-decoration: none; transition: color 0.2s ease; }
+    .nav-right a:hover { color: var(--accent); }
+
+    .page-container { display: flex; max-width: 1360px; margin: 140px auto; padding: 0 60px; gap: 120px; position: relative; }
+    aside.case-sidebar { width: 180px; flex-shrink: 0; position: sticky; top: 130px; height: calc(100vh - 180px); }
+    .sidebar-title { margin-bottom: 24px; color: var(--placeholder-text); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+    .sidebar-links { display: flex; flex-direction: column; gap: 13px; list-style: none; }
+    .sidebar-links a { display: inline-block; color: var(--text-secondary); font-size: 13px; text-decoration: none; transition: color 0.2s ease, transform 0.2s ease; }
+    .sidebar-links a:hover, .sidebar-links a.active { color: var(--accent); transform: translateX(4px); }
+
+    main.case-content { flex-grow: 1; max-width: 880px; }
+    h1 { font-family: 'Orpheus Pro', serif; font-style: italic; font-weight: normal; }
+    h1.case-title { margin-bottom: 30px; font-size: 58px; line-height: 1.1; }
+    h2.section-heading { margin: 90px 0 24px; color: var(--accent); font-family: 'Poppins', sans-serif; font-size: clamp(24px, 2vw, 32px); font-style: normal; font-weight: 500; line-height: 1.2; }
+    p { margin-bottom: 24px; color: var(--text-secondary); font-size: 17px; }
+
+    .tag { display: block; margin-bottom: 20px; color: var(--accent); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+    .project-meta-line { margin-bottom: 24px; color: var(--placeholder-text); font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .project-meta-line s { color: var(--accent); text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
+    .case-subtitle { margin-bottom: 42px; color: var(--text-secondary); font-family: 'Orpheus Pro', serif; font-size: 24px; font-style: italic; line-height: 1.45; }
+
+    .img-placeholder { width: 100%; margin: 60px 0; background: var(--placeholder-bg); display: flex; align-items: center; justify-content: center; border-radius: 8px; transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease; }
+    .img-placeholder:hover { transform: scale(1.015) translateY(-4px); box-shadow: 0 24px 48px rgba(0, 0, 0, 0.06); }
+    .img-placeholder span { padding: 20px; color: var(--placeholder-text); font-size: 12px; font-weight: 400; text-align: center; text-transform: lowercase; letter-spacing: 0.04em; }
+    .ar-16-9 { aspect-ratio: 16 / 9; }
+    .hero-first-image { margin-top: 0; }
+
+    .hook-callout { margin: 72px 0 90px; padding: 72px 64px; background: #f4f4f2; color: var(--text-main); font-family: 'Orpheus Pro', serif; font-size: clamp(30px, 4vw, 46px); font-style: italic; line-height: 1.3; text-align: center; }
+    .confession { max-width: 720px; margin: 0 auto 40px; color: #777; font-family: 'Orpheus Pro', serif; font-size: 19px; font-style: italic; }
+    .section-intro { color: var(--text-main); font-size: 20px; font-weight: 500; }
+
+    .editorial-box { margin: 40px 0 56px; padding: 40px 42px; background: var(--soft-bg); border-left: 3px solid var(--accent); }
+    .editorial-box p:last-child { margin-bottom: 0; }
+    .accent-line { color: var(--accent); font-weight: 500; }
+    .editorial-quote { margin: 44px 0; padding: 38px 42px; background: var(--soft-bg); border-left: 3px solid var(--accent); color: var(--text-main); font-family: 'Orpheus Pro', serif; font-size: 28px; font-style: italic; line-height: 1.4; }
+
+    .documentary-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 18px; margin: 40px 0 70px; align-items: start; }
+    .documentary-grid .img-placeholder { margin: 0; aspect-ratio: 4 / 3; }
+    .documentary-grid .img-placeholder:nth-child(2) { margin-top: 46px; }
+    .documentary-grid .img-placeholder:nth-child(3) { grid-column: 1 / -1; width: 62%; justify-self: center; aspect-ratio: 16 / 9; }
+
+    .graveyard { margin: 42px 0 70px; padding: 36px; background: #fafafa; }
+    .graveyard-label { display: block; margin-bottom: 24px; color: var(--placeholder-text); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+    .graveyard-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 20px; }
+    .graveyard-item .img-placeholder { margin: 0 0 10px; aspect-ratio: 16 / 10; }
+    .graveyard-caption { color: #777; font-family: 'Orpheus Pro', serif; font-size: 14px; font-style: italic; }
+
+    .design-spread { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 18px; margin: 40px 0 70px; }
+    .design-spread .img-placeholder { margin: 0; aspect-ratio: 4 / 3; }
+
+    .before-after-list { display: grid; gap: 28px; margin: 44px 0 70px; }
+    .before-after-pair { padding: 26px; background: #fafafa; }
+    .pair-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .pair-column .img-placeholder { margin: 8px 0 12px; aspect-ratio: 16 / 10; }
+    .pair-label { color: var(--placeholder-text); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+    .pair-caption { margin-bottom: 0; color: #777; font-size: 13px; }
+
+    .kpi-line { margin-top: 44px; color: #777; font-weight: 300; }
+    .reflection-copy { max-width: 720px; margin: 0 auto; }
+    .punchline { display: block; margin-top: 34px; color: var(--text-main); }
+
+    .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1024px) {
+      aside.case-sidebar { display: none; }
+      .page-container { padding: 0 30px; }
+    }
+
+    @media (max-width: 700px) {
+      .page-container { margin-top: 115px; padding: 0 22px; }
+      .nav-right { gap: 18px; padding-right: 20px; }
+      .back-to-work { padding: 0 20px; }
+      h1.case-title { font-size: 42px; }
+      .hook-callout { padding: 52px 28px; }
+      .documentary-grid, .graveyard-grid, .design-spread, .pair-grid { grid-template-columns: 1fr; }
+      .documentary-grid .img-placeholder:nth-child(2) { margin-top: 0; }
+      .documentary-grid .img-placeholder:nth-child(3) { grid-column: auto; width: 100%; }
+      .editorial-box, .editorial-quote { padding: 30px 26px; }
+    }
+  </style>
+</head>
+<script>
+  (function(){
+    try {
+      const transition = JSON.parse(sessionStorage.getItem('pageTransition') || 'null');
+      if (transition && (transition.direction === 'from-right' || transition.direction === 'from-left')) {
+        document.body.classList.add('transition-slide', transition.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+      }
+    } catch (error) {}
+  })();
+</script>
+<script src="../assets/transition.js"></script>
+<body>
+  <header class="case-nav">
+    <div class="nav-left">
+      <a href="../index.html" class="back-to-work" id="backToWorkBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        back to home
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="../about.html">about</a>
+      <a href="../testimonials-copy.html">testimonials</a>
+      <a href="../contact copy.html">contact</a>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <aside class="case-sidebar">
+      <div class="sidebar-title">contents</div>
+      <ul class="sidebar-links">
+        <li><a href="#method">method</a></li>
+        <li><a href="#primary-research">primary research</a></li>
+        <li><a href="#secondary-research">secondary research</a></li>
+        <li><a href="#dilemma">dilemma</a></li>
+        <li><a href="#clarity">getting clarity</a></li>
+        <li><a href="#design">design</a></li>
+        <li><a href="#testing">testing</a></li>
+        <li><a href="#findings">what I found</a></li>
+        <li><a href="#reflection">what I'd do differently</a></li>
+      </ul>
+    </aside>
+
+    <main class="case-content">
+      <div class="animate-on-scroll">
+        <span class="tag">Website and Brand Design</span>
+        <h1 class="case-title">My Portfolio</h1>
+        <p class="case-subtitle">A never-ending pursuit</p>
+        <p class="project-meta-line"><s>Solo Passion Project</s> · Necessary to get a job · Duration: 2 days</p>
+      </div>
+
+      <div class="img-placeholder ar-16-9 hero-first-image animate-on-scroll"><span>current portfolio landing page</span></div>
+
+      <div class="hook-callout animate-on-scroll">They say treat your portfolio like a UX project. So I did. Here's the case study.</div>
+
+      <div class="confession animate-on-scroll">
+        <p class="section-intro">A small confession before we get into it.</p>
+        <p>I spent all summer unable to work on this. Then two days before I needed it, I built the whole thing. Two days — and honestly my best version yet. Though every designer loves their portfolio in the moment and hates it later, so check back with me on that.</p>
+      </div>
+
+      <section id="method" class="animate-on-scroll">
+        <h2 class="section-heading">Method</h2>
+        <div class="editorial-box">
+          <p>I was shaking in my boots to open VS Code but I ended up vibe coding the entire portfolio. Turns out the thing I was most afraid of was also the thing that got me unstuck. Every interaction, piece of content, layout and feature was articulated by me down to the smallest detail.</p>
+          <p>I put in my rough notes, previous case studies, and design vision and made sure not a single judgment was left to AI. <span class="accent-line">I am the designer. AI was the developer.</span></p>
+        </div>
+      </section>
+
+      <section id="primary-research" class="animate-on-scroll">
+        <h2 class="section-heading">Primary Research</h2>
+        <p class="section-intro">30+ people. Years of feedback. It never felt right.</p>
+        <p>Recruiters, managers, coworkers, teachers, professors, designers, peers, parents. I sought feedback obsessively and my portfolio still never felt done (grateful for all the amazing advice). This raises the ultimate UXer question: why is it that I can move efficiently through client work and tight deadlines, but the moment I sit down to design for myself I get completely stumped? Not sure still.</p>
+        <div class="editorial-quote">Turns out the hardest client I've ever had is myself.</div>
+      </section>
+
+      <section id="secondary-research" class="animate-on-scroll">
+        <h2 class="section-heading">Secondary Research</h2>
+        <p>I bookmarked every portfolio I admired under "cool folios." And I never thought I would say this, but I think I did TOO MUCH competitive analysis in hindsight. Everyone had something distinct. A motif. A specific color. A signature motion. I didn't have that and it led to decision fatigue. I was convinced I needed to find it before I could move forward.</p>
+        <div class="documentary-grid">
+          <div class="img-placeholder"><span>"cool folios" bookmark folder</span></div>
+          <div class="img-placeholder"><span>sketched notes</span></div>
+          <div class="img-placeholder"><span>portfolio mood boards</span></div>
+        </div>
+      </section>
+
+      <section id="dilemma" class="animate-on-scroll">
+        <h2 class="section-heading">Dilemma</h2>
+        <p>I kept getting stuck on the brand. The colors. The typography. The animations. Hours in Framer, Figma, Readymag going down rabbit holes that looked cool but served nothing.</p>
+        <div class="graveyard">
+          <span class="graveyard-label">The portfolio graveyard</span>
+          <p>My ex-portfolios — it's not you, it's me. Truly.</p>
+          <div class="graveyard-grid">
+            <div class="graveyard-item"><div class="img-placeholder"><span>old Framer portfolio</span></div><div class="graveyard-caption">Looked cool. Could not explain why.</div></div>
+            <div class="graveyard-item"><div class="img-placeholder"><span>old Figma direction</span></div><div class="graveyard-caption">A system in search of a reason to exist.</div></div>
+            <div class="graveyard-item"><div class="img-placeholder"><span>old Readymag experiment</span></div><div class="graveyard-caption">Fun for me. Less fun for anyone trying to find the work.</div></div>
+            <div class="graveyard-item"><div class="img-placeholder"><span>another abandoned homepage</span></div><div class="graveyard-caption">The brand was doing cardio. The case studies were hiding.</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="clarity" class="animate-on-scroll">
+        <h2 class="section-heading">Getting clarity</h2>
+        <div class="editorial-box">
+          <p>Sure, the landing page matters — recruiters spend 6 seconds deciding whether to keep going. But I had it backwards. <span class="accent-line">The WORK is the point.</span> Everything else exists to get someone there faster.</p>
+          <p>Once that clicked (while I was trying to sleep), everything else followed.</p>
+        </div>
+      </section>
+
+      <section id="design" class="animate-on-scroll">
+        <h2 class="section-heading">Design</h2>
+        <p class="section-intro">The landing page should lead with the work. Nothing else.</p>
+        <p>If the work is the star, the portfolio is the stage. That's where the confetti idea came from — a spotlight, a celebration, work front and center the moment you land.</p>
+        <p>I then shifted my focus to clearly structuring my case studies. I moved away from cookie cutter formats to writing each one around the actual goals of the project, the challenges and workarounds, the decisions I made and why, and the business impact or projected outcomes those decisions drove.</p>
+        <p>Once that was in place, then I had fun with my brand: cute little animations, seamless micro-interactions, copywriting, colors.</p>
+        <div class="design-spread">
+          <div class="img-placeholder"><span>early sketches and notes</span></div>
+          <div class="img-placeholder"><span>Framer explorations and confetti spotlight concept</span></div>
+        </div>
+
+        <div class="before-after-list">
+          <div class="before-after-pair">
+            <div class="pair-grid">
+              <div class="pair-column"><span class="pair-label">Before</span><div class="img-placeholder"><span>old portfolio landing page</span></div></div>
+              <div class="pair-column"><span class="pair-label">After</span><div class="img-placeholder"><span>current work-first landing page</span></div></div>
+            </div>
+            <p class="pair-caption">From brand-first exploration to immediate access to the work.</p>
+          </div>
+          <div class="before-after-pair">
+            <div class="pair-grid">
+              <div class="pair-column"><span class="pair-label">Before</span><div class="img-placeholder"><span>old case study structure</span></div></div>
+              <div class="pair-column"><span class="pair-label">After</span><div class="img-placeholder"><span>current editorial case study</span></div></div>
+            </div>
+            <p class="pair-caption">A clearer narrative hierarchy with the evidence closer to the decisions.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="testing" class="animate-on-scroll">
+        <h2 class="section-heading">Testing</h2>
+        <p class="section-intro">This is the part where you come in.</p>
+        <p>There are portfolios I visited years ago that I still remember — not because of the work alone, but because the experience of moving through them left me with something. That's what I'm going for. A site that leaves you with a smile. So get in touch and tell me what you think!</p>
+        <div class="editorial-quote">I'll know it's working when it makes someone smile.</div>
+        <p class="kpi-line">Also if I'm employed after graduating, that would be a great KPI to measure the success of my product.</p>
+      </section>
+
+      <section id="findings" class="animate-on-scroll">
+        <h2 class="section-heading">What I found</h2>
+        <div class="reflection-copy">
+          <p>My style and brand isn't a motif. It's not a motif or signature animation. It's intentionality, care and a little bit of humor — making sure that anyone who comes here has a great time navigating it. That's a principle I can carry into every version of my work and I hope it shows.</p>
+        </div>
+      </section>
+
+      <section id="reflection" class="animate-on-scroll">
+        <h2 class="section-heading">What I'd do differently</h2>
+        <p>Close the "cool folios" tabs sooner. The competitive analysis helped me understand what I respond to as a viewer but I stayed in research mode long past the point where it was serving me.</p>
+        <p class="punchline">Also what I'd do differently is change the entire portfolio. I love it now but come back next year — I can say there's a 95% chance of that happening.</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries, instance) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          instance.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.animate-on-scroll').forEach(element => observer.observe(element));
+
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.sidebar-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        if (pageYOffset >= section.offsetTop - 180) current = section.id;
+      });
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + current));
+    });
+
+    document.getElementById('backToWorkBtn').addEventListener('click', event => {
+      const isLeftClick = event.button === 0 && !(event.metaKey || event.ctrlKey || event.shiftKey || event.altKey);
+      if (!isLeftClick) return;
+      event.preventDefault();
+      try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch (error) {}
+      window.location.href = '../index.html?returnFromCase=true';
+    });
+  </script>
+  <script src="../assets/footer.js"></script>
+  <script>injectFooter();</script>
+</body>
+</html>

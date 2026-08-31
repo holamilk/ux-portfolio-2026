@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankita Chakrabarty — BD x SCADpro Case Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/oqx8vve.css">
+    
+    <style>
+        :root {
+            --accent: #8F0A0A;
+            --bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #555555;
+            --placeholder-bg: #f4f4f2;
+            --placeholder-text: #888888;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Top Navigation */
+        header.case-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: var(--bg);
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            padding: 0;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .back-to-work {
+            background-color: #631B17;
+            color: #ffffff;
+            height: 100%;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            transition: background 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .back-to-work:hover {
+            background-color: #511613;
+            padding-left: 32px;
+            padding-right: 48px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 40px;
+            padding-right: 50px;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-right a:hover {
+            color: var(--accent);
+        }
+
+        /* Page Layout Container */
+        .page-container {
+            display: flex;
+            max-width: 1360px;
+            margin: 140px auto 140px auto;
+            padding: 0 60px;
+            gap: 120px;
+            position: relative;
+        }
+
+        /* Sticky Left Sidebar Navigation (Anchors) */
+        aside.case-sidebar {
+            width: 180px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 130px;
+            height: calc(100vh - 180px);
+        }
+
+        .sidebar-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 11px;
+            color: var(--placeholder-text);
+            margin-bottom: 24px;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            list-style: none;
+        }
+
+        .sidebar-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .sidebar-links a:hover, .sidebar-links a.active {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        /* Main Content Area */
+        main.case-content {
+            flex-grow: 1;
+            max-width: 880px;
+        }
+
+        /* Typography Styles */
+        h1, h2, h3 {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        .tag {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 12px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1.case-title {
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+        }
+
+        h2.section-heading {
+            font-size: 42px;
+            margin: 90px 0 24px 0;
+            line-height: 1.15;
+        }
+
+        p {
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            font-size: 17px;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 400;
+            background: linear-gradient(180deg, rgba(143,10,10,0) 70%, rgba(143,10,10,0.1) 30%);
+        }
+
+        /* Editorial Custom Layout Components */
+        .hero-lead {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .editorial-quote {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 30px;
+            line-height: 1.35;
+            color: var(--text-main);
+            margin: 50px 0;
+            padding-left: 32px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .editorial-box {
+            background-color: #faf9f6;
+            padding: 48px;
+            margin: 50px 0;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .editorial-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background-color: var(--accent);
+        }
+
+        /* Metadata Details Row */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 50px 0 70px 0;
+            padding: 30px 0;
+            border-top: 1px solid #eaeaea;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .meta-item span.label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--placeholder-text);
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .meta-item span.val {
+            font-size: 14px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Interactive Image Placeholders */
+        .img-placeholder {
+            background-color: var(--placeholder-bg);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 60px 0;
+            border-radius: 2px;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+            cursor: pointer;
+        }
+
+        .img-placeholder:hover {
+            transform: scale(1.015) translateY(-4px);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.06);
+        }
+
+        .img-placeholder span {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            color: var(--placeholder-text);
+            text-transform: lowercase;
+            letter-spacing: 0.04em;
+        }
+
+        .ar-16-9 { aspect-ratio: 16 / 9; }
+        .ar-4-3 { aspect-ratio: 4 / 3; }
+        .ar-21-9 { aspect-ratio: 21 / 9; }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 50px 0;
+        }
+
+        /* Outcome Statistics Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background-color: #faf9f6;
+            padding: 40px 32px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            background-color: #f2f0eb;
+        }
+
+        .stat-number {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Scroll Micro-animations / Fade Ins */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            aside.case-sidebar {
+                display: none;
+            }
+            .page-container {
+                padding: 0 30px;
+            }
+            .split-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<script>
+    (function(){
+        try{
+            const tRaw = sessionStorage.getItem('pageTransition');
+            if (!tRaw) return;
+            const t = JSON.parse(tRaw);
+            if (t && (t.direction === 'from-right' || t.direction === 'from-left')) {
+                document.body.classList.add('transition-slide');
+                document.body.classList.add(t.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+            }
+        }catch(e){}
+    })();
+</script>
+<script src="../assets/transition.js"></script>
+<body>
+
+    <header class="case-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="back-to-work" id="backToWorkBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                back to home
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="../about.html">about</a>
+            <a href="../testimonials-copy.html">testimonials</a>
+            <a href="../contact copy.html">contact</a>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <aside class="case-sidebar">
+            <div class="sidebar-title">contents</div>
+            <ul class="sidebar-links">
+                <li><a href="#context">context</a></li>
+                <li><a href="#the-insight">the insight</a></li>
+                <li><a href="#our-approach">our approach</a></li>
+                <li><a href="#my-role">my role</a></li>
+                <li><a href="#outcome">outcome</a></li>
+                <li><a href="#get-in-touch">get in touch</a></li>
+            </ul>
+        </aside>
+
+        <main class="case-content">
+            
+            <div class="animate-on-scroll">
+                <span class="tag">Client Work · SCADpro Collaboration · Healthcare UX · Service Design</span>
+                <h1 class="case-title">Designing the future of continence care</h1>
+                <p class="hero-lead">Becton Dickinson engaged SCADpro to look beyond their flagship PureWick product and design for the next decade of continence care. 15-person team. 12 BD stakeholders. 10 weeks.</p>
+            </div>
+
+            <div class="meta-grid animate-on-scroll">
+                <div class="meta-item">
+                    <span class="label">Role</span>
+                    <span class="val">Project Manager</span>
+                </div>
+                <div class="meta-item">
+                    <span class="label">Team</span>
+                    <span class="val">15 people</span>
+                </div>
+                <div class="meta-item">
+                    <span class="label">Client</span>
+                    <span class="val">Becton Dickinson</span>
+                </div>
+                <div class="meta-item">
+                    <span class="label">Duration</span>
+                    <span class="val">10 weeks</span>
+                </div>
+            </div>
+
+            <div class="img-placeholder ar-16-9 animate-on-scroll">
+                <span>team presentation to BD stakeholders</span>
+            </div>
+
+            <div class="editorial-box animate-on-scroll">
+                <p style="margin-bottom: 0;">Specific solutions, deliverables, and proprietary frameworks are covered under NDA. This page shares the challenge, my role, and strategic context. <a href="../contact copy.html" style="color: var(--accent); text-decoration: underline;">Get in touch</a> to learn more.</p>
+            </div>
+
+            <section id="context" class="animate-on-scroll">
+                <h2 class="section-heading">The business challenge</h2>
+                <p>PureWick had established itself as the best product in its category. But the competitive landscape was shifting — new entrants were actively positioning themselves as the next generation beyond PureWick. The real problem wasn't the product. It was the system around it.</p>
+                <div class="editorial-quote">
+                    "The real problem wasn't the product. It was the system around it."
+                </div>
+                <p>Incontinence care had never been designed as a coherent experience. Clinicians prescribe. DME suppliers ship. And then an untrained family caregiver — with no clinical support — becomes responsible for managing a medical device at home. The result: a fragmented journey, poor adoption, and a product that often failed not because of what it was, but because of how it landed.</p>
+            </section>
+
+            <section id="the-insight" class="animate-on-scroll">
+                <h2 class="section-heading">The critical insight</h2>
+                <div class="editorial-box">
+                    <p style="margin-bottom: 0;">Incontinence care is a prime example of bad service design — because nobody designs it as a system.</p>
+                </div>
+                <p>The emotional journey reflected this. Users in the pre-awareness and awareness stages experienced discomfort and anxiety. Even after adoption, the onboarding phase dropped back into confusion — leaving users stuck at fair when the goal was ideal.</p>
+                <p>The ideal user outcome, grounded in research, was clear: I am respected. Three pillars made that real — feeling dignified, safe, and supported.</p>
+            </section>
+
+            <section id="our-approach" class="animate-on-scroll">
+                <h2 class="section-heading">Our approach</h2>
+                <p>We mapped the full ecosystem: the patient, the family caregiver (often the real primary user), the home health aide, the DME supplier, and the discharging clinician. Each touchpoint represented an opportunity to intervene.</p>
+                <p>We then designed across three service design layers:</p>
+
+*** End Patch

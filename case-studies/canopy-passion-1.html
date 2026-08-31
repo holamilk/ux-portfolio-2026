@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Passion Project 1 — Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/oqx8vve.css">
+  <style>
+    :root {
+      --accent: #8F0A0A;
+      --bg: #ffffff;
+      --text-main: #333333;
+      --text-secondary: #555555;
+      --placeholder-bg: #f4f4f2;
+      --placeholder-text: #888888;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body { font-family: 'Poppins', sans-serif; font-weight: 300; letter-spacing: -0.01em; line-height: 1.7; }
+
+    /* Fixed Top Navigation */
+    header.case-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background-color: var(--bg);
+        border-bottom: 1px solid #eaeaea;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+        padding: 0;
+    }
+
+    .nav-left { display: flex; align-items: center; height: 100%; }
+
+    .back-to-work {
+        background-color: #631B17;
+        color: #ffffff;
+        height: 100%;
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 0.04em;
+        transition: background 0.2s ease, padding-left 0.2s ease;
+    }
+
+    .back-to-work:hover { background-color: #511613; padding-left: 32px; padding-right: 48px; }
+
+    .nav-right { display: flex; gap: 40px; padding-right: 50px; }
+
+    .nav-right a { text-decoration: none; color: var(--text-main); font-size: 14px; font-weight: 400; transition: color 0.2s ease; }
+    .nav-right a:hover { color: var(--accent); }
+
+    main { margin-top: 140px; padding: 24px; }
+    /* slide helpers are centralized in assets/transition.js */
+  </style>
+</head>
+<script>
+  (function(){
+    try{
+      const tRaw = sessionStorage.getItem('pageTransition');
+      if (!tRaw) return;
+      const t = JSON.parse(tRaw);
+      if (t && (t.direction === 'from-right' || t.direction === 'from-left')) {
+        document.body.classList.add('transition-slide');
+        document.body.classList.add(t.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+      }
+    }catch(e){}
+  })();
+</script>
+<script src="../assets/transition.js"></script>
+<body>
+
+  <header class="case-nav">
+    <div class="nav-left">
+      <a href="../index.html" class="back-to-work" id="backToWorkBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        back to home
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="../about.html">about</a>
+      <a href="../testimonials-copy.html">testimonials</a>
+      <a href="../contact copy.html">contact</a>
+    </div>
+  </header>
+
+  <main>
+    <h1>Passion Project 1</h1>
+    <p>Placeholder case study page.</p>
+  </main>
+  <script>
+    (function(){
+      const back = document.getElementById('backToWorkBtn');
+      if (!back) return;
+      back.addEventListener('click', function(e){
+        const isLeftClick = (e.button === 0) && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+        const href = back.getAttribute('href') || '../index.html';
+        if (!isLeftClick) return;
+        e.preventDefault();
+        try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch(err) {}
+        window.location.href = href;
+      });
+    })();
+  </script>
+    <script src="../assets/footer.js"></script>
+    <script>injectFooter();</script>
+  </body>
+  </html>

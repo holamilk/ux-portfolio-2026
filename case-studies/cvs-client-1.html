@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ankita Chakrabarty — CVS Health x SCADpro Case Study</title>
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Adobe Fonts: Orpheus Pro Italic -->
+  <link rel="stylesheet" href="https://use.typekit.net/oqx8vve.css">
+    
+  <style>
+    :root {
+      --accent: #8F0A0A;
+      --bg: #ffffff;
+      --text-main: #333333;
+      --text-secondary: #555555;
+      --placeholder-bg: #f4f4f2;
+      --placeholder-text: #888888;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Fixed Top Navigation */
+    header.case-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background-color: var(--bg);
+      border-bottom: 1px solid #eaeaea;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      padding: 0;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .back-to-work {
+      background-color: #631B17;
+      color: #ffffff;
+      height: 100%;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 300; /* Explicitly unbolded */
+      letter-spacing: 0.04em;
+      transition: background 0.2s ease, padding-left 0.2s ease;
+    }
+
+    .back-to-work:hover {
+      background-color: #511613;
+      padding-left: 32px;
+      padding-right: 48px;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 40px;
+      padding-right: 50px;
+    }
+
+    .nav-right a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s ease;
+    }
+
+    .nav-right a:hover {
+      color: var(--accent);
+    }
+
+    /* Page Layout Container */
+    .page-container {
+      display: flex;
+      max-width: 1360px;
+      margin: 140px auto 140px auto;
+      padding: 0 60px;
+      gap: 120px;
+      position: relative;
+    }
+
+    /* Sticky Left Sidebar Navigation (Anchors) */
+    aside.case-sidebar {
+      width: 180px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 130px;
+      height: calc(100vh - 180px);
+    }
+
+    .sidebar-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 11px;
+      color: var(--placeholder-text);
+      margin-bottom: 24px;
+    }
+
+    .sidebar-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      list-style: none;
+    }
+
+    .sidebar-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      transition: color 0.2s ease, transform 0.2s ease;
+      display: inline-block;
+    }
+
+    .sidebar-links a:hover, .sidebar-links a.active {
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    /* Main Content Area */
+    main.case-content {
+      flex-grow: 1;
+      max-width: 880px;
+    }
+
+    /* Typography Styles */
+    h1, h2, h3 {
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-weight: normal;
+    }
+
+    .tag {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    h1.case-title {
+      font-size: 58px;
+      line-height: 1.1;
+      margin-bottom: 30px;
+      letter-spacing: -0.02em;
+    }
+
+    h2.section-heading {
+      font-size: 42px;
+      margin: 90px 0 24px 0;
+      line-height: 1.15;
+    }
+
+    p {
+      margin-bottom: 24px;
+      color: var(--text-secondary);
+      font-size: 17px;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 400;
+      background: linear-gradient(180deg, rgba(143,10,10,0) 70%, rgba(143,10,10,0.1) 30%);
+    }
+
+    /* Editorial Custom Layout Components */
+    .hero-lead {
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--text-main);
+      margin-bottom: 50px;
+      font-weight: 300;
+    }
+
+    .case-subtitle {
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 1.45;
+      color: var(--text-secondary);
+      margin: -12px 0 24px;
+    }
+
+    .project-meta-line {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--placeholder-text);
+      margin-bottom: 42px;
+    }
+
+    .hero-first-image {
+      margin-top: 0;
+    }
+
+    .hook-callout {
+      width: 100%;
+      background: #f5f5f3;
+      padding: 72px 64px;
+      margin: 72px 0 90px;
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.3;
+      text-align: center;
+      color: var(--text-main);
+    }
+
+    .overview-snapshot {
+      margin: 34px 0 44px;
+      border-top: 1px solid #e4e4e1;
+    }
+
+    .overview-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 32px;
+      padding: 28px 0;
+      border-bottom: 1px solid #e4e4e1;
+    }
+
+    .overview-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .overview-copy {
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+
+    .visual-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 44px 0 72px;
+    }
+
+    .visual-strip .img-placeholder {
+      aspect-ratio: 4 / 3;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .isolated-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin: 72px 0 96px;
+      padding: 42px 0;
+      border-top: 1px solid #e4e4e1;
+      border-bottom: 1px solid #e4e4e1;
+    }
+
+    .isolated-stat {
+      text-align: center;
+    }
+
+    .isolated-stat-value {
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: 54px;
+      line-height: 1;
+      color: var(--accent);
+    }
+
+    .isolated-stat-label {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--placeholder-text);
+    }
+
+    .challenge-quote {
+      background: #faf9f6;
+      border-left: 3px solid var(--accent);
+      margin: 44px 0;
+      padding: 38px 42px;
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: 28px;
+      line-height: 1.4;
+      color: var(--text-main);
+    }
+
+    .conference-box,
+    .nda-note {
+      background: #faf9f6;
+      border-left: 3px solid var(--accent);
+      margin: 34px 0 44px;
+      padding: 38px 42px;
+    }
+
+    .conference-box .closing-line {
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--text-main);
+      margin-bottom: 0;
+    }
+
+    .nda-note {
+      border-left-color: #b8b8b4;
+    }
+
+    .nda-note p {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    .inline-link {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .editorial-quote {
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: 30px;
+      line-height: 1.35;
+      color: var(--text-main);
+      margin: 50px 0;
+      padding-left: 32px;
+      border-left: 2px solid var(--accent);
+    }
+
+    .editorial-box {
+      background-color: #faf9f6;
+      padding: 48px;
+      margin: 50px 0;
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .editorial-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background-color: var(--accent);
+    }
+
+    /* Metadata Details Row */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin: 50px 0 70px 0;
+      padding: 30px 0;
+      border-top: 1px solid #eaeaea;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .meta-item span.label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--placeholder-text);
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .meta-item span.val {
+      font-size: 14px;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    /* Interactive Image Placeholders */
+    .img-placeholder {
+      background-color: var(--placeholder-bg);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 60px 0;
+      border-radius: 8px;
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+      cursor: pointer;
+    }
+
+    .img-placeholder:hover {
+      transform: scale(1.015) translateY(-4px);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.06);
+    }
+
+    .img-placeholder span {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      color: var(--placeholder-text);
+      text-transform: lowercase;
+      letter-spacing: 0.04em;
+    }
+
+    .ar-16-9 { aspect-ratio: 16 / 9; }
+    .ar-4-3 { aspect-ratio: 4 / 3; }
+    .ar-21-9 { aspect-ratio: 21 / 9; }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin: 50px 0;
+    }
+
+    /* Outcome Statistics Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 60px 0;
+    }
+
+    .stat-card {
+      background-color: #faf9f6;
+      padding: 40px 32px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      background-color: #f2f0eb;
+    }
+
+    .stat-number {
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: 48px;
+      color: var(--accent);
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    /* Scroll Micro-animations / Fade Ins */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1024px) {
+      aside.case-sidebar {
+        display: none;
+      }
+      .page-container {
+        padding: 0 30px;
+      }
+      .split-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      h1.case-title {
+        font-size: 42px;
+      }
+      .hook-callout {
+        padding: 52px 28px;
+      }
+      .overview-row,
+      .visual-strip,
+      .isolated-stats {
+        grid-template-columns: 1fr;
+      }
+      .overview-row {
+        gap: 10px;
+      }
+      .isolated-stats {
+        gap: 42px;
+      }
+      .conference-box,
+      .nda-note,
+      .challenge-quote {
+        padding: 30px 26px;
+      }
+    }
+
+    /* slide helpers are centralized in assets/transition.js */
+     </style>
+</head>
+<script>
+  (function(){
+    try{
+      const tRaw = sessionStorage.getItem('pageTransition');
+      if (!tRaw) return;
+      const t = JSON.parse(tRaw);
+      if (t && (t.direction === 'from-right' || t.direction === 'from-left')) {
+        document.body.classList.add('transition-slide');
+        document.body.classList.add(t.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+      }
+    }catch(e){}
+  })();
+</script>
+<script src="../assets/transition.js"></script>
+<body>
+
+  <!-- Top Fixed Navigation -->
+  <header class="case-nav">
+    <div class="nav-left">
+      <a href="../index.html" class="back-to-work" id="backToWorkBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            back to home
+          </a>
+    </div>
+    <div class="nav-right">
+      <a href="../about.html">about</a>
+      <a href="../testimonials-copy.html">testimonials</a>
+      <a href="../contact copy.html">contact</a>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <!-- Sticky Left Anchor Navigation -->
+    <aside class="case-sidebar">
+      <div class="sidebar-title">contents</div>
+      <ul class="sidebar-links">
+        <li><a href="#overview">overview</a></li>
+        <li><a href="#challenge">the challenge</a></li>
+        <li><a href="#approach">our approach</a></li>
+        <li><a href="#my-role">my role</a></li>
+        <li><a href="#conference">the conference</a></li>
+        <li><a href="#nda">NDA note</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Case Study Content -->
+    <main class="case-content">
+            
+      <div class="animate-on-scroll">
+        <span class="tag">SCADpro × CVS Health</span>
+        <h1 class="case-title">Rethinking the CVS In-Store Experience</h1>
+        <p class="case-subtitle">Designing for comfort and convenience while reducing theft</p>
+        <p class="project-meta-line">Experience Lead · SCADpro × CVS Health · 10 weeks</p>
+      </div>
+
+      <div class="img-placeholder ar-16-9 hero-first-image animate-on-scroll">
+        <span>full bleed hero — team presenting to CVS stakeholders</span>
+      </div>
+
+      <div class="hook-callout animate-on-scroll">
+        How do you design against theft without designing against the customer?
+      </div>
+
+      <section id="overview" class="animate-on-scroll">
+        <h2 class="section-heading">Overview</h2>
+        <div class="overview-snapshot">
+          <div class="overview-row">
+            <div class="overview-label">Brief</div>
+            <div class="overview-copy">CVS Health wanted to make their stores a place of comfort and convenience — reducing shrinkage while improving customer satisfaction and store profitability. The challenge: most theft prevention creates friction for everyone, not just the people stealing.</div>
+          </div>
+          <div class="overview-row">
+            <div class="overview-label">What we did</div>
+            <div class="overview-copy">Developed a retail experience strategy that addressed theft reduction and customer experience as one problem, not two. Our solutions were later presented at the <a class="inline-link" href="https://www.retailspaces.co/" target="_blank" rel="noopener noreferrer">RetailSpaces</a> industry conference in Texas alongside CVS representatives.</div>
+          </div>
+        </div>
+        <div class="visual-strip">
+          <div class="img-placeholder"><span>NDA-safe customer journey</span></div>
+          <div class="img-placeholder"><span>NDA-safe experience strategy</span></div>
+          <div class="img-placeholder"><span>NDA-safe retail concept</span></div>
+        </div>
+      </section>
+
+      <div class="isolated-stats animate-on-scroll">
+        <div class="isolated-stat"><div class="isolated-stat-value">18</div><div class="isolated-stat-label">designers</div></div>
+        <div class="isolated-stat"><div class="isolated-stat-value">10</div><div class="isolated-stat-label">weeks</div></div>
+        <div class="isolated-stat"><div class="isolated-stat-value">1</div><div class="isolated-stat-label">industry conference</div></div>
+      </div>
+
+      <section id="challenge" class="animate-on-scroll">
+        <h2 class="section-heading">The challenge</h2>
+        <p>Retail theft solutions tend to punish everyone. Locked cases, receipt checks, surveillance signage — they create friction for the 99% of customers who are not stealing. CVS needed something different: interventions that reduce shrinkage without eroding the experience that keeps customers coming back.</p>
+        <p>That tension was the brief. Every concept had to hold up against both.</p>
+        <div class="challenge-quote">Every concept had to hold up against both — security and experience.</div>
+      </section>
+
+      <section id="approach" class="animate-on-scroll">
+        <h2 class="section-heading">How we approached it</h2>
+        <p>We started by understanding why theft happens and what actually deters it — not just physically, but psychologically. Theft is enabled by anonymity, opportunity, and the belief that nobody is watching. We looked at what creates hesitation at the moment of decision, not just detection after the fact.</p>
+        <p>We also mapped the honest customer's journey. Where does security signage create anxiety? Where does friction slow people down? Where does the store feel unwelcoming before anyone has done anything wrong? The two lenses — deterrence and experience — revealed the same pressure points.</p>
+        <p>From there we designed across the physical environment, the digital touchpoints, and the sensory atmosphere of the store — treating comfort and theft prevention as forces that could work together rather than against each other.</p>
+      </section>
+
+      <section id="my-role" class="animate-on-scroll">
+        <h2 class="section-heading">My role</h2>
+        <p>I was Experience Lead — responsible for the end-to-end experience strategy across the team's proposals.</p>
+        <p>That meant synthesizing research into a direction, making sure our concepts held together as a coherent experience rather than a collection of individual ideas, and keeping the user perspective central in every stakeholder conversation. With 18 people across multiple workstreams, my job was also making sure everyone was pointed at the same problem.</p>
+      </section>
+
+      <section id="conference" class="animate-on-scroll">
+        <h2 class="section-heading">From classroom to conference</h2>
+        <div class="conference-box">
+          <p>After presenting our solutions to CVS Health as a student team, we were invited to present alongside CVS representatives at the <a class="inline-link" href="https://www.retailspaces.co/" target="_blank" rel="noopener noreferrer">RetailSpaces</a> industry conference in Texas — where professionals from companies across the retail industry gathered to share where the field is headed.</p>
+          <p class="closing-line">That arc — from a student brief to an industry stage — was one of the most formative experiences of my time at SCAD.</p>
+        </div>
+        <div class="img-placeholder ar-16-9">
+          <span><a class="inline-link" href="https://www.retailspaces.co/" target="_blank" rel="noopener noreferrer">RetailSpaces</a> conference presentation with CVS representatives Leigh Ann and Rebecca</span>
+        </div>
+      </section>
+
+      <section id="nda" class="animate-on-scroll">
+        <h2 class="section-heading">NDA note</h2>
+        <div class="nda-note">
+          <p>Research findings and specific solutions from this engagement are confidential. This page shares the challenge, my role, and strategic context. Happy to walk through the full approach in a conversation.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // Staggered scroll animation observer for editorial fade-ins
+    const observerOptions = {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Sidebar active link tracking on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.sidebar-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 180) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Return to landing page (`index.html`) preserving state with left-slide transition
+    (function(){
+      const back = document.getElementById('backToWorkBtn');
+      if (!back) return;
+      back.addEventListener('click', function(e){
+        const isLeftClick = (e.button === 0) && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+        const href = '../index.html?returnFromCase=true';
+        if (!isLeftClick) return;
+        e.preventDefault();
+        try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch(err) {}
+        window.location.href = href;
+      });
+    })();
+  </script>
+    
+    
+
+    <script src="../assets/footer.js"></script>
+    <script>injectFooter();</script>
+
+  </body>
+  </html>

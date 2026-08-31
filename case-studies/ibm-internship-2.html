@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBM Case Study — Ankita's Portfolio</title>
+    <link rel="stylesheet" href="https://use.typekit.net/oqx8vve.css">
+    <link rel="stylesheet" href="../shared.css">
+    <script src="../assets/transition.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent: #8F0A0A;
+            --bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #555555;
+            --placeholder-bg: #f4f4f2;
+            --placeholder-text: #888888;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Fixed Top Navigation */
+        header.case-nav {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 70px;
+            background-color: var(--bg);
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+                z-index: 1000 !important;
+            padding: 0;
+            transform: none !important;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .back-to-work {
+            background-color: #631B17;
+            color: #ffffff;
+            height: 100%;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            transition: background 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .back-to-work:hover {
+            background-color: #511613;
+            padding-left: 32px;
+            padding-right: 48px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 40px;
+            padding-right: 50px;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-right a:hover {
+            color: var(--accent);
+        }
+
+        /* Page Layout Container */
+        .page-container {
+            display: flex;
+            max-width: 1360px;
+            margin: 140px auto 140px auto;
+            padding: 0 60px;
+            gap: 120px;
+            position: relative;
+        }
+
+        /* Sticky Left Sidebar Navigation (Anchors) */
+        aside.case-sidebar {
+            width: 180px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 130px;
+            height: calc(100vh - 180px);
+        }
+
+        .sidebar-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 11px;
+            color: var(--placeholder-text);
+            margin-bottom: 24px;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            list-style: none;
+        }
+
+        .sidebar-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .sidebar-links a:hover, .sidebar-links a.active {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        /* Main Content Area */
+        main.case-content {
+            flex-grow: 1;
+            max-width: 880px;
+        }
+
+        /* --- PASSWORD GATE --- */
+        .password-gate {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100vw;
+            height: calc(100vh - 70px);
+            max-height: calc(100vh - 70px);
+            background-color: var(--bg);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.4s ease;
+            padding: 24px 0;
+            overflow: hidden; /* prevent gate causing page scroll */
+        }
+
+        /* gate-logo removed - header provides navigation */
+
+        .gate-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 400px;
+            width: 100%;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .gate-label {
+            font-size: 11px;
+            font-weight: 300;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 24px;
+        }
+
+        .gate-input {
+            width: 280px;
+            padding: 12px 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            font-size: 14px;
+            border: 1.5px solid rgba(0,0,0,0.12);
+            border-radius: 12px;
+            outline: none;
+            transition: border-color 0.2s ease;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .gate-input:focus {
+            border-color: var(--accent);
+        }
+
+        .gate-btn {
+            background: var(--accent);
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            border-radius: 12px;
+            padding: 12px 32px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            width: 280px;
+        }
+
+        .gate-btn:hover {
+            background: #780808;
+        }
+
+        .gate-help {
+            margin-top: 20px;
+            font-size: 12px;
+            font-weight: 300;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .gate-help:hover {
+            text-decoration: underline;
+        }
+
+        .gate-error {
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 400;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .shake {
+            animation: shake 0.4s ease;
+            border-color: var(--accent) !important;
+        }
+
+        /* --- CASE STUDY CONTENT (Hidden by default) --- */
+        .case-study-content {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .case-study-content.unlocked {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* --- SHARED TYPOGRAPHY & COMPONENTS --- */
+        .tag {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 12px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        h1.case-title {
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+            color: #111111;
+        }
+
+        h2.section-heading {
+            font-size: 42px;
+            margin: 90px 0 24px 0;
+            line-height: 1.15;
+            color: #111111;
+        }
+
+        p {
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            font-size: 17px;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 400;
+            background: linear-gradient(180deg, rgba(143,10,10,0) 70%, rgba(143,10,10,0.1) 30%);
+        }
+
+        .hero-lead {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .project-meta-line {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--placeholder-text);
+            margin-bottom: 16px;
+        }
+
+        .hero-first-image {
+            margin: 12px 0 70px;
+        }
+
+        .hook-callout {
+            width: 100%;
+            background: #F5F5F3;
+            padding: 62px 30px;
+            margin: 30px 0 68px;
+            text-align: center;
+            border-radius: 2px;
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 34px;
+            line-height: 1.2;
+            color: #2f2f2f;
+        }
+
+        .overview-snapshot {
+            border-top: 1px solid #e7e7e7;
+            border-bottom: 1px solid #e7e7e7;
+            margin: 16px 0 32px;
+        }
+
+        .overview-row {
+            display: grid;
+            grid-template-columns: 170px 1fr;
+            gap: 24px;
+            padding: 20px 0;
+        }
+
+        .overview-row + .overview-row {
+            border-top: 1px solid #efefef;
+        }
+
+        .overview-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0F62FE;
+            letter-spacing: 0.02em;
+        }
+
+        .overview-copy {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .overview-screen-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 34px;
+        }
+
+        .overview-screen-strip .img-placeholder {
+            margin: 0;
+            aspect-ratio: 16 / 10;
+        }
+
+        .doc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 0 0 38px;
+        }
+
+        .doc-grid .img-placeholder {
+            margin: 0;
+        }
+
+        .doc-grid .img-placeholder:nth-child(1) { aspect-ratio: 16 / 10; }
+        .doc-grid .img-placeholder:nth-child(2) { aspect-ratio: 4 / 3; }
+        .doc-grid .img-placeholder:nth-child(3) { aspect-ratio: 16 / 9; }
+        .doc-grid .img-placeholder:nth-child(4) { aspect-ratio: 4 / 3; }
+
+        .strip-caption {
+            font-size: 12px;
+            color: #6f6f6f;
+            line-height: 1.5;
+            margin-top: 8px;
+            margin-bottom: 4px;
+        }
+
+        .before-after-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 26px;
+            margin-top: 10px;
+            margin-bottom: 24px;
+        }
+
+        .before-after-pair {
+            background: #f5f5f3;
+            border-radius: 2px;
+            padding: 18px;
+        }
+
+        .before-after-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .before-after-pair .img-placeholder {
+            margin: 0;
+            aspect-ratio: 16 / 10;
+        }
+
+        .pair-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #8a8a8a;
+            margin-bottom: 8px;
+        }
+
+        .pair-caption {
+            margin-top: 10px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #666666;
+        }
+
+        .stats-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 34px;
+            margin: 20px 0 34px;
+        }
+
+        .stat-panel {
+            padding: 18px 0;
+            border-top: 1px solid #ececec;
+            border-bottom: 1px solid #ececec;
+        }
+
+        .stat-value {
+            font-size: 56px;
+            line-height: 1;
+            color: #0F62FE;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin-bottom: 6px;
+        }
+
+        .stat-note {
+            font-size: 15px;
+            color: #777777;
+        }
+
+        .workflow-screen-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 0 0 34px;
+        }
+
+        .workflow-screen-pair figure {
+            margin: 0;
+        }
+
+        .workflow-screen-pair .img-placeholder {
+            margin: 0;
+            aspect-ratio: 16 / 10;
+        }
+
+        .workflow-screen-pair figcaption {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #6f6f6f;
+            line-height: 1.45;
+        }
+
+        .impact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-left: 20px;
+            margin-top: 6px;
+        }
+
+        .impact-list li {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        .impact-list strong {
+            color: #0F62FE;
+            font-weight: 600;
+        }
+
+        .takeaway-callout {
+            width: 100%;
+            background: #F5F5F3;
+            padding: 56px 28px;
+            margin-top: 16px;
+            text-align: center;
+            border-radius: 2px;
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 31px;
+            line-height: 1.3;
+            color: #2f2f2f;
+        }
+
+        .editorial-quote {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 30px;
+            line-height: 1.35;
+            color: var(--text-main);
+            margin: 50px 0;
+            padding-left: 32px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .editorial-box {
+            background-color: #faf9f6;
+            padding: 48px;
+            margin: 50px 0;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .editorial-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background-color: var(--accent);
+        }
+
+        /* Interactive Image Placeholders */
+        .img-placeholder {
+            background-color: var(--placeholder-bg);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 60px 0;
+            border-radius: 8px;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+            cursor: pointer;
+        }
+
+        .img-placeholder:hover {
+            transform: scale(1.015) translateY(-4px);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.06);
+        }
+
+        .img-placeholder span {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            color: var(--placeholder-text);
+            text-transform: lowercase;
+            letter-spacing: 0.04em;
+        }
+
+        .ar-16-9 { aspect-ratio: 16 / 9; }
+        .ar-4-3 { aspect-ratio: 4 / 3; }
+        .ar-21-9 { aspect-ratio: 21 / 9; }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 50px 0;
+        }
+
+        /* Custom IBM components matching Lindstrom aesthetic */
+        .pill-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .pill-tag {
+            background-color: #FDE8E5;
+            color: var(--accent);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 12px;
+            padding: 8px 16px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .workflow-card {
+            border-left: 3px solid var(--accent);
+            background: #faf9f6;
+            padding: 36px 40px;
+            margin-bottom: 24px;
+            border-radius: 0 2px 2px 0;
+        }
+
+        .workflow-name {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            color: #111111;
+            margin-bottom: 8px;
+        }
+
+        /* Outcome Statistics Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background-color: #faf9f6;
+            padding: 40px 32px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            background-color: #f2f0eb;
+        }
+
+        .stat-number {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 36px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Scroll Micro-animations / Fade Ins */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            aside.case-sidebar {
+                display: none;
+            }
+            .page-container {
+                padding: 0 30px;
+            }
+            .split-grid, .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .overview-row,
+            .overview-screen-strip,
+            .doc-grid,
+            .before-after-grid,
+            .stats-pair,
+            .workflow-screen-pair {
+                grid-template-columns: 1fr;
+            }
+            .hook-callout,
+            .takeaway-callout {
+                font-size: 25px;
+                padding: 40px 20px;
+            }
+            .stat-value {
+                font-size: 44px;
+            }
+        }
+    </style>
+
+    <script>
+        (function(){
+            try{
+                const tRaw = sessionStorage.getItem('pageTransition');
+                if (!tRaw) return;
+                const t = JSON.parse(tRaw);
+                if (t && (t.direction === 'from-right' || t.direction === 'from-left')) {
+                    document.body.classList.add('transition-slide');
+                    document.body.classList.add(t.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+                }
+            }catch(e){}
+        })();
+    </script>
+<body>
+
+    <!-- PASSWORD GATE -->
+    <div class="password-gate" id="passwordGate">
+        <div class="gate-container">
+            <span class="gate-label">This case study is password protected.</span>
+            <input type="password" id="passwordInput" class="gate-input" placeholder="Enter password" autocomplete="current-password">
+            <button id="submitBtn" type="button" class="gate-btn">Enter</button>
+            <span id="errorText" class="gate-error">Incorrect password.</span>
+            <a href="../contact copy.html" class="gate-help">Request access via the contact page</a>
+        </div>
+    </div>
+
+    <!-- Top Fixed Navigation -->
+    <header class="case-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="back-to-work" id="backToWorkBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                back to home
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="../about.html">about</a>
+            <a href="../testimonials-copy.html">testimonials</a>
+            <a href="../contact copy.html">contact</a>
+        </div>
+    </header>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+            const passwordGate = document.getElementById('passwordGate');
+            const passwordInput = document.getElementById('passwordInput');
+            const submitBtn = document.getElementById('submitBtn');
+            const errorText = document.getElementById('errorText');
+            const caseStudyContent = document.getElementById('caseStudyContent');
+
+            const CORRECT_PASSWORD = 'verycoolsecrets2026';
+            const PERSISTENT_UNLOCK_KEY = 'ibm_unlocked_persistent';
+            const SESSION_UNLOCK_KEY = 'ibm_unlocked';
+
+            // prevent page scroll while gate is visible
+            try{
+                if (passwordGate && window.getComputedStyle(passwordGate).display !== 'none'){
+                    document.documentElement.style.overflow = 'hidden';
+                    document.body.style.overflow = 'hidden';
+                }
+            }catch(e){}
+
+            // Ensure header stays fixed even when body transforms are applied during transitions
+            function ensureHeaderFixed(){
+                try{
+                    const header = document.querySelector('header.case-nav');
+                    if(header){
+                        header.style.position = 'fixed';
+                        header.style.top = '0';
+                        header.style.left = '0';
+                        header.style.width = '100%';
+                        header.style.zIndex = '6000';
+                        header.style.transform = 'none';
+                    }
+                }catch(e){}
+            }
+
+            // Clear any body transforms/classes that break fixed positioning when unlocked prior
+            const isUnlocked = (() => {
+                try {
+                    return sessionStorage.getItem(SESSION_UNLOCK_KEY) === 'true' || localStorage.getItem(PERSISTENT_UNLOCK_KEY) === 'true';
+                } catch (e) {
+                    return sessionStorage.getItem(SESSION_UNLOCK_KEY) === 'true';
+                }
+            })();
+
+            if (isUnlocked) {
+                if(passwordGate) passwordGate.style.display = 'none';
+                if(caseStudyContent) caseStudyContent.classList.add('unlocked');
+                document.documentElement.style.overflow = '';
+                document.body.style.overflow = '';
+                try{ document.body.style.transform = ''; document.body.classList.remove('pre-slide-right','pre-slide-left','transition-slide'); }catch(e){}
+                ensureHeaderFixed();
+                try{ window.dispatchEvent(new Event('scroll')); }catch(e){}
+            }
+
+            // After any transition that uses body transform, re-enforce header fixed behavior.
+            try{
+                document.body.addEventListener('transitionend', function(ev){
+                    if(ev.propertyName === 'transform'){
+                        try{ document.body.style.transform = ''; document.body.classList.remove('pre-slide-right','pre-slide-left','transition-slide'); }catch(e){}
+                        ensureHeaderFixed();
+                        try{ window.dispatchEvent(new Event('scroll')); }catch(e){}
+                    }
+                });
+            }catch(e){}
+
+            // Fallback: enforce header fixed after the expected transition duration
+            setTimeout(() => { ensureHeaderFixed(); try{ window.dispatchEvent(new Event('scroll')); }catch(e){} }, 1500);
+
+            function handleUnlock() {
+                const val = passwordInput ? (passwordInput.value || '').trim() : '';
+                if (val === CORRECT_PASSWORD) {
+                    try{ sessionStorage.setItem(SESSION_UNLOCK_KEY,'true'); }catch(e){}
+                    try{ localStorage.setItem(PERSISTENT_UNLOCK_KEY,'true'); }catch(e){}
+                    if (passwordGate) {
+                        passwordGate.style.opacity = '0';
+                        setTimeout(() => {
+                            passwordGate.style.display = 'none';
+                            if(caseStudyContent) caseStudyContent.classList.add('unlocked');
+                            document.documentElement.style.overflow = '';
+                            document.body.style.overflow = '';
+                            try{ window.dispatchEvent(new Event('ibmCaseUnlocked')); }catch(e){}
+                        }, 400);
+                    }
+
+                    // clear any page-level transforms and pre-slide classes
+                    try{ document.body.style.transform = ''; document.body.classList.remove('pre-slide-right','pre-slide-left','transition-slide'); }catch(e){}
+
+                    // ensure header fixed
+                    try{ ensureHeaderFixed(); }catch(e){}
+
+                    // reveal animate elements
+                    try{ document.querySelectorAll('.animate-on-scroll').forEach(el => el.classList.add('visible')); }catch(e){}
+                    try{ window.dispatchEvent(new Event('scroll')); }catch(e){}
+
+                            // Ensure the centralized footer is injected after unlock.
+                            try{
+                                if (typeof injectFooter === 'function') {
+                                    injectFooter();
+                                } else {
+                                    const _int = setInterval(() => {
+                                        if (typeof injectFooter === 'function') {
+                                            clearInterval(_int);
+                                            try{ injectFooter(); }catch(e){}
+                                        }
+                                    }, 100);
+                                    // stop waiting after 5s
+                                    setTimeout(() => clearInterval(_int), 5000);
+                                }
+                            }catch(e){}
+
+                } else {
+                    if (passwordInput) { passwordInput.classList.add('shake'); setTimeout(()=> passwordInput.classList.remove('shake'),400); }
+                    if (errorText) errorText.style.opacity = '1';
+                }
+            }
+
+            submitBtn && submitBtn.addEventListener('click', handleUnlock);
+            passwordInput && passwordInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleUnlock(); else if(errorText) errorText.style.opacity = '0'; });
+
+            // Staggered scroll animation observer for editorial fade-ins
+            const observerOptions = {
+                threshold: 0.08,
+                rootMargin: '0px 0px -40px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Sidebar active link tracking on scroll
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.sidebar-links a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 180) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Return to landing page preserving state with left-slide transition
+            const back = document.getElementById('backToWorkBtn');
+            if (back) {
+                back.addEventListener('click', function(e){
+                    const isLeftClick = (e.button === 0) && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+                    const href = '../index.html?returnFromCase=true';
+                    if (!isLeftClick) return;
+                    e.preventDefault();
+                    try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch(err) {}
+                    window.location.href = href;
+                });
+            }
+            try{ window.dispatchEvent(new Event('scroll')); }catch(e){}
+    });
+    </script>
+
+    <!-- CASE STUDY CONTENT -->
+    <div class="case-study-content" id="caseStudyContent">
+        <div class="page-container">
+            <!-- Sticky Left Anchor Navigation -->
+            <aside class="case-sidebar">
+                <div class="sidebar-title">contents</div>
+                <ul class="sidebar-links">
+                    <li><a href="#overview">overview</a></li>
+                    <li><a href="#situation">the situation</a></li>
+                    <li><a href="#part1">part one</a></li>
+                    <li><a href="#part2">part two</a></li>
+                    <li><a href="#workflow1">workflow 1</a></li>
+                    <li><a href="#workflow2">workflow 2</a></li>
+                    <li><a href="#impact">impact</a></li>
+                    <li><a href="#takeaways">takeaways</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Case Study Content -->
+            <main class="case-content">
+                
+                <div class="animate-on-scroll">
+                    <span class="tag">IBM zSecure Detection: Designing Inside an Acquisition</span>
+                    <h1 class="case-title">IBM Z Mainframe Security</h1>
+                    <p class="hero-lead">Designing to mitigate security vulnerabilities and accelerate future design workflows through AI</p>
+                    <p class="project-meta-line">UX Design Intern · IBM · Summer 2026 · Enterprise Security</p>
+                </div>
+
+                <div class="img-placeholder ar-16-9 hero-first-image animate-on-scroll">
+                    <span>full bleed hero - redesigned Threat Monitor UI</span>
+                </div>
+
+                <div class="hook-callout animate-on-scroll">
+                    A product shipped before it was unified.
+                </div>
+
+                <section id="overview" class="animate-on-scroll">
+                    <h2 class="section-heading">Overview</h2>
+                    <div class="overview-snapshot">
+                        <div class="overview-row">
+                            <div class="overview-label">Problem</div>
+                            <div class="overview-copy">IBM acquired a threat detection and response product for IBM Z mainframe environments and GA'd zSecure Detection by combining 5 standalone products under one name before they were actually unified. The recently acquired product ran on outdated components with security vulnerabilities.</div>
+                        </div>
+                        <div class="overview-row">
+                            <div class="overview-label">What I did</div>
+                            <div class="overview-copy">
+                                <ol>
+                                    <li>Migrated the acquired product into IBM's Carbon design system and shipped it to customers.</li>
+                                    <li>Co-facilitated design thinking and engineering workshops to align on a shared goal and action plan.</li>
+                                    <li>Built 2 AI workflows now being used in the org.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overview-screen-strip">
+                        <div class="img-placeholder"><span>carbonized screen 01</span></div>
+                        <div class="img-placeholder"><span>carbonized screen 02</span></div>
+                        <div class="img-placeholder"><span>carbonized screen 03</span></div>
+                    </div>
+                </section>
+
+                <section id="situation" class="animate-on-scroll">
+                    <h2 class="section-heading">The situation</h2>
+                    <p>IBM GA'd zSecure Detection by grouping 5 standalone security products under one name. They weren't actually unified. One of them, a threat detection and response product for IBM Z mainframe environments, had just been acquired and was running on outdated components that introduced security vulnerabilities into customer environments.</p>
+                    <p>I joined as UX Design Intern on the zSD team, working in Carbon Design System v11 alongside the design team.</p>
+                </section>
+
+                <section id="part1" class="animate-on-scroll">
+                    <h2 class="section-heading">Part One — Carbonizing Threat Monitor</h2>
+                    <div class="editorial-box">
+                        <p>Before design started there was a business decision to make. Ship the Carbonized screens early in a split release, or hold and ship the full product in Q4. Splitting would have hit a closer deadline but fractured the experience right as customers were adjusting to the new platform.</p>
+                        <p style="margin-bottom: 0;"><span class="highlight">I pushed for shipping it whole.</span> One quarter later, customers got a coherent product.</p>
+                    </div>
+                    <div class="img-placeholder ar-16-9">
+                        <span>split vs full release timeline diagram</span>
+                    </div>
+                    <p>This wasn't a component swap. Before touching a single screen, I used object-oriented UX to map the product's structure — core objects, attributes, and relationships — and asked how this acquisition fit into the broader portfolio. That systemic foundation let me simplify the UI, improve interactions, and make critical threat response features accessible within a dense security environment.</p>
+
+                    <div class="before-after-stack">
+                        <article class="before-after-pair">
+                            <div class="before-after-grid">
+                                <div>
+                                    <div class="pair-label">Before</div>
+                                    <div class="img-placeholder"><span>legacy ProdConfigs modal</span></div>
+                                </div>
+                                <div>
+                                    <div class="pair-label">After</div>
+                                    <div class="img-placeholder"><span>carbon resource set details panel</span></div>
+                                </div>
+                            </div>
+                            <p class="pair-caption">ProdConfigs moved from a dense modal into a structured Carbon details panel.</p>
+                        </article>
+
+                        <article class="before-after-pair">
+                            <div class="before-after-grid">
+                                <div>
+                                    <div class="pair-label">Before</div>
+                                    <div class="img-placeholder"><span>legacy early warning table</span></div>
+                                </div>
+                                <div>
+                                    <div class="pair-label">After</div>
+                                    <div class="img-placeholder"><span>carbon table with status tags</span></div>
+                                </div>
+                            </div>
+                            <p class="pair-caption">Early Warning moved from a dense table to clearer status-tagged hierarchy.</p>
+                        </article>
+
+                        <article class="before-after-pair">
+                            <div class="before-after-grid">
+                                <div>
+                                    <div class="pair-label">Before</div>
+                                    <div class="img-placeholder"><span>legacy job detail view</span></div>
+                                </div>
+                                <div>
+                                    <div class="pair-label">After</div>
+                                    <div class="img-placeholder"><span>carbon structured job detail layout</span></div>
+                                </div>
+                            </div>
+                            <p class="pair-caption">Job details were restructured to reduce scan friction and support quick decisions.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="part2" class="animate-on-scroll">
+                    <h2 class="section-heading">Part Two — A side quest that became something bigger</h2>
+                    <p>After Threat Monitor shipped I kept thinking about how tight the timeline was. The design ramp alone, understanding an acquired product deeply enough to redesign it well, took weeks. With four more products to unify, that wasn't going away.</p>
+                    <p>I started talking to designers across IBM, IMS, z/OS, Infrastructure, Research, and Security, asking how they were working. Most teams were using AI for ideation at best. Nobody had built workflows specific to design delivery. I saw a gap and built two workflows to close it.</p>
+                </section>
+
+                <section id="workflow1" class="animate-on-scroll">
+                    <h2 class="section-heading">Workflow 1 — Product Analyser</h2>
+                    <p>Takes an acquired product's technical docs and legacy UI screenshots. Outputs a product summary, an object model, and Carbon v11 layout previews in one pass.</p>
+                    <div class="stats-pair">
+                        <div class="stat-panel">
+                            <div class="stat-value">1.5–2 weeks</div>
+                            <div class="stat-note">Manual</div>
+                        </div>
+                        <div class="stat-panel">
+                            <div class="stat-value">3–4 days</div>
+                            <div class="stat-note">With AI</div>
+                        </div>
+                    </div>
+                    <div class="workflow-screen-pair">
+                        <figure>
+                            <div class="img-placeholder"><span>legacy UI</span></div>
+                            <figcaption>Legacy UI</figcaption>
+                        </figure>
+                        <figure>
+                            <div class="img-placeholder"><span>carbon output</span></div>
+                            <figcaption>Carbon output</figcaption>
+                        </figure>
+                    </div>
+                </section>
+
+                <section id="workflow2" class="animate-on-scroll">
+                    <h2 class="section-heading">Workflow 2 — Consistency Auditor</h2>
+                    <p>Audits screens against a baseline from another product in the portfolio. Checks terminology, spacing, fonts, color tokens, and detached variables. Outputs a severity-triaged report with screen overlays and Dev Mode annotations.</p>
+                    <p>The first time I ran it on Threat Monitor, the deviations it caught were implemented the same day. It is now named in the official zSD unification proposal and in active use by another designer on the team.</p>
+                    <div class="stats-pair">
+                        <div class="stat-panel">
+                            <div class="stat-value">Weeks</div>
+                            <div class="stat-note">Manual</div>
+                        </div>
+                        <div class="stat-panel">
+                            <div class="stat-value">Same day</div>
+                            <div class="stat-note">With AI</div>
+                        </div>
+                    </div>
+                    <div class="workflow-screen-pair">
+                        <figure>
+                            <div class="img-placeholder"><span>audit overlay</span></div>
+                            <figcaption>Highlighted inconsistencies</figcaption>
+                        </figure>
+                        <figure>
+                            <div class="img-placeholder"><span>severity triaged report</span></div>
+                            <figcaption>Severity-triaged report</figcaption>
+                        </figure>
+                    </div>
+                </section>
+
+                <section id="impact" class="animate-on-scroll">
+                    <h2 class="section-heading">Impact</h2>
+                    <ul class="impact-list">
+                        <li><strong>Threat Monitor Carbonized and shipping</strong> — security vulnerabilities removed, screens in active development.</li>
+                        <li><strong>~70% reduction in ramp time</strong> — 1.5 to 2 weeks reduced to 3 to 4 days.</li>
+                        <li><strong>Consistency Auditor adopted same-day</strong> on first run, now named in the official zSD unification proposal.</li>
+                        <li><strong>Reusable components and patterns</strong> built for all of zSecure.</li>
+                        <li><strong>Co-facilitated unification workshops</strong> that aligned architecture and requirements across design and engineering.</li>
+                    </ul>
+                </section>
+
+                <section id="takeaways" class="animate-on-scroll">
+                    <h2 class="section-heading">What I took from this</h2>
+                    <div class="takeaway-callout">
+                        Shipping Threat Monitor whole instead of early was the right call. Building tools so future teams don't face the same choice was the follow-through.
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="../assets/footer.js"></script>
+    <script>injectFooter();</script>
+
+</body>
+</html>

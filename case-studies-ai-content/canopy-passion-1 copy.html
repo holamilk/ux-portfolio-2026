@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankita Chakrabarty — Canopy Case Study</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Adobe Fonts: Orpheus Pro Italic -->
+    <link rel="stylesheet" href="https://use.typekit.net/oqx8vve.css">
+    
+    <style>
+        :root {
+            --accent: #8F0A0A;
+            --bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #555555;
+            --placeholder-bg: #f4f4f2;
+            --placeholder-text: #888888;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Top Navigation */
+        header.case-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: var(--bg);
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            padding: 0;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .back-to-work {
+            background-color: #631B17;
+            color: #ffffff;
+            height: 100%;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            transition: background 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .back-to-work:hover {
+            background-color: #511613;
+            padding-left: 32px;
+            padding-right: 48px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 40px;
+            padding-right: 50px;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-right a:hover {
+            color: var(--accent);
+        }
+
+        /* Page Layout Container */
+        .page-container {
+            display: flex;
+            max-width: 1360px;
+            margin: 140px auto 140px auto;
+            padding: 0 60px;
+            gap: 120px;
+            position: relative;
+        }
+
+        /* Sticky Left Sidebar Navigation (Anchors) */
+        aside.case-sidebar {
+            width: 180px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 130px;
+            height: calc(100vh - 180px);
+        }
+
+        .sidebar-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 11px;
+            color: var(--placeholder-text);
+            margin-bottom: 24px;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            list-style: none;
+        }
+
+        .sidebar-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .sidebar-links a:hover, .sidebar-links a.active {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        /* Main Content Area */
+        main.case-content {
+            flex-grow: 1;
+            max-width: 880px;
+        }
+
+        /* Typography Styles */
+        h1, h2, h3 {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        .tag {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 12px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1.case-title {
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+        }
+
+        h2.section-heading {
+            font-size: 42px;
+            margin: 90px 0 24px 0;
+            line-height: 1.15;
+        }
+
+        p {
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            font-size: 17px;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 400;
+            background: linear-gradient(180deg, rgba(143,10,10,0) 70%, rgba(143,10,10,0.1) 30%);
+        }
+
+        /* Editorial Custom Layout Components */
+        .hero-lead {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .editorial-quote {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 30px;
+            line-height: 1.35;
+            color: var(--text-main);
+            margin: 50px 0;
+            padding-left: 32px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .editorial-box {
+            background-color: #faf9f6;
+            padding: 48px;
+            margin: 50px 0;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .editorial-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background-color: var(--accent);
+        }
+
+        /* Metadata Details Row */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 50px 0 70px 0;
+            padding: 30px 0;
+            border-top: 1px solid #eaeaea;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .meta-item span.label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--placeholder-text);
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .meta-item span.val {
+            font-size: 14px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Interactive Image Placeholders */
+        .img-placeholder {
+            background-color: var(--placeholder-bg);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 60px 0;
+            border-radius: 2px;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+            cursor: pointer;
+        }
+
+        .img-placeholder:hover {
+            transform: scale(1.015) translateY(-4px);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.06);
+        }
+
+        .img-placeholder span {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            color: var(--placeholder-text);
+            text-transform: lowercase;
+            letter-spacing: 0.04em;
+        }
+
+        .ar-16-9 { aspect-ratio: 16 / 9; }
+        .ar-4-3 { aspect-ratio: 4 / 3; }
+        .ar-21-9 { aspect-ratio: 21 / 9; }
+        .ar-1-1 { aspect-ratio: 1 / 1; }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 50px 0;
+        }
+
+        /* Outcome Statistics Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background-color: #faf9f6;
+            padding: 40px 32px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            background-color: #f2f0eb;
+        }
+
+        .stat-number {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Scroll Micro-animations / Fade Ins */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            aside.case-sidebar {
+                display: none;
+            }
+            .page-container {
+                padding: 0 30px;
+            }
+            .split-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<script>
+    (function(){
+        try{
+            const tRaw = sessionStorage.getItem('pageTransition');
+            if (!tRaw) return;
+            const t = JSON.parse(tRaw);
+            if (t && (t.direction === 'from-right' || t.direction === 'from-left')) {
+                document.body.classList.add('transition-slide');
+                document.body.classList.add(t.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+            }
+        }catch(e){}
+    })();
+</script>
+<script src="../assets/transition.js"></script>
+<body>
+
+    <!-- Top Fixed Navigation -->
+    <header class="case-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="back-to-work" id="backToWorkBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                back to home
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="../about.html">about</a>
+            <a href="../testimonials-copy.html">testimonials</a>
+            <a href="../contact copy.html">contact</a>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <!-- Sticky Left Anchor Navigation -->
+        <aside class="case-sidebar">
+            <div class="sidebar-title">contents</div>
+            <ul class="sidebar-links">
+                <li><a href="#at-a-glance">at-a-glance</a></li>
+                <li><a href="#discovery">discovery</a></li>
+                <li><a href="#design">design</a></li>
+                <li><a href="#results">results</a></li>
+                <li><a href="#reflection">reflection</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Case Study Content -->
+        <main class="case-content">
+            
+            <div class="animate-on-scroll">
+                <span class="tag">SCAD Studio Project · Service Design · Immersive Experience</span>
+                <h1 class="case-title">What happens when research kills your idea</h1>
+                <p class="hero-lead">An immersive pod placed in urban communities — with booking and recap inside the NPS app. We spent weeks on at-home nature simulations. Users ranked them dead last. Killing that direction made the final concept sharper than consensus ever would have.</p>
+            </div>
+
+            <!-- Metadata Grid -->
+            <div class="meta-grid animate-on-scroll">
+                <div class="meta-item">
+                    <span class="label">Role</span>
+                    <span class="val">Scrum Master + Experience Design</span>
+                </div>
+                <div class="meta-item">
+                    <span class="label">Team</span>
+                    <span class="val">5 designers</span>
+                </div>
+                <div class="meta-item">
+                    <span class="label">Duration</span>
+                    <span class="val">10 weeks</span>
+                </div>
+                <div class="meta-item">
+                    <span class="label">Delivered</span>
+                    <span class="val">Pod concept + NPS app</span>
+                </div>
+            </div>
+
+            <!-- Hero Image Placeholder -->
+            <div class="img-placeholder ar-16-9 animate-on-scroll">
+                <span>Canopy pod + NPS app screens</span>
+            </div>
+
+            <!-- Full-width Standout Section -->
+            <div style="background-color: #f4f4f2; padding: 48px; margin: 60px 0; border-radius: 2px;" class="animate-on-scroll">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: center; margin-bottom: 32px;">
+                    <div>
+                        <div class="stat-number">50%</div>
+                        <div class="stat-label">of barriers were cost-related</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">44.4%</div>
+                        <div class="stat-label">were transportation-related</div>
+                    </div>
+                </div>
+                <p style="font-family: 'Orpheus Pro', serif; font-style: italic; font-size: 24px; color: var(--text-main); text-align: center; margin-bottom: 0; line-height: 1.4;">"Access to national parks isn't a trail problem. It's a distance and cost problem."</p>
+            </div>
+
+            <!-- Section 1: At a Glance -->
+            <section id="at-a-glance" class="animate-on-scroll">
+                <h2 class="section-heading">At a glance</h2>
+
+                <div class="split-grid" style="border-top: 1px solid #eaeaea; padding-top: 40px;">
+                    <div>
+                        <p><strong>The problem</strong></p>
+                        <p>People can't reach national parks — disability, distance, cost, time. Meanwhile the parks they can reach are overcrowded. NPS has no way to deliver a park experience to someone who can't get to one.</p>
+                    </div>
+                    <div>
+                        <p><strong>The solution</strong></p>
+                        <p>Canopy: an immersive pod placed in urban communities, with booking and recap inside the NPS app. 360° projections, spatial audio, interactive floor. Explore Mode for discovery, Meditate Mode for restoration. Up to four people, wheelchair accessible, free.</p>
+                    </div>
+                </div>
+
+                <div class="img-placeholder ar-16-9">
+                    <span>Canopy pod concept and NPS app</span>
+                </div>
+            </section>
+
+            <!-- Section 2: Discovery -->
+            <section id="discovery" class="animate-on-scroll">
+                <h2 class="section-heading">Discovery</h2>
+                <p>We walked George L. Smith State Park before designing anything. Three benches along three miles. Steep grade changes with no warning. Static signage, no real-time information. One of us walked it in a 12lb weighted vest.</p>
+
+                <div class="editorial-quote">
+                    "The grades stopped reading as scenery and started reading as barriers."
+                </div>
+
+                <p>Six concepts, ranked — and the ranking inverted our plan.</p>
+
+                <div class="editorial-box">
+                    <p style="color: var(--text-main); margin-bottom: 0;">Social, in-park concepts beat remote and solo ones every time. At-home versions came last by a wide margin. People don't want a park simulated at home. They want a reason to go somewhere.</p>
+                </div>
+
+                <p>The pod went from private device to <span class="highlight">placed, shared, public installation</span>.</p>
+
+                <p>Three research questions, held against every decision:</p>
+
+                <div style="display: flex; flex-direction: column; gap: 0; margin: 50px 0;">
+                    <div style="border-top: 1px solid #eaeaea; border-left: 2px solid var(--accent); padding: 20px 0 20px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center;">
+                        <p style="font-family: 'Orpheus Pro', serif; font-style: italic; color: var(--text-main); margin-bottom: 0; font-size: 18px;">"How do visitors understand accessibility while navigating?"</p>
+                        <p style="margin-bottom: 0; font-size: 15px;">"Information inside the pod is ambient, not something you hunt for."</p>
+                    </div>
+                    <div style="border-top: 1px solid #eaeaea; border-left: 2px solid var(--accent); padding: 20px 0 20px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center;">
+                        <p style="font-family: 'Orpheus Pro', serif; font-style: italic; color: var(--text-main); margin-bottom: 0; font-size: 18px;">"What causes confusion or exclusion?"</p>
+                        <p style="margin-bottom: 0; font-size: 15px;">"Two modes instead of one, so people choose how they engage."</p>
+                    </div>
+                    <div style="border-top: 1px solid #eaeaea; border-left: 2px solid var(--accent); padding: 20px 0 20px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; border-bottom: 1px solid #eaeaea;">
+                        <p style="font-family: 'Orpheus Pro', serif; font-style: italic; color: var(--text-main); margin-bottom: 0; font-size: 18px;">"Why do current tools fail?"</p>
+                        <p style="margin-bottom: 0; font-size: 15px;">"Make it physical and legible from outside before you commit to entering."</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Design -->
+            <section id="design" class="animate-on-scroll">
+                <h2 class="section-heading">Design</h2>
+                <p>We simulated a pod we couldn't build — moody lighting, a large screen, seating, tap-to-enter. Crude, but it tested how it feels to sit inside an experience instead of asking people to imagine a render.</p>
+
+                <div class="editorial-quote">
+                    "Every tap pulled people out of the forest."
+                </div>
+
+                <p>Cause was consistent: touching a screen mid-experience. Fix was structural — interactive moments moved to before and after. Ambient triggers inside. The app stops being a remote the moment you sit down.</p>
+
+                <div class="editorial-box">
+                    <p style="color: var(--text-main); margin-bottom: 0;">We built the trip recap as a summary — distance, species, time. The screens tested flat, but the idea landed hard. People wanted to share it, collect from it. We rebuilt it around badges and challenges. It went from a receipt to a reason to come back.</p>
+                </div>
+
+                <p>Smaller fixes along the way:</p>
+
+                <div class="split-grid">
+                    <div>
+                        <p>• Lists that looked clickable but weren't — fixed visual affordances.</p>
+                        <p>• Rebuilt NPS global and local components in Figma so our additions sat inside the system, not beside it.</p>
+                    </div>
+                    <div>
+                        <p>• Added accessibility controls to booking: contrast, dictation, epileptic content, loud frequencies, strong scents, stable temperature.</p>
+                        <p>• Sensory needs are set before you enter, not negotiated inside.</p>
+                    </div>
+                </div>
+
+                <div class="img-placeholder ar-16-9">
+                    <span>mid-fi wireframes to hi-fi NPS app screens</span>
+                </div>
+            </section>
+
+            <!-- Section 4: Results -->
+            <section id="results" class="animate-on-scroll">
+                <h2 class="section-heading">Results</h2>
+
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: 60px 0;">
+                    <div class="stat-card">
+                        <div class="stat-number">86.5</div>
+                        <div class="stat-label">average SUS score (threshold: 70)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">104s</div>
+                        <div class="stat-label">average time to book</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">45%</div>
+                        <div class="stat-label">increase in stated interest in NPS services</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">~180%</div>
+                        <div class="stat-label">estimated first-year ROI across five locations</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Reflection -->
+            <section id="reflection" class="animate-on-scroll">
+                <h2 class="section-heading">Behind the pixels</h2>
+
+                <div style="display: flex; flex-direction: column; gap: 32px; margin-top: 50px;">
+                    <div class="editorial-box" style="margin: 0; display: flex; gap: 32px; align-items: flex-start;">
+                        <div style="font-family: 'Orpheus Pro', serif; font-style: italic; font-size: 56px; color: var(--accent); line-height: 1; flex-shrink: 0;">A</div>
+                        <div>
+                            <p style="font-weight: 500; color: var(--text-main); margin-bottom: 12px; font-size: 18px;">Being Scrum Master made me a better designer</p>
+                            <p style="margin-bottom: 0; font-size: 16px;">Owning the timeline forced me to be specific about what was worth reopening. Scoping the change tightly to the concept while protecting the app work already done is what made the pivot survivable.</p>
+                        </div>
+                    </div>
+
+                    <div class="editorial-box" style="margin: 0; display: flex; gap: 32px; align-items: flex-start;">
+                        <div style="font-family: 'Orpheus Pro', serif; font-style: italic; font-size: 56px; color: var(--accent); line-height: 1; flex-shrink: 0;">B</div>
+                        <div>
+                            <p style="font-weight: 500; color: var(--text-main); margin-bottom: 12px; font-size: 18px;">Immersion is fragile, and it fails at the interaction</p>
+                            <p style="margin-bottom: 0; font-size: 16px;">Not at content quality. Every moment a user thinks about the interface, the experience collapses. Designing for immersion means knowing where not to put a control.</p>
+                        </div>
+                    </div>
+
+                    <div class="editorial-box" style="margin: 0; display: flex; gap: 32px; align-items: flex-start;">
+                        <div style="font-family: 'Orpheus Pro', serif; font-style: italic; font-size: 56px; color: var(--accent); line-height: 1; flex-shrink: 0;">C</div>
+                        <div>
+                            <p style="font-weight: 500; color: var(--text-main); margin-bottom: 12px; font-size: 18px;">What I'd do differently</p>
+                            <p style="margin-bottom: 0; font-size: 16px;">More accessibility scenarios. Further iteration on the immersive tech interactions. A real implementation roadmap — we validated the concept convincingly, but not how it gets built.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Staggered scroll animation observer for editorial fade-ins
+        const observerOptions = {
+            threshold: 0.08,
+            rootMargin: '0px 0px -40px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Sidebar active link tracking on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.sidebar-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 180) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Return to landing page (`index.html`) preserving state with left-slide transition
+        (function(){
+            const back = document.getElementById('backToWorkBtn');
+            if (!back) return;
+            back.addEventListener('click', function(e){
+                const isLeftClick = (e.button === 0) && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+                const href = '../index.html?returnFromCase=true';
+                if (!isLeftClick) return;
+                e.preventDefault();
+                try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch(err) {}
+                window.location.href = href;
+            });
+        })();
+    </script>
+    
+    <script src="../assets/footer.js"></script>
+    <script>injectFooter();</script>
+</body>
+</html>

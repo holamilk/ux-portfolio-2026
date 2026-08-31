@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankita Chakrabarty — Playground</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Adobe Fonts: Orpheus Pro Italic -->
+    <link rel="stylesheet" href="https://use.typekit.net/oqx8vve.css">
+    
+    <style>
+        :root {
+            --accent: #8F0A0A;
+            --bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #555555;
+            --placeholder-bg: #f4f4f2;
+            --placeholder-text: #888888;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Top Navigation */
+        header.case-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: var(--bg);
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            padding: 0;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .back-to-work {
+            background-color: #631B17;
+            color: #ffffff;
+            height: 100%;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            transition: background 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .back-to-work:hover {
+            background-color: #511613;
+            padding-left: 32px;
+            padding-right: 48px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 40px;
+            padding-right: 50px;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-right a:hover {
+            color: var(--accent);
+        }
+
+        /* Page Layout Container */
+        .page-container {
+            max-width: 1360px;
+            margin: 140px auto 140px auto;
+            padding: 0 60px;
+        }
+
+        /* Header Section */
+        .playground-header {
+            margin-bottom: 70px;
+        }
+
+        h1.page-title {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-weight: normal;
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .page-lead {
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* Category Section */
+        .playground-section {
+            margin-bottom: 70px;
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 16px;
+        }
+
+        .category-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+            text-transform: lowercase;
+            letter-spacing: 0.02em;
+        }
+
+        /* Pause to Admire Toggle Switch */
+        .pause-toggle-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pause-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #e4e4e0;
+            transition: .3s cubic-bezier(0.25, 1, 0.5, 1);
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s cubic-bezier(0.25, 1, 0.5, 1);
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        input:checked + .slider {
+            background-color: var(--accent);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+
+        /* Carousel Row Architecture */
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 10px 0;
+            box-sizing: border-box;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 24px;
+            width: max-content;
+            animation: infiniteLoopScroll 30s linear infinite;
+        }
+
+        .carousel-container.paused .carousel-track {
+            animation-play-state: paused;
+        }
+
+        .carousel-item {
+            width: 280px;
+            height: 280px;
+            flex-shrink: 0;
+            background-color: var(--placeholder-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+            cursor: pointer;
+        }
+
+        .carousel-item:hover {
+            transform: scale(1.02) translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+
+        .carousel-item span {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            color: var(--placeholder-text);
+            text-transform: lowercase;
+            letter-spacing: 0.04em;
+        }
+
+        @keyframes infiniteLoopScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 12px)); }
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .page-container {
+                padding: 0 30px;
+            }
+            .carousel-item {
+                width: 220px;
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<script>
+    (function(){
+        try{
+            const tRaw = sessionStorage.getItem('pageTransition');
+            if (!tRaw) return;
+            const t = JSON.parse(tRaw);
+            if (t && (t.direction === 'from-right' || t.direction === 'from-left')) {
+                document.body.classList.add('transition-slide');
+                document.body.classList.add(t.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+            }
+        }catch(e){}
+    })();
+</script>
+<script src="../assets/transition.js"></script>
+<body>
+
+    <!-- Top Fixed Navigation -->
+    <header class="case-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="back-to-work" id="backToWorkBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                back to home
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="../about.html">about</a>
+            <a href="../testimonials-copy.html">testimonials</a>
+            <a href="../contact copy.html">contact</a>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <!-- Header Section -->
+        <div class="playground-header animate-on-scroll">
+            <h1 class="page-title">Playground</h1>
+            <p class="page-lead">Letting loose here — channeling multiple forms of creativity to decompress</p>
+        </div>
+
+        <!-- Playground Category 1 -->
+        <section class="playground-section animate-on-scroll">
+            <div class="category-header">
+                <h2 class="category-title">3d explorations</h2>
+                <div class="pause-toggle-wrapper">
+                    <span class="pause-label">pause to admire</span>
+                    <label class="switch">
+                        <input type="checkbox" class="pause-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-item"><span>render 01</span></div>
+                    <div class="carousel-item"><span>render 02</span></div>
+                    <div class="carousel-item"><span>render 03</span></div>
+                    <div class="carousel-item"><span>render 04</span></div>
+                    <div class="carousel-item"><span>render 05</span></div>
+                    <!-- Cloned set for smooth infinite loop -->
+                    <div class="carousel-item"><span>render 01</span></div>
+                    <div class="carousel-item"><span>render 02</span></div>
+                    <div class="carousel-item"><span>render 03</span></div>
+                    <div class="carousel-item"><span>render 04</span></div>
+                    <div class="carousel-item"><span>render 05</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Playground Category 2 -->
+        <section class="playground-section animate-on-scroll">
+            <div class="category-header">
+                <h2 class="category-title">visual experiments</h2>
+                <div class="pause-toggle-wrapper">
+                    <span class="pause-label">pause to admire</span>
+                    <label class="switch">
+                        <input type="checkbox" class="pause-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-item"><span>experiment 01</span></div>
+                    <div class="carousel-item"><span>experiment 02</span></div>
+                    <div class="carousel-item"><span>experiment 03</span></div>
+                    <div class="carousel-item"><span>experiment 04</span></div>
+                    <div class="carousel-item"><span>experiment 05</span></div>
+                    <!-- Cloned set for smooth infinite loop -->
+                    <div class="carousel-item"><span>experiment 01</span></div>
+                    <div class="carousel-item"><span>experiment 02</span></div>
+                    <div class="carousel-item"><span>experiment 03</span></div>
+                    <div class="carousel-item"><span>experiment 04</span></div>
+                    <div class="carousel-item"><span>experiment 05</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Playground Category 3 -->
+        <section class="playground-section animate-on-scroll">
+            <div class="category-header">
+                <h2 class="category-title">motion & interaction</h2>
+                <div class="pause-toggle-wrapper">
+                    <span class="pause-label">pause to admire</span>
+                    <label class="switch">
+                        <input type="checkbox" class="pause-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-item"><span>motion 01</span></div>
+                    <div class="carousel-item"><span>motion 02</span></div>
+                    <div class="carousel-item"><span>motion 03</span></div>
+                    <div class="carousel-item"><span>motion 04</span></div>
+                    <div class="carousel-item"><span>motion 05</span></div>
+                    <!-- Cloned set for smooth infinite loop -->
+                    <div class="carousel-item"><span>motion 01</span></div>
+                    <div class="carousel-item"><span>motion 02</span></div>
+                    <div class="carousel-item"><span>motion 03</span></div>
+                    <div class="carousel-item"><span>motion 04</span></div>
+                    <div class="carousel-item"><span>motion 05</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Playground Category 4 -->
+        <section class="playground-section animate-on-scroll">
+            <div class="category-header">
+                <h2 class="category-title">analog sketches</h2>
+                <div class="pause-toggle-wrapper">
+                    <span class="pause-label">pause to admire</span>
+                    <label class="switch">
+                        <input type="checkbox" class="pause-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-item"><span>sketch 01</span></div>
+                    <div class="carousel-item"><span>sketch 02</span></div>
+                    <div class="carousel-item"><span>sketch 03</span></div>
+                    <div class="carousel-item"><span>sketch 04</span></div>
+                    <div class="carousel-item"><span>sketch 05</span></div>
+                    <!-- Cloned set for smooth infinite loop -->
+                    <div class="carousel-item"><span>sketch 01</span></div>
+                    <div class="carousel-item"><span>sketch 02</span></div>
+                    <div class="carousel-item"><span>sketch 03</span></div>
+                    <div class="carousel-item"><span>sketch 04</span></div>
+                    <div class="carousel-item"><span>sketch 05</span></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Pause to Admire Toggle Functionality for each row
+        document.querySelectorAll('.pause-toggle').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const container = this.closest('.playground-section').querySelector('.carousel-container');
+                if (this.checked) {
+                    container.classList.add('paused');
+                } else {
+                    container.classList.remove('paused');
+                }
+            });
+        });
+
+        // Staggered scroll animation observer for fade-ins
+        const observerOptions = {
+            threshold: 0.08,
+            rootMargin: '0px 0px -40px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Return to landing page (`index.html`) preserving state with left-slide transition
+        (function(){
+            const back = document.getElementById('backToWorkBtn');
+            if (!back) return;
+            back.addEventListener('click', function(e){
+                const isLeftClick = (e.button === 0) && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+                const href = '../index.html?returnFromCase=true';
+                if (!isLeftClick) return;
+                e.preventDefault();
+                try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch(err) {}
+                window.location.href = href;
+            });
+        })();
+    </script>
+    
+    <script src="../assets/footer.js"></script>
+    <script>injectFooter();</script>
+</body>
+</html>

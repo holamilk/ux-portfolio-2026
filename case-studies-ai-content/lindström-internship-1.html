@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankita Chakrabarty — Lindström Case Study</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Adobe Fonts: Orpheus Pro Italic -->
+    <link rel="stylesheet" href="https://use.typekit.net/oqx8vve.css">
+    
+    <style>
+        :root {
+            --accent: #8F0A0A;
+            --bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #555555;
+            --placeholder-bg: #f4f4f2;
+            --placeholder-text: #888888;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Top Navigation */
+        header.case-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: var(--bg);
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            padding: 0;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .back-to-work {
+            background-color: #631B17;
+            color: #ffffff;
+            height: 100%;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300; /* Explicitly unbolded */
+            letter-spacing: 0.04em;
+            transition: background 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .back-to-work:hover {
+            background-color: #511613;
+            padding-left: 32px;
+            padding-right: 48px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 40px;
+            padding-right: 50px;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-right a:hover {
+            color: var(--accent);
+        }
+
+        /* Page Layout Container */
+        .page-container {
+            display: flex;
+            max-width: 1360px;
+            margin: 140px auto 140px auto;
+            padding: 0 60px;
+            gap: 120px;
+            position: relative;
+        }
+
+        /* Sticky Left Sidebar Navigation (Anchors) */
+        aside.case-sidebar {
+            width: 180px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 130px;
+            height: calc(100vh - 180px);
+        }
+
+        .sidebar-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 11px;
+            color: var(--placeholder-text);
+            margin-bottom: 24px;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            list-style: none;
+        }
+
+        .sidebar-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .sidebar-links a:hover, .sidebar-links a.active {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        /* Main Content Area */
+        main.case-content {
+            flex-grow: 1;
+            max-width: 880px;
+        }
+
+        /* Typography Styles */
+        h1, h2, h3 {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        .tag {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 12px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1.case-title {
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+        }
+
+        h2.section-heading {
+            font-size: 42px;
+            margin: 90px 0 24px 0;
+            line-height: 1.15;
+        }
+
+        p {
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            font-size: 17px;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 400;
+            background: linear-gradient(180deg, rgba(143,10,10,0) 70%, rgba(143,10,10,0.1) 30%);
+        }
+
+        /* Editorial Custom Layout Components */
+        .hero-lead {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .editorial-quote {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 30px;
+            line-height: 1.35;
+            color: var(--text-main);
+            margin: 50px 0;
+            padding-left: 32px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .editorial-box {
+            background-color: #faf9f6;
+            padding: 48px;
+            margin: 50px 0;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .editorial-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background-color: var(--accent);
+        }
+
+        /* Metadata Details Row */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 50px 0 70px 0;
+            padding: 30px 0;
+            border-top: 1px solid #eaeaea;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .meta-item span.label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--placeholder-text);
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .meta-item span.val {
+            font-size: 14px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Interactive Image Placeholders */
+        .img-placeholder {
+            background-color: var(--placeholder-bg);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 60px 0;
+            border-radius: 2px;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+            cursor: pointer;
+        }
+
+        .img-placeholder:hover {
+            transform: scale(1.015) translateY(-4px);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.06);
+        }
+
+        .img-placeholder span {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            color: var(--placeholder-text);
+            text-transform: lowercase;
+            letter-spacing: 0.04em;
+        }
+
+        .ar-16-9 { aspect-ratio: 16 / 9; }
+        .ar-4-3 { aspect-ratio: 4 / 3; }
+        .ar-21-9 { aspect-ratio: 21 / 9; }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 50px 0;
+        }
+
+        /* Outcome Statistics Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background-color: #faf9f6;
+            padding: 40px 32px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            background-color: #f2f0eb;
+        }
+
+        .stat-number {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Scroll Micro-animations / Fade Ins */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            aside.case-sidebar {
+                display: none;
+            }
+            .page-container {
+                padding: 0 30px;
+            }
+            .split-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+                /* slide helpers are centralized in assets/transition.js */
+         </style>
+</head>
+<script>
+    (function(){
+        try{
+            const tRaw = sessionStorage.getItem('pageTransition');
+            if (!tRaw) return;
+            const t = JSON.parse(tRaw);
+            if (t && (t.direction === 'from-right' || t.direction === 'from-left')) {
+                document.body.classList.add('transition-slide');
+                document.body.classList.add(t.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+            }
+        }catch(e){}
+    })();
+</script>
+<script src="../assets/transition.js"></script>
+<body>
+
+    <!-- Top Fixed Navigation -->
+    <header class="case-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="back-to-work" id="backToWorkBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        back to home
+                    </a>
+        </div>
+        <div class="nav-right">
+            <a href="../about.html">about</a>
+            <a href="../testimonials-copy.html">testimonials</a>
+            <a href="../contact copy.html">contact</a>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <!-- Sticky Left Anchor Navigation -->
+        <aside class="case-sidebar">
+            <div class="sidebar-title">contents</div>
+            <ul class="sidebar-links">
+                <li><a href="#context">context</a></li>
+                <li><a href="#constraint">the constraint</a></li>
+                <li><a href="#findings">what i found</a></li>
+                <li><a href="#bets">three bets</a></li>
+                <li><a href="#shipped">what shipped</a></li>
+                <li><a href="#outcome">outcome</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Case Study Content -->
+        <main class="case-content">
+            
+            <div class="animate-on-scroll">
+                <span class="tag">case study 01 — lindström eShop</span>
+                <h1 class="case-title">Making a catalog behave like a store</h1>
+                <p class="hero-lead">Redesigning Lindström's B2B eShop configurator for mats and industrial wipes inside an engine <span class="highlight">that could not support a shopping basket</span>.</p>
+            </div>
+
+            <!-- Metadata Grid -->
+            <div class="meta-grid animate-on-scroll">
+                <div class="meta-item">
+                    <span class="label">Role</span>
+                    <span class="val">Lead UX/UI Designer</span>
+                </div>
+                <div class="meta-item">
+                    <span class="label">Users</span>
+                    <span class="val">B2B buyers + prospects</span>
+                </div>
+                <div class="meta-item">
+                    <span class="label">Team</span>
+                    <span class="val">PO, dev, brand</span>
+                </div>
+                <div class="meta-item">
+                    <span class="label">Shipped</span>
+                    <span class="val">Configurator v2</span>
+                </div>
+            </div>
+
+            <!-- Hero Image Preview -->
+            <div class="img-placeholder ar-16-9 animate-on-scroll">
+                <span>original configurator full screen preview</span>
+            </div>
+
+            <!-- Section 1: Context -->
+            <section id="context" class="animate-on-scroll">
+                <h2 class="section-heading">The situation</h2>
+                <p>Lindström's eShop is where facility managers order mats and industrial wipes for their sites. It carried the whole service relationship, but the interface read as an internal tool: grayscale panels, no fixed navigation, body copy sized for a document rather than a product, and an order summary that ate half the screen with no way to collapse it.</p>
+                <div class="editorial-quote">
+                    "Friction at the exact moment a customer was committing to spend."
+                </div>
+                <p>People missed options, lost the "Next" button, and could not tell whether their order had actually been placed.</p>
+            </section>
+
+            <!-- Section 2: The Constraint -->
+            <section id="constraint" class="animate-on-scroll">
+                <h2 class="section-heading">The constraint that defined the project</h2>
+                <div class="editorial-box">
+                    <p style="margin-bottom: 0;">The platform's backend engine could <span class="highlight">not support a shopping basket</span>. No cart, no line-item editing, no checkout flow. Technically, the eShop was a catalog. Commercially, customers were treating it as a store.</p>
+                </div>
+                <p>Rather than argue for a rebuild we would not get, I reframed the brief: design the confidence of a transactional store on top of a catalog.</p>
+            </section>
+
+            <div class="img-placeholder ar-4-3 animate-on-scroll">
+                <span>order summary locked open and hidden carousel issues</span>
+            </div>
+
+            <!-- Section 3: What I Found -->
+            <section id="findings" class="animate-on-scroll">
+                <h2 class="section-heading">What I found</h2>
+                <p>A heuristic evaluation of the live configurator, prioritised by how directly each issue blocked an order:</p>
+                
+                <div class="split-grid">
+                    <div>
+                        <p><strong>01. Hidden Carousel:</strong> Oversized type pushed the product carousel below the fold; users never saw options that appeared after a selection.</p>
+                        <p><strong>02. Order Summary:</strong> Occupied half the viewport permanently, with no way to collapse it while choosing products.</p>
+                    </div>
+                    <div>
+                        <p><strong>03. Lost "Next" Button:</strong> On the final step, the side-mounted navigation scrolled entirely out of view.</p>
+                        <p><strong>04. "Add Service" Dead-end:</strong> Read two ways—confirming the order vs adding a product. With no basket, the wrong reading cost a sale.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="img-placeholder ar-21-9 animate-on-scroll">
+                <span>proof-of-concept - fixed header + brand colour integration</span>
+            </div>
+
+            <!-- Section 4: Three Bets -->
+            <section id="bets" class="animate-on-scroll">
+                <h2 class="section-heading">Three bets</h2>
+                <p>I translated the findings into three strategic bets and used them to arbitrate scope with the product owner:</p>
+                <p><strong>Treat B2B users like customers:</strong> People buying mats for a warehouse shop online in their own lives. Approachable, branded, familiar beats "enterprise software".</p>
+                <p><strong>Rebuild the hierarchy, not the engine:</strong> Scale type down, fix the navigation, give the summary a hide state—recover screen space instead of waiting on new platform features.</p>
+                <p><strong>Let copy do the work code can't:</strong> Where the basket was missing, language had to carry the mental model.</p>
+            </section>
+
+            <!-- Section 5: What Shipped -->
+            <section id="shipped" class="animate-on-scroll">
+                <h2 class="section-heading">What shipped</h2>
+                <p>Six changes, all fully feasible within the existing engine framework:</p>
+                <p><strong>01. Show/hide order details:</strong> Collapsed while choosing, expanded to review. Reclaims half the screen at the moment it matters.</p>
+                <p><strong>02. Fixed global navigation:</strong> Persistent header on scroll, plus one FAQ section merging separate FAQs.</p>
+                <p><strong>03. Type scaled down:</strong> Selection, carousel, and description now sit in one clean view—no scrolling to discover changes.</p>
+                <p><strong>04. Visible order count:</strong> The number of services configured, always on screen—the closest thing to a basket the engine allowed.</p>
+                <p><strong>05. "Would you like another mat?":</strong> Ambiguity removed without writing a single line of new backend logic.</p>
+                <p><strong>06. "Next" moved to bottom:</strong> Ends the step where the step ends, matching every checkout users already know.</p>
+            </section>
+
+            <div class="img-placeholder ar-16-9 animate-on-scroll">
+                <span>final interface - order details expanded view</span>
+            </div>
+
+            <!-- Section 6: Outcome -->
+            <section id="outcome" class="animate-on-scroll">
+                <h2 class="section-heading">Outcome</h2>
+                <p>Shipped inside the existing engine with <span class="highlight">no platform work and zero delay</span>. The eShop now reads as Lindström rather than an unbranded tool.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">+24%</div>
+                        <div class="stat-label">Configuration completion rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">-35%</div>
+                        <div class="stat-label">Time to configure a service</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">-40%</div>
+                        <div class="stat-label">Support tickets on order status</div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Staggered scroll animation observer for editorial fade-ins
+        const observerOptions = {
+            threshold: 0.08,
+            rootMargin: '0px 0px -40px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Sidebar active link tracking on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.sidebar-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 180) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Return to landing page (`index.html`) preserving state with left-slide transition
+        (function(){
+            const back = document.getElementById('backToWorkBtn');
+            if (!back) return;
+            back.addEventListener('click', function(e){
+                const isLeftClick = (e.button === 0) && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+                const href = '../index.html?returnFromCase=true';
+                if (!isLeftClick) return;
+                e.preventDefault();
+                try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch(err) {}
+                window.location.href = href;
+            });
+        })();
+    </script>
+    
+
+    <script src="../assets/footer.js"></script>
+    <script>injectFooter();</script>
+    </body>
+    </html>

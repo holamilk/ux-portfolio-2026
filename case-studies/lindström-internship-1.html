@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankita Chakrabarty — Lindström Case Study</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Adobe Fonts: Orpheus Pro Italic -->
+    <link rel="stylesheet" href="https://use.typekit.net/oqx8vve.css">
+    
+    <style>
+        :root {
+            --accent: #8F0A0A;
+            --bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #555555;
+            --placeholder-bg: #f4f4f2;
+            --placeholder-text: #888888;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Top Navigation */
+        header.case-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: var(--bg);
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            padding: 0;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .back-to-work {
+            background-color: #631B17;
+            color: #ffffff;
+            height: 100%;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300; /* Explicitly unbolded */
+            letter-spacing: 0.04em;
+            transition: background 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .back-to-work:hover {
+            background-color: #511613;
+            padding-left: 32px;
+            padding-right: 48px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 40px;
+            padding-right: 50px;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-right a:hover {
+            color: var(--accent);
+        }
+
+        /* Page Layout Container */
+        .page-container {
+            display: flex;
+            max-width: 1360px;
+            margin: 140px auto 140px auto;
+            padding: 0 60px;
+            gap: 120px;
+            position: relative;
+        }
+
+        /* Sticky Left Sidebar Navigation (Anchors) */
+        aside.case-sidebar {
+            width: 180px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 130px;
+            height: calc(100vh - 180px);
+        }
+
+        .sidebar-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 11px;
+            color: var(--placeholder-text);
+            margin-bottom: 24px;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            list-style: none;
+        }
+
+        .sidebar-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .sidebar-links a:hover, .sidebar-links a.active {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        /* Main Content Area */
+        main.case-content {
+            flex-grow: 1;
+            max-width: 880px;
+        }
+
+        /* Typography Styles */
+        h1 {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .tag {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 12px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1.case-title {
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+        }
+
+        h2.section-heading {
+            font-size: 30px;
+            margin: 90px 0 24px 0;
+            line-height: 1.25;
+            color: var(--accent);
+        }
+
+        p {
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            font-size: 17px;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 400;
+            background: linear-gradient(180deg, rgba(143,10,10,0) 70%, rgba(143,10,10,0.1) 30%);
+        }
+
+        /* Editorial Custom Layout Components */
+        .hero-lead {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .project-meta-line {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--placeholder-text);
+            margin-bottom: 18px;
+        }
+
+        .hook-callout {
+            width: 100%;
+            background: #F5F5F3;
+            padding: 64px 34px;
+            margin: 30px 0 70px;
+            text-align: center;
+            border-radius: 2px;
+            font-size: 34px;
+            line-height: 1.2;
+            color: #2f2f2f;
+            font-weight: 400;
+        }
+
+        .overview-snapshot {
+            border-top: 1px solid #eaeaea;
+            border-bottom: 1px solid #eaeaea;
+            margin: 16px 0 34px;
+        }
+
+        .overview-row {
+            padding: 20px 0;
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 24px;
+        }
+
+        .overview-row + .overview-row {
+            border-top: 1px solid #efefef;
+        }
+
+        .overview-label {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+        }
+
+        .overview-copy {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .hero-image-spread {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero-first-image {
+            margin: 14px 0 70px;
+        }
+
+        .overview-screen-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 0 0 36px;
+        }
+
+        .overview-screen-strip .img-placeholder {
+            margin: 0;
+        }
+
+        .hero-image-spread .img-placeholder {
+            margin: 0;
+        }
+
+        .finding-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 36px;
+            padding-left: 20px;
+        }
+
+        .finding-list li {
+            color: var(--text-secondary);
+            font-size: 17px;
+            line-height: 1.75;
+        }
+
+        .finding-label {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .audit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 0 0 40px;
+        }
+
+        .audit-card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .audit-card .img-placeholder {
+            margin: 0;
+        }
+
+        .audit-card:nth-child(1) .img-placeholder {
+            aspect-ratio: 16 / 10;
+        }
+
+        .audit-card:nth-child(2) .img-placeholder {
+            aspect-ratio: 4 / 3;
+        }
+
+        .audit-card:nth-child(3) .img-placeholder {
+            aspect-ratio: 3 / 2;
+        }
+
+        .audit-card:nth-child(4) .img-placeholder {
+            aspect-ratio: 16 / 9;
+        }
+
+        .audit-caption {
+            font-size: 12px;
+            line-height: 1.5;
+            color: #6f6f6f;
+            font-weight: 300;
+        }
+
+        .ideation-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin: 0 0 8px;
+        }
+
+        .ideation-strip .img-placeholder {
+            margin: 0;
+            aspect-ratio: 4 / 5;
+        }
+
+        .strip-caption {
+            font-size: 12px;
+            color: #6f6f6f;
+            line-height: 1.5;
+            margin-bottom: 6px;
+        }
+
+        .before-after-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 26px;
+            margin-top: 14px;
+        }
+
+        .before-after-pair {
+            background: #f5f5f3;
+            padding: 18px;
+            border-radius: 2px;
+        }
+
+        .before-after-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .pair-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #8a8a8a;
+            margin-bottom: 8px;
+        }
+
+        .before-after-pair .img-placeholder {
+            margin: 0;
+            aspect-ratio: 16 / 10;
+        }
+
+        .pair-caption {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #666666;
+            line-height: 1.5;
+        }
+
+        .detail-callouts {
+            margin-top: 22px;
+            padding-left: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .detail-callouts li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .shipped-callouts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 24px;
+            margin: 28px 0 10px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .shipped-callouts li {
+            padding-bottom: 12px;
+            border-bottom: 1px solid #efefef;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .shipped-callouts strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .takeaways-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 34px;
+            margin-top: 8px;
+        }
+
+        .takeaway-quote {
+            border-left: 2px solid var(--accent);
+            padding-left: 20px;
+            color: #2f2f2f;
+            font-size: 25px;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .editorial-quote {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 30px;
+            line-height: 1.35;
+            color: var(--text-main);
+            margin: 50px 0;
+            padding-left: 32px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .editorial-box {
+            background-color: #faf9f6;
+            padding: 48px;
+            margin: 50px 0;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .editorial-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background-color: var(--accent);
+        }
+
+        /* Metadata Details Row */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 50px 0 70px 0;
+            padding: 30px 0;
+            border-top: 1px solid #eaeaea;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .meta-item span.label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--placeholder-text);
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .meta-item span.val {
+            font-size: 14px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Interactive Image Placeholders */
+        .img-placeholder {
+            background-color: var(--placeholder-bg);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 60px 0;
+            border-radius: 8px;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+            cursor: pointer;
+        }
+
+        .img-placeholder:hover {
+            transform: scale(1.015) translateY(-4px);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.06);
+        }
+
+        .img-placeholder span {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            color: var(--placeholder-text);
+            text-transform: lowercase;
+            letter-spacing: 0.04em;
+        }
+
+        .ar-16-9 { aspect-ratio: 16 / 9; }
+        .ar-4-3 { aspect-ratio: 4 / 3; }
+        .ar-21-9 { aspect-ratio: 21 / 9; }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 50px 0;
+        }
+
+        /* Outcome Statistics Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background-color: #faf9f6;
+            padding: 40px 32px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            background-color: #f2f0eb;
+        }
+
+        .stat-number {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Scroll Micro-animations / Fade Ins */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            aside.case-sidebar {
+                display: none;
+            }
+            .page-container {
+                padding: 0 30px;
+            }
+            .split-grid {
+                grid-template-columns: 1fr;
+            }
+            .hook-callout {
+                font-size: 26px;
+                padding: 44px 24px;
+                margin-bottom: 56px;
+            }
+            .overview-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .hero-image-spread,
+            .audit-grid,
+            .shipped-callouts,
+            .takeaways-grid {
+                grid-template-columns: 1fr;
+            }
+            .overview-screen-strip,
+            .before-after-grid {
+                grid-template-columns: 1fr;
+            }
+            .ideation-strip {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+                /* slide helpers are centralized in assets/transition.js */
+         </style>
+</head>
+<script>
+    (function(){
+        try{
+            const tRaw = sessionStorage.getItem('pageTransition');
+            if (!tRaw) return;
+            const t = JSON.parse(tRaw);
+            if (t && (t.direction === 'from-right' || t.direction === 'from-left')) {
+                document.body.classList.add('transition-slide');
+                document.body.classList.add(t.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+            }
+        }catch(e){}
+    })();
+</script>
+<script src="../assets/transition.js"></script>
+<body>
+
+    <!-- Top Fixed Navigation -->
+    <header class="case-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="back-to-work" id="backToWorkBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        back to home
+                    </a>
+        </div>
+        <div class="nav-right">
+            <a href="../about.html">about</a>
+            <a href="../testimonials-copy.html">testimonials</a>
+            <a href="../contact copy.html">contact</a>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <!-- Sticky Left Anchor Navigation -->
+        <aside class="case-sidebar">
+            <div class="sidebar-title">contents</div>
+            <ul class="sidebar-links">
+                <li><a href="#overview">overview</a></li>
+                <li><a href="#about">about the project</a></li>
+                <li><a href="#findings">audit findings</a></li>
+                <li><a href="#ideation">ideation</a></li>
+                <li><a href="#shipped">what shipped</a></li>
+                <li><a href="#takeaways">takeaways</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Case Study Content -->
+        <main class="case-content">
+            
+            <div class="animate-on-scroll">
+                <span class="tag">Lindström eShop Redesign</span>
+                <h1 class="case-title">Making a catalog behave like a store</h1>
+                <p class="hero-lead">Redesigning Lindström's B2B eShop configurator for mats and industrial wipes inside an engine that could not support a shopping basket.</p>
+                <p class="project-meta-line">Experience Design Intern · Lindström Group · 3 months</p>
+            </div>
+
+            <div class="img-placeholder ar-16-9 hero-first-image animate-on-scroll">
+                <span>full bleed hero image - redesigned eShop UI</span>
+            </div>
+
+            <div class="hook-callout animate-on-scroll">
+                Lindström's eShop worked. It just wasn't easy to use.
+            </div>
+
+            <section id="overview" class="animate-on-scroll">
+                <h2 class="section-heading">Overview</h2>
+                <div class="overview-snapshot">
+                    <div class="overview-row">
+                        <div class="overview-label">Problem</div>
+                        <div class="overview-copy">Navigation was unintuitive, copy was ambiguous, and the visual design didn't reflect the brand, making it harder than it needed to be for B2B clients to configure and order services.</div>
+                    </div>
+                    <div class="overview-row">
+                        <div class="overview-label">Solution</div>
+                        <div class="overview-copy">A focused redesign of the configurator flow, collapsible UI, rewritten copy, fixed navigation, and brand color integration, all designed to work within the platform's existing technical constraints.</div>
+                    </div>
+                </div>
+                <div class="overview-screen-strip">
+                    <div class="img-placeholder"><span>final UI screen 01</span></div>
+                    <div class="img-placeholder"><span>final UI screen 02</span></div>
+                    <div class="img-placeholder"><span>final UI screen 03</span></div>
+                </div>
+            </section>
+
+            <section id="about" class="animate-on-scroll">
+                <h2 class="section-heading">About the project</h2>
+                <p>Lindström is a B2B textile services company operating in 20+ countries. Their eShop let clients configure and order services like industrial mats and wipes. Navigation was unintuitive, the visual design didn't reflect the brand, and ambiguous copy was creating confusion at key decision points. I owned the redesign from audit to stakeholder sign-off.</p>
+                <p>There was one major constraint from the start. The platform ran on a backend with no native shopping basket, so it functioned more like a catalog with a configurator than a real store. I wasn't rebuilding it. I was making it work better as it was.</p>
+            </section>
+
+            <section id="findings" class="animate-on-scroll">
+                <h2 class="section-heading">Four things stood out in the audit</h2>
+                <p>I started with a heuristic evaluation to find the biggest friction points before talking to anyone.</p>
+                <ul class="finding-list">
+                    <li><span class="finding-label">Text size pushed key content out of view.</span> When a user made a selection, a contextual carousel appeared below, but body text was large enough that users had to scroll to see it. Most didn't know it was there.</li>
+                    <li><span class="finding-label">The order summary took over the screen.</span> During active configuration it expanded to fill half the viewport, leaving almost no space to browse the remaining options.</li>
+                    <li><span class="finding-label">The Next button disappeared at the wrong moment.</span> At the end of the configuration flow, the primary action button scrolled out of view. The global nav did the same thing on scroll.</li>
+                    <li><span class="finding-label">"Add service" meant different things to different people.</span> Some users read it as finalizing their order. Others thought it meant adding a different product category. It was doing neither.</li>
+                </ul>
+                <div class="audit-grid">
+                    <figure class="audit-card">
+                        <div class="img-placeholder"><span>original UI screenshot 01</span></div>
+                        <figcaption class="audit-caption">Text size pushed key content out of view after selection.</figcaption>
+                    </figure>
+                    <figure class="audit-card">
+                        <div class="img-placeholder"><span>original UI screenshot 02</span></div>
+                        <figcaption class="audit-caption">The order summary expanded during editing and took over half the screen.</figcaption>
+                    </figure>
+                    <figure class="audit-card">
+                        <div class="img-placeholder"><span>original UI screenshot 03</span></div>
+                        <figcaption class="audit-caption">The Next button scrolled out of view at the point of decision.</figcaption>
+                    </figure>
+                    <figure class="audit-card">
+                        <div class="img-placeholder"><span>original UI screenshot 04</span></div>
+                        <figcaption class="audit-caption">"Add service" created ambiguity between confirming and adding.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section id="ideation" class="animate-on-scroll">
+                <h2 class="section-heading">What I tried before landing on what to ship</h2>
+                <div class="editorial-box">
+                    <p>I explored a lot before narrowing down. Fixed global headers, brand color integration, new ways to present product images, side by side layouts, modal popups, and restructured hierarchy throughout.</p>
+                    <p style="margin-bottom: 0;">I put together proof of concepts rather than wireframes because getting stakeholder alignment on constrained design requires showing the reasoning, not just the output. Some ideas weren't feasible given technical limitations, so I focused on high-impact changes that improved usability without requiring a rebuild.</p>
+                </div>
+                <div class="ideation-strip">
+                    <div class="img-placeholder"><span>concept frame 01</span></div>
+                    <div class="img-placeholder"><span>concept frame 02</span></div>
+                    <div class="img-placeholder"><span>concept frame 03</span></div>
+                    <div class="img-placeholder"><span>concept frame 04</span></div>
+                </div>
+                <p class="strip-caption">Early proof of concept explorations.</p>
+            </section>
+
+            <section id="shipped" class="animate-on-scroll">
+                <h2 class="section-heading">What we shipped</h2>
+                <div class="before-after-stack">
+                    <article class="before-after-pair">
+                        <div class="before-after-grid">
+                            <div>
+                                <div class="pair-label">Before</div>
+                                <div class="img-placeholder"><span>order summary - before</span></div>
+                            </div>
+                            <div>
+                                <div class="pair-label">After</div>
+                                <div class="img-placeholder"><span>order summary - after</span></div>
+                            </div>
+                        </div>
+                        <p class="pair-caption">Order details now stay collapsed during editing and expand only when users choose to review.</p>
+                    </article>
+
+                    <article class="before-after-pair">
+                        <div class="before-after-grid">
+                            <div>
+                                <div class="pair-label">Before</div>
+                                <div class="img-placeholder"><span>CTA copy - before</span></div>
+                            </div>
+                            <div>
+                                <div class="pair-label">After</div>
+                                <div class="img-placeholder"><span>CTA copy - after</span></div>
+                            </div>
+                        </div>
+                        <p class="pair-caption">"Add service" was replaced by a direct CTA: "Would you like another mat?"</p>
+                    </article>
+
+                    <article class="before-after-pair">
+                        <div class="before-after-grid">
+                            <div>
+                                <div class="pair-label">Before</div>
+                                <div class="img-placeholder"><span>next button placement - before</span></div>
+                            </div>
+                            <div>
+                                <div class="pair-label">After</div>
+                                <div class="img-placeholder"><span>next button placement - after</span></div>
+                            </div>
+                        </div>
+                        <p class="pair-caption">The Next button moved from a disappearing side position to the bottom where decision actions belong.</p>
+                    </article>
+
+                    <article class="before-after-pair">
+                        <div class="before-after-grid">
+                            <div>
+                                <div class="pair-label">Before</div>
+                                <div class="img-placeholder"><span>text hierarchy - before</span></div>
+                            </div>
+                            <div>
+                                <div class="pair-label">After</div>
+                                <div class="img-placeholder"><span>text hierarchy - after</span></div>
+                            </div>
+                        </div>
+                        <p class="pair-caption">Scaled type hierarchy keeps contextual carousel content visible in the same viewport.</p>
+                    </article>
+                </div>
+                <ul class="detail-callouts">
+                    <li>Fixed global navigation for continuous orientation during scroll.</li>
+                    <li>Brand color integration across key controls and labels.</li>
+                    <li>Unified FAQ section at the top of the configurator.</li>
+                    <li>Order count indicator so users can track active services without scrolling back.</li>
+                </ul>
+            </section>
+
+            <section id="takeaways" class="animate-on-scroll">
+                <h2 class="section-heading">What this project taught me</h2>
+                <div class="takeaways-grid">
+                    <div>
+                        <p>The redesign wasn't a full overhaul and it wasn't meant to be. The projected outcomes are <span class="highlight">higher configurator completion, less confusion at key decision points, and a visual experience that feels like Lindström</span>.</p>
+                        <p style="margin-bottom: 0;">I practiced identifying which change would deliver the highest usability return inside fixed constraints, then making that case clearly enough for stakeholder approval.</p>
+                    </div>
+                    <div class="takeaway-quote">
+                        The most useful skill here wasn't ideation. It was choosing the most valuable change inside real constraints and earning alignment around it.
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // Staggered scroll animation observer for editorial fade-ins
+        const observerOptions = {
+            threshold: 0.08,
+            rootMargin: '0px 0px -40px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Sidebar active link tracking on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.sidebar-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 180) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Return to landing page (`index.html`) preserving state with left-slide transition
+        (function(){
+            const back = document.getElementById('backToWorkBtn');
+            if (!back) return;
+            back.addEventListener('click', function(e){
+                const isLeftClick = (e.button === 0) && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+                const href = '../index.html?returnFromCase=true';
+                if (!isLeftClick) return;
+                e.preventDefault();
+                try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch(err) {}
+                window.location.href = href;
+            });
+        })();
+    </script>
+    
+
+    <script src="../assets/footer.js"></script>
+    <script>injectFooter();</script>
+    </body>
+    </html>
