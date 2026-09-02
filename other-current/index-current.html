@@ -216,6 +216,33 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
         }
 
+        .sidebar-hint-nav {
+            margin-top: 92px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 44px;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .sidebar-hint-item {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            color: rgba(255, 255, 255, 0.74);
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            line-height: 1;
+            white-space: nowrap;
+            padding: 14px 0;
+            text-transform: capitalize;
+        }
+
+        .sidebar.expanded .sidebar-hint-nav {
+            display: none;
+        }
+
         .sidebar-bio {
             width: 100%;
             padding: 18px 20px 0 20px;
@@ -1211,6 +1238,12 @@
         <div class="profile-container">
             <div class="profile-avatar" id="profileAvatar" title="Profile"></div>
             <span class="sidebar-expand-icon" aria-hidden="true"></span>
+        </div>
+
+        <div class="sidebar-hint-nav" aria-hidden="true">
+            <span class="sidebar-hint-item">About</span>
+            <span class="sidebar-hint-item">Contact</span>
+            <span class="sidebar-hint-item">Testimonials</span>
         </div>
 
         <p class="sidebar-bio">
