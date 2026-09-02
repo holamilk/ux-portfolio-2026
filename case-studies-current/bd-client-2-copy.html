@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankita Chakrabarty — BD x SCADpro Case Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&amp;display=swap">
+    <link rel="stylesheet" href="../other-current/current-responsive.css?v=20260901-4">
+    <script src="../other-current/current-site.js?v=20260902-5" defer></script>
+    
+    <style>
+        :root {
+            --accent: #8F0A0A;
+            --bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #555555;
+            --placeholder-bg: #f4f4f2;
+            --placeholder-text: #888888;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Top Navigation */
+        header.case-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: var(--bg);
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            padding: 0;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .back-to-work {
+            background-color: #631B17;
+            color: #ffffff;
+            height: 100%;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            transition: background 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .back-to-work:hover {
+            background-color: #511613;
+            padding-left: 32px;
+            padding-right: 48px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 40px;
+            padding-right: 50px;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-right a:hover {
+            color: var(--accent);
+        }
+
+        /* Page Layout Container */
+        .page-container {
+            display: flex;
+            max-width: 1360px;
+            margin: 140px auto 140px auto;
+            padding: 0 60px;
+            gap: 120px;
+            position: relative;
+        }
+
+        /* Sticky Left Sidebar Navigation (Anchors) */
+        aside.case-sidebar {
+            width: 180px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 130px;
+            height: calc(100vh - 180px);
+        }
+
+        .sidebar-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 11px;
+            color: var(--placeholder-text);
+            margin-bottom: 24px;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            list-style: none;
+        }
+
+        .sidebar-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .sidebar-links a:hover, .sidebar-links a.active {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        /* Main Content Area */
+        main.case-content {
+            flex-grow: 1;
+            max-width: 880px;
+        }
+
+        /* Typography Styles */
+        h1 {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        .tag {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 12px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1.case-title {
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+        }
+
+        h2.section-heading {
+            font-size: 42px;
+            margin: 90px 0 24px 0;
+            line-height: 1.15;
+        }
+
+        p {
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            font-size: 17px;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 400;
+            background: linear-gradient(180deg, rgba(143,10,10,0) 70%, rgba(143,10,10,0.1) 30%);
+        }
+
+        /* Editorial Custom Layout Components */
+        .hero-lead {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .case-subtitle {
+            font-size: 20px;
+            line-height: 1.5;
+            color: var(--text-main);
+            margin: -16px 0 24px;
+            font-weight: 300;
+        }
+
+        .project-meta-line {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--placeholder-text);
+            margin-bottom: 16px;
+        }
+
+        .hero-first-image {
+            margin: 12px 0 70px;
+        }
+
+        .hook-callout {
+            width: 100%;
+            margin: 30px 0 68px;
+            padding: 62px 30px;
+            background: #f5f5f3;
+            border-radius: 2px;
+            text-align: center;
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 34px;
+            line-height: 1.2;
+            color: #2f2f2f;
+        }
+
+        .overview-snapshot {
+            margin: 16px 0 32px;
+            border-top: 1px solid #e7e7e7;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        .overview-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 24px;
+            padding: 20px 0;
+        }
+
+        .overview-row + .overview-row {
+            border-top: 1px solid #efefef;
+        }
+
+        .overview-label,
+        .role-label {
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .overview-copy {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .visual-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 36px;
+        }
+
+        .visual-strip .img-placeholder,
+        .overview-visual {
+            margin: 0;
+            aspect-ratio: 4 / 3;
+        }
+
+        .overview-visual {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(50, 38, 31, 0.12);
+        }
+
+        .overview-visual img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-stats,
+        .outcome-stats {
+            display: grid;
+            gap: 24px;
+            margin: 42px 0 52px;
+        }
+
+        .project-stats {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .outcome-stats {
+            grid-template-columns: repeat(3, 1fr);
+            margin-bottom: 12px;
+        }
+
+        .outcome-stats-caption {
+            margin: 0 0 52px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .survey-visuals-label {
+            margin: 0 0 18px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .isolated-stat {
+            padding: 18px 0;
+            border-top: 1px solid #ece7e3;
+            border-bottom: 1px solid #ece7e3;
+        }
+
+        .isolated-stat-value {
+            color: #b35b43;
+            font-size: 46px;
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .isolated-stat-label {
+            color: #777777;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .research-quote {
+            margin: 34px 0;
+            padding: 34px 38px;
+            background: #faf9f6;
+            border-left: 3px solid var(--accent);
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 28px;
+            line-height: 1.4;
+            color: #2f2f2f;
+        }
+
+        .three-layers {
+            display: flex;
+            width: 100%;
+            height: 440px;
+            min-height: 400px;
+            gap: 0;
+            margin: 34px 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .layer-panel {
+            display: flex;
+            flex: 1 1 0;
+            min-width: 0;
+            height: 100%;
+            min-height: 400px;
+            padding: 0;
+            overflow: hidden;
+            border: 0;
+            background: transparent;
+            color: #111111;
+            cursor: pointer;
+            text-align: left;
+            transition: flex-grow 0.4s ease;
+        }
+
+        .layer-panel + .layer-panel {
+            border-left: 2px solid rgba(255, 255, 255, 0.7);
+        }
+
+        .layer-panel:hover,
+        .layer-panel:focus-visible {
+            flex-grow: 2;
+            outline: none;
+        }
+
+        .layer-panel-visual {
+            flex: 1 0 100%;
+            min-width: 0;
+            background-position: center;
+            background-size: cover;
+            transition: flex-basis 0.4s ease;
+        }
+
+        .layer-panel--frontstage .layer-panel-visual {
+            background-image: url('../assets/case studies/bd/approach/frontstage.png?v=20260901-1');
+        }
+
+        .layer-panel--backstage .layer-panel-visual {
+            background-image: url('../assets/case studies/bd/approach/backstage.png?v=20260901-1');
+        }
+
+        .layer-panel--support .layer-panel-visual {
+            background-image: url('../assets/case studies/bd/approach/support processes.png?v=20260901-1');
+        }
+
+        .layer-panel-detail {
+            display: flex;
+            flex: 0 0 0;
+            align-items: center;
+            min-width: 0;
+            overflow: hidden;
+            background: #f4f0eb;
+            opacity: 0;
+            transition: flex-basis 0.4s ease, opacity 0.3s ease 0.12s;
+        }
+
+        .layer-panel-detail p {
+            width: 100%;
+            margin: 0;
+            padding: 28px;
+            font-size: clamp(17px, 1.55vw, 23px);
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .layer-panel:hover .layer-panel-visual,
+        .layer-panel:focus-visible .layer-panel-visual {
+            flex-basis: 50%;
+        }
+
+        .layer-panel:hover .layer-panel-detail,
+        .layer-panel:focus-visible .layer-panel-detail {
+            flex-basis: 50%;
+            opacity: 1;
+        }
+
+        .role-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 34px;
+            margin: 30px 0;
+        }
+
+        .role-column + .role-column {
+            border-left: 1px solid #e8e3df;
+            padding-left: 34px;
+        }
+
+        .role-label {
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .role-column p {
+            font-size: 16px;
+        }
+
+        .nda-note {
+            margin-top: 54px;
+            padding: 28px 30px;
+            background: #f7f6f4;
+            border-left: 3px solid #b8aaa4;
+        }
+
+        .nda-note p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .editorial-quote {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 30px;
+            line-height: 1.35;
+            color: var(--text-main);
+            margin: 50px 0;
+            padding-left: 32px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .editorial-box {
+            background-color: #faf9f6;
+            padding: 48px;
+            margin: 50px 0;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .editorial-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background-color: var(--accent);
+        }
+
+        /* Metadata Details Row */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 50px 0 70px 0;
+            padding: 30px 0;
+            border-top: 1px solid #eaeaea;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .meta-item span.label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--placeholder-text);
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .meta-item span.val {
+            font-size: 14px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Interactive Image Placeholders */
+        .img-placeholder {
+            background-color: var(--placeholder-bg);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 60px 0;
+            border-radius: 8px;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+            cursor: pointer;
+        }
+
+        .img-placeholder:hover {
+            transform: scale(1.015) translateY(-4px);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.06);
+        }
+
+        .img-placeholder span {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            color: var(--placeholder-text);
+            text-transform: lowercase;
+            letter-spacing: 0.04em;
+        }
+
+        .ar-16-9 { aspect-ratio: 16 / 9; }
+        .ar-4-3 { aspect-ratio: 4 / 3; }
+        .ar-21-9 { aspect-ratio: 21 / 9; }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 50px 0;
+        }
+
+        /* Outcome Statistics Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background-color: #faf9f6;
+            padding: 40px 32px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            background-color: #f2f0eb;
+        }
+
+        .stat-number {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .root-causes-panel {
+            margin: 42px 0 50px;
+            padding: 38px 34px 44px;
+            background: #C4622D;
+        }
+
+        .root-causes-label {
+            display: block;
+            margin-bottom: 28px;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .root-causes-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .root-cause-note {
+            width: 220px;
+            min-height: 240px;
+            padding: 20px;
+            background: #FFFBEA;
+            border-radius: 4px;
+            box-shadow: 0 9px 18px rgba(62, 29, 10, 0.22);
+            color: #302b27;
+            transform: rotate(var(--note-rotation, 0deg));
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .root-cause-note:nth-child(1) { --note-rotation: -2deg; }
+        .root-cause-note:nth-child(2) { --note-rotation: 2.5deg; }
+        .root-cause-note:nth-child(3) { --note-rotation: -1deg; }
+        .root-cause-note:nth-child(4) { --note-rotation: 2deg; }
+        .root-cause-note:nth-child(5) { --note-rotation: -2.5deg; }
+
+        .root-cause-note:hover,
+        .root-cause-note:focus-visible {
+            z-index: 1;
+            outline: none;
+            box-shadow: 0 14px 28px rgba(62, 29, 10, 0.3);
+            transform: rotate(var(--note-rotation, 0deg)) translateY(-3px) scale(1.045);
+        }
+
+        .root-cause-number {
+            display: block;
+            margin-bottom: 15px;
+            color: #9b411f;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .root-cause-note p {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.55;
+        }
+
+        .root-cause-note strong {
+            font-weight: 600;
+        }
+
+        .customer-journey-image {
+            position: relative;
+            margin: 34px 0 48px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 26px rgba(50, 38, 31, 0.12);
+        }
+
+        .customer-journey-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .survey-visuals {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin: 32px 0 48px;
+        }
+
+        .survey-visual {
+            height: 270px;
+            margin: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 26px rgba(50, 38, 31, 0.12);
+        }
+
+        .survey-visual img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .survey-visual--people img {
+            object-fit: cover;
+        }
+
+        .survey-visual--results img {
+            background: #f4f0ed;
+            object-fit: contain;
+        }
+
+        .role-visuals {
+            display: grid;
+            grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
+            gap: 18px;
+            margin: 34px 0 48px;
+        }
+
+        .role-visual {
+            height: 360px;
+            margin: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #f4f4f2;
+            box-shadow: 0 10px 26px rgba(50, 38, 31, 0.12);
+        }
+
+        .role-visual img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .role-visual--me img {
+            object-fit: cover;
+        }
+
+        .role-visual--timeline img {
+            object-fit: contain;
+        }
+
+        .role-visual--timeline {
+            background: #ffffff;
+        }
+
+        /* Scroll Micro-animations / Fade Ins */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            aside.case-sidebar {
+                display: none;
+            }
+            .page-container {
+                padding: 0 30px;
+            }
+            .split-grid {
+                grid-template-columns: 1fr;
+            }
+            .overview-row,
+            .visual-strip,
+            .project-stats,
+            .outcome-stats,
+            .role-grid {
+                grid-template-columns: 1fr;
+            }
+            .three-layers {
+                flex-direction: column;
+                height: auto;
+                min-height: 0;
+                gap: 12px;
+                overflow: visible;
+                border-radius: 0;
+            }
+            .layer-panel,
+            .layer-panel:hover,
+            .layer-panel:focus-visible {
+                flex: none;
+                width: 100%;
+                height: 220px;
+                min-height: 220px;
+                border-radius: 8px;
+                transition: min-height 0.4s ease;
+            }
+            .layer-panel + .layer-panel {
+                border-left: 0;
+            }
+            .layer-panel .layer-panel-visual,
+            .layer-panel:hover .layer-panel-visual,
+            .layer-panel:focus-visible .layer-panel-visual {
+                flex-basis: 100%;
+            }
+            .layer-panel .layer-panel-detail,
+            .layer-panel:hover .layer-panel-detail,
+            .layer-panel:focus-visible .layer-panel-detail {
+                flex-basis: 0;
+                opacity: 0;
+            }
+            .layer-panel.is-expanded {
+                height: 300px;
+                min-height: 300px;
+            }
+            .layer-panel.is-expanded .layer-panel-visual {
+                flex-basis: 42%;
+            }
+            .layer-panel.is-expanded .layer-panel-detail {
+                flex-basis: 58%;
+                opacity: 1;
+            }
+            .layer-panel-detail p {
+                padding: 22px;
+                font-size: 17px;
+            }
+            .role-column + .role-column {
+                border-left: 0;
+                border-top: 1px solid #e8e3df;
+                padding: 26px 0 0;
+            }
+            .hook-callout {
+                padding: 42px 22px;
+                font-size: 26px;
+            }
+            .root-causes-panel {
+                padding: 32px 22px 36px;
+            }
+            .root-causes-list {
+                flex-direction: column;
+                align-items: center;
+                gap: 18px;
+            }
+            .root-cause-note,
+            .root-cause-note:nth-child(n) {
+                width: min(100%, 420px);
+                min-height: 0;
+                --note-rotation: 0deg;
+            }
+            .survey-visuals {
+                grid-template-columns: 1fr;
+            }
+            .role-visuals {
+                grid-template-columns: 1fr;
+            }
+            .role-visual--timeline {
+                height: 220px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .root-cause-note {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<script>
+    (function(){
+        try{
+            const tRaw = sessionStorage.getItem('pageTransition');
+            if (!tRaw) return;
+            const t = JSON.parse(tRaw);
+            if (t && (t.direction === 'from-right' || t.direction === 'from-left')) {
+                document.body.classList.add('transition-slide');
+                document.body.classList.add(t.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+            }
+        }catch(e){}
+    })();
+</script>
+<script src="../assets/transition.js"></script>
+<body>
+
+    <header class="case-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="back-to-work" id="backToWorkBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                back to home
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="../about.html">about</a>
+            <a href="../testimonials-copy.html">testimonials</a>
+            <a href="../contact copy.html">contact</a>
+        </div>
+    </header>
+
+    <div class="page-container">
+        <aside class="case-sidebar">
+            <div class="sidebar-title">contents</div>
+            <ul class="sidebar-links">
+                <li><a href="#overview">overview</a></li>
+                <li><a href="#challenge">business challenge</a></li>
+                <li><a href="#research">research</a></li>
+                <li><a href="#ecosystem">ecosystem</a></li>
+                <li><a href="#approach">approach</a></li>
+                <li><a href="#my-role">my role</a></li>
+                <li><a href="#delivered">what we delivered</a></li>
+                <li><a href="#nda">NDA note</a></li>
+            </ul>
+        </aside>
+
+        <main class="case-content">
+            <div class="animate-on-scroll">
+                <span class="tag">SCADpro × Becton Dickinson</span>
+                <h1 class="case-title">The Future of Continence Care</h1>
+                <p class="case-subtitle">Designing for dignity in a space defined by silence and stigma</p>
+                <p class="project-meta-line">Project Manager &amp; UX Designer · SCADpro × Becton Dickinson · 10 weeks</p>
+            </div>
+
+            <div class="hook-callout animate-on-scroll">
+                Nobody had ever designed incontinence care as a system.
+            </div>
+
+            <section id="overview" class="animate-on-scroll">
+                <h2 class="section-heading">Overview</h2>
+                <div class="overview-snapshot">
+                    <div class="overview-row">
+                        <div class="overview-label">Problem</div>
+                        <div class="overview-copy">PureWick, an external catheter system that lets women manage urinary incontinence at home without invasive procedures, was already in homes. But the experience around it had never been designed. Fragmented care, no clinical continuity, and social stigma meant users were underserved at every touchpoint.</div>
+                    </div>
+                    <div class="overview-row">
+                        <div class="overview-label">What we did</div>
+                        <div class="overview-copy">Built a scalable service design framework addressing the full continence care ecosystem and presented it to 12 BD stakeholders across 10 weeks.</div>
+                    </div>
+                </div>
+                <div class="visual-strip">
+                    <figure class="overview-visual">
+                        <img src="../assets/case studies/bd/overview/1.png?v=20260901-1" alt="Illustration of the PureWick Flex home care kit">
+                    </figure>
+                    <figure class="overview-visual">
+                        <img src="../assets/case studies/bd/overview/2.png?v=20260901-1" alt="Illustration of personalized PureWick quiz results on a desktop computer">
+                    </figure>
+                    <figure class="overview-visual">
+                        <img src="../assets/case studies/bd/overview/3.png?v=20260901-1" alt="Illustration of a mobile care circle connecting a patient, caregiver, and medical professionals">
+                    </figure>
+                </div>
+                <div class="project-stats">
+                    <div class="isolated-stat"><div class="isolated-stat-value">15</div><div class="isolated-stat-label">people</div></div>
+                    <div class="isolated-stat"><div class="isolated-stat-value">5</div><div class="isolated-stat-label">subteams</div></div>
+                    <div class="isolated-stat"><div class="isolated-stat-value">12</div><div class="isolated-stat-label">stakeholders</div></div>
+                    <div class="isolated-stat"><div class="isolated-stat-value">10</div><div class="isolated-stat-label">weeks</div></div>
+                </div>
+            </section>
+
+            <section id="challenge" class="animate-on-scroll">
+                <h2 class="section-heading">The business challenge</h2>
+                <p>Continence care is highly fragmented. Social stigma makes incontinence a hidden disability: people are underdiagnosed, underinformed, and often only discover solutions incidentally while treating something else. Digital tools exist but adoption is inconsistent, and broader education around the topic is largely absent.</p>
+                <p>BD's objective was clear: map the current care journey, uncover unmet needs, and build a scalable service design framework that embeds experience-led thinking across the organization. PureWick was already in homes. Design was the missing capability to make it actually work there.</p>
+            </section>
+
+            <section id="research-methods" class="animate-on-scroll">
+                <h2 class="section-heading">Research methods</h2>
+                <p>Incontinence is a topic people don't talk about openly — which meant standard research methods wouldn't get us far. We interviewed three groups deliberately: <strong>caregivers</strong> managing a loved one's care at home, <strong>previous patients</strong> who could articulate what the system got wrong, and <strong>medical professionals</strong> who gave us the systemic view of where the handoff breaks down.</p>
+                <p>We also ran <strong>semantic differential surveys</strong> — measuring emotional and perceptual responses rather than asking direct questions. We wanted to understand what words, visuals, packaging, and imagery people associate with stigma and discomfort versus confidence and autonomy. With a topic this charged, how someone responds to the word "incontinence" tells you more than what they say they need.</p>
+                <p class="survey-visuals-label">Example of a semantic differential survey result</p>
+                <div class="survey-visuals">
+                    <figure class="survey-visual survey-visual--people">
+                        <img src="../assets/case studies/bd/survey/Screenshot 2026-09-01 at 17.22.33.png" alt="Older adult and caregiver discussing an at-home continence care device">
+                    </figure>
+                    <figure class="survey-visual survey-visual--results">
+                        <img src="../assets/case studies/bd/survey/Screenshot 2026-09-01 at 17.22.21.png" alt="Semantic differential survey scale showing 94 percent of responses above the respect threshold">
+                    </figure>
+                </div>
+            </section>
+
+            <section id="research" class="animate-on-scroll">
+                <h2 class="section-heading">What the research told us</h2>
+                <p>Clinicians prescribe. DME suppliers ship. An untrained family caregiver becomes responsible for a medical device at home with no clinical support. Nobody in that chain owns the experience.</p>
+                <p>We used a five-whys root cause analysis to get beneath the surface. The root cause: loss of bodily control erodes dignity and identity, leading to shame, withdrawal, and emotional distress that compound over time.</p>
+                <div class="root-causes-panel">
+                    <span class="root-causes-label">Root causes</span>
+                    <ol class="root-causes-list">
+                        <li class="root-cause-note" tabindex="0">
+                            <span class="root-cause-number">01</span>
+                            <p><strong>Dignity is non-negotiable</strong> — loss of bodily control erodes identity and autonomy, and care systems that ignore this cause as much harm as the condition itself.</p>
+                        </li>
+                        <li class="root-cause-note" tabindex="0">
+                            <span class="root-cause-number">02</span>
+                            <p><strong>One-size-fits-all production ignores the person behind the case</strong> — products built on averages create poor fit, dignity loss, and caregiver strain.</p>
+                        </li>
+                        <li class="root-cause-note" tabindex="0">
+                            <span class="root-cause-number">03</span>
+                            <p><strong>Asking for help is seen as personal failure</strong> — generational ideologies make people resist care long past the point they need it.</p>
+                        </li>
+                        <li class="root-cause-note" tabindex="0">
+                            <span class="root-cause-number">04</span>
+                            <p><strong>The condition is taboo before it is a problem</strong> — social stigma means people normalize symptoms, joke about them, and never talk about them seriously until a crisis.</p>
+                        </li>
+                        <li class="root-cause-note" tabindex="0">
+                            <span class="root-cause-number">05</span>
+                            <p><strong>The healthcare system is built around efficiency, not the person</strong> — profit and generalization drive surface-level care that misses interconnected needs.</p>
+                        </li>
+                    </ol>
+                </div>
+                <p>The emotional journey made this visible. Users in pre-awareness and awareness stages felt anxiety and discomfort. Even after adopting the product, the onboarding phase dropped back into confusion, leaving users far below where they needed to be. The north star was simple: <strong>I am respected.</strong> Three pillars made that real: feeling dignified, safe, and supported.</p>
+                <div class="research-quote">Loss of bodily control erodes dignity and identity. Nobody in the care chain owns the experience.</div>
+                <figure class="customer-journey-image">
+                    <img src="../assets/case studies/bd/cj.png?v=20260901-1" alt="Current customer journey showing six stages, touchpoints, and an emotional curve">
+                </figure>
+            </section>
+
+            <section id="ecosystem" class="animate-on-scroll">
+                <h2 class="section-heading">The ecosystem we designed for</h2>
+                <p>The patient was rarely the only user. We mapped the full picture: patient, family caregiver, home health aide, DME supplier, and discharging clinician, and treated every touchpoint as a design opportunity.</p>
+                <figure class="customer-journey-image">
+                    <img src="../assets/case studies/bd/ecosystem.png?v=20260901-1" alt="Ecosystem stakeholder map showing the people and organizations involved in continence care">
+                </figure>
+            </section>
+
+            <section id="approach" class="animate-on-scroll">
+                <h2 class="section-heading">How we approached it</h2>
+                <p>This wasn't about adding features to a product. It was about designing the entire experience of becoming a PureWick user, before, during, and after adoption, across three service design layers.</p>
+                <div class="three-layers">
+                    <button class="layer-panel layer-panel--frontstage" type="button" aria-expanded="false" aria-label="Frontstage: More personalized, considering who the target audience actually interacts with">
+                        <span class="layer-panel-visual" aria-hidden="true"></span>
+                        <span class="layer-panel-detail"><p>More personalized, considering who the target audience actually interacts with</p></span>
+                    </button>
+                    <button class="layer-panel layer-panel--backstage" type="button" aria-expanded="false" aria-label="Backstage: Optimized operational efficiency and streamlined internal communication">
+                        <span class="layer-panel-visual" aria-hidden="true"></span>
+                        <span class="layer-panel-detail"><p>Optimized operational efficiency and streamlined internal communication</p></span>
+                    </button>
+                    <button class="layer-panel layer-panel--support" type="button" aria-expanded="false" aria-label="Support Process: Developed robust, long-term processes that can scale up alongside demand">
+                        <span class="layer-panel-visual" aria-hidden="true"></span>
+                        <span class="layer-panel-detail"><p>Developed robust, long-term processes that can scale up alongside demand</p></span>
+                    </button>
+                </div>
+            </section>
+
+            <section id="my-role" class="animate-on-scroll">
+                <h2 class="section-heading">My role</h2>
+                <p>I ran the project and shaped the design thinking inside it.</p>
+                <div class="role-grid">
+                    <div class="role-column">
+                        <span class="role-label">Project management</span>
+                        <p>As PM, I built the sprint plan backward from each client check-in, managed five cross-functional subteams: research, service design, UX, advertising, and documentary, and built a FigJam kanban from scratch when our project management tooling fell short.</p>
+                    </div>
+                    <div class="role-column">
+                        <span class="role-label">Design contribution</span>
+                        <p>As a designer, I contributed to research synthesis, journey mapping, and service design output. My job was making sure every subteam's work connected back to one strategic thesis and that what we presented reflected the depth of thinking behind it.</p>
+                    </div>
+                </div>
+                <div class="role-visuals">
+                    <figure class="role-visual role-visual--me">
+                        <img src="../assets/case studies/bd/me.jpg?v=20260901-1" alt="Ankita presenting the project timeline during a team workshop">
+                    </figure>
+                    <figure class="role-visual role-visual--timeline">
+                        <img src="../assets/case studies/bd/timeline.png?v=20260901-1" alt="Detailed project timeline showing research and service design activities">
+                    </figure>
+                </div>
+            </section>
+
+            <section id="delivered" class="animate-on-scroll">
+                <h2 class="section-heading">What we delivered</h2>
+                <p>Specific solutions and frameworks are under NDA. The final presentation to BD's 12-person stakeholder group delivered a complete service design framework with projected market acquisition targets.</p>
+                <div class="outcome-stats">
+                    <div class="isolated-stat"><div class="isolated-stat-value">2–5%</div><div class="isolated-stat-label">Short-term</div></div>
+                    <div class="isolated-stat"><div class="isolated-stat-value">20%</div><div class="isolated-stat-label">Medium-term</div></div>
+                    <div class="isolated-stat"><div class="isolated-stat-value">40%+</div><div class="isolated-stat-label">Long-term</div></div>
+                </div>
+                <p class="outcome-stats-caption">Projected market acquisition targets</p>
+                <p>The strategic provocation we left them with: reframing PureWick from a medical device to an enabler of independence and dignity, designed for a generation that values self-reliance.</p>
+                <div class="research-quote">What if BD didn't sell products, but the lifestyle everyone is looking for?</div>
+            </section>
+
+            <section id="nda" class="animate-on-scroll">
+                <h2 class="section-heading">NDA note</h2>
+                <div class="nda-note">
+                    <p>Specific solutions, deliverables, and proprietary frameworks are confidential. This page shares the challenge, my role, and strategic context. Happy to walk through the full process in a conversation.</p>
+                </div>
+            </section>
+
+            <figure class="customer-journey-image animate-on-scroll">
+                <img src="../assets/case studies/bd/group.png?v=20260901-1" alt="BD and SCADpro project team gathered after the final presentation">
+            </figure>
+
+        </main>
+    </div>
+
+    <script>
+        // Staggered scroll animation observer for editorial fade-ins
+        const observerOptions = {
+            threshold: 0.08,
+            rootMargin: '0px 0px -40px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        const layerPanels = Array.from(document.querySelectorAll('.layer-panel'));
+        const mobileLayers = window.matchMedia('(max-width: 1024px)');
+
+        layerPanels.forEach(panel => {
+            panel.addEventListener('click', () => {
+                if (!mobileLayers.matches) return;
+                const shouldExpand = !panel.classList.contains('is-expanded');
+                layerPanels.forEach(item => {
+                    item.classList.remove('is-expanded');
+                    item.setAttribute('aria-expanded', 'false');
+                });
+                if (shouldExpand) {
+                    panel.classList.add('is-expanded');
+                    panel.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        // Sidebar active link tracking on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.sidebar-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 180) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Return to landing page (index.html) preserving state with left-slide transition
+        (function(){
+            const back = document.getElementById('backToWorkBtn');
+            if (!back) return;
+            back.addEventListener('click', function(e){
+                const isLeftClick = (e.button === 0) && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+                const href = '../index.html?returnFromCase=true';
+                if (!isLeftClick) return;
+                e.preventDefault();
+                try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch(err) {}
+                window.location.href = href;
+            });
+        })();
+    </script>
+
+    <script src="../other-current/current-footer.js"></script>
+    <script>injectFooter();</script>
+</body>
+</html>

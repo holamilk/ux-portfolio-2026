@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankita Chakrabarty — Contact</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Playfair Display -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&amp;display=swap">
+    <link rel="stylesheet" href="current-responsive.css">
+    <script src="current-site.js?v=20260901-6" defer></script>
+    
+    <style>
+        :root {
+            --accent: #8F0A0A;
+            --bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #555555;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Top Navigation */
+        header.case-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: var(--bg);
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            padding: 0;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .back-to-work {
+            background-color: #631B17;
+            color: #ffffff;
+            height: 100%;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            transition: background 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .back-to-work:hover {
+            background-color: #511613;
+            padding-left: 32px;
+            padding-right: 48px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 40px;
+            padding-right: 50px;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-right a:hover {
+            color: var(--accent);
+        }
+
+        /* Page Layout Container */
+        .page-container {
+            max-width: 900px;
+            margin: 108px auto 40px auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 20;
+            min-height: calc(100vh - 70px);
+        }
+
+        /* Header Section */
+        .contact-header {
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        h1.page-title {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-weight: normal;
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .page-lead {
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* Interactive Contact Section */
+        .contact-interactive-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+            min-height: 420px;
+            margin-top: -30px;
+        }
+
+        /* Video Container (No Controls, Stays on Last Frame) */
+        .phone-video-container {
+            width: min(500px, 54vw);
+            height: min(520px, 62vh);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transform: translateY(-14px);
+        }
+
+        video.phone-animation {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            pointer-events: none; /* Prevents native video interaction */
+        }
+
+        video.phone-animation::-webkit-media-controls {
+            display: none !important;
+            opacity: 0 !important;
+        }
+
+        /* Contact Menu appearing after animation finishes */
+        .contact-menu {
+            position: absolute;
+            left: calc(50% - 210px);
+            top: 40%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+            z-index: 30;
+        }
+
+        .contact-menu.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .contact-menu-item {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-main);
+            text-decoration: none;
+            display: inline-block;
+            width: 128px;
+            padding: 0 0 12px 0;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(143, 10, 10, 0.7);
+        }
+
+        .contact-menu-label {
+            display: inline-block;
+            transition: color 0.2s ease, transform 0.2s ease;
+            transform-origin: left center;
+        }
+
+        .contact-menu-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .contact-menu-item:hover .contact-menu-label {
+            color: var(--accent);
+            transform: scale(1.08);
+        }
+
+        .phone-disclosure {
+            width: 128px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(143, 10, 10, 0.7);
+        }
+
+        .phone-disclosure-toggle {
+            width: 100%;
+            padding: 0 0 12px;
+            border: 0;
+            background: transparent;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .phone-disclosure-toggle .contact-menu-label {
+            transition: color 0.2s ease, transform 0.2s ease;
+            transform-origin: left center;
+        }
+
+        .phone-disclosure-toggle:hover .contact-menu-label {
+            color: var(--accent);
+            transform: scale(1.08);
+        }
+
+        .phone-toggle-icon {
+            position: relative;
+            width: 18px;
+            height: 18px;
+            flex: 0 0 18px;
+            transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .phone-toggle-icon::before,
+        .phone-toggle-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 14px;
+            height: 1.5px;
+            background: var(--accent);
+            transform: translate(-50%, -50%);
+        }
+
+        .phone-toggle-icon::after {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        .phone-disclosure.is-open .phone-toggle-icon {
+            transform: rotate(45deg);
+        }
+
+        .phone-number-panel {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transform: translateY(-6px);
+            transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.25s ease, transform 0.35s ease;
+        }
+
+        .phone-disclosure.is-open .phone-number-panel {
+            max-height: 52px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .phone-number-link {
+            display: inline-block;
+            padding: 0 0 14px;
+            color: var(--accent);
+            font-size: 13px;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+            transform-origin: left center;
+            transition: transform 0.2s ease;
+        }
+
+        .phone-number-link:hover {
+            transform: scale(1.06);
+        }
+
+        .phone-base-line {
+            width: min(520px, 58vw);
+            height: 1px;
+            margin: 12px auto 0 auto;
+            background: rgba(51, 51, 51, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .page-container {
+                margin: 96px auto 32px auto;
+                min-height: auto;
+            }
+
+            .contact-header {
+                margin-bottom: 18px;
+            }
+
+            .contact-interactive-wrapper {
+                flex-direction: column;
+                min-height: auto;
+                margin-top: 0;
+            }
+
+            .phone-video-container {
+                width: min(390px, 100%);
+                height: auto;
+                aspect-ratio: 360 / 460;
+                transform: none;
+            }
+
+            .contact-menu {
+                position: relative;
+                left: 0;
+                top: 0;
+                transform: none;
+                align-items: center;
+                margin-top: 30px;
+            }
+
+            .phone-base-line {
+                width: min(360px, 90%);
+                margin-top: 10px;
+            }
+            .contact-menu-item {
+                transform-origin: center center;
+            }
+        }
+    </style>
+</head>
+<script>
+    (function(){
+        try{
+            const tRaw = sessionStorage.getItem('pageTransition');
+            if (!tRaw) return;
+            const t = JSON.parse(tRaw);
+            if (t && (t.direction === 'from-right' || t.direction === 'from-left')) {
+                document.body.classList.add('transition-slide');
+                document.body.classList.add(t.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+            }
+        }catch(e){}
+    })();
+</script>
+<script src="../assets/transition.js"></script>
+<body>
+
+    <!-- Top Fixed Navigation -->
+    <header class="case-nav">
+        <div class="nav-left">
+            <a href="index.html" class="back-to-work" id="backToWorkBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                back to home
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="about.html">about</a>
+            <a href="testimonials-copy.html">testimonials</a>
+            <a href="contact copy.html" style="color: var(--accent); font-weight: 500;">contact</a>
+        </div>
+    </header>
+
+    <div class="page-container" id="pageContainer">
+        <!-- Header Section -->
+        <div class="contact-header">
+            <h1 class="page-title">Contact</h1>
+            <p class="page-lead">I would LOVE to get in touch – whether that be a coffee chat about design and careers, or taking over the world</p>
+        </div>
+
+        <!-- Interactive Animation & Menu Section -->
+        <div class="contact-interactive-wrapper">
+            <div>
+                <div class="phone-video-container">
+                    <video id="phoneVideo" class="phone-animation" src="../assets/videos/contact-phone-animation.mp4" muted playsinline autoplay preload="auto" controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture>
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="phone-base-line" aria-hidden="true"></div>
+            </div>
+
+            <!-- Menu appearing after video hits last frame -->
+            <div class="contact-menu" id="contactMenu">
+                <a href="mailto:ankita.ch2005@gmail.com" target="_blank" rel="noopener noreferrer" class="contact-menu-item"><span class="contact-menu-label">Email</span></a>
+                <div class="phone-disclosure" id="phoneDisclosure">
+                    <button class="phone-disclosure-toggle" id="phoneDisclosureToggle" type="button" aria-expanded="false" aria-controls="phoneNumberPanel">
+                        <span class="contact-menu-label">Phone</span>
+                        <span class="phone-toggle-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="phone-number-panel" id="phoneNumberPanel">
+                        <a class="phone-number-link" href="tel:+19126950956">+1 912 695 0956</a>
+                    </div>
+                </div>
+                <a href="https://www.linkedin.com/in/ankitachakrabarty/" target="_blank" rel="noopener noreferrer" class="contact-menu-item"><span class="contact-menu-label">Linkedin</span></a>
+                <a href="https://drive.google.com/file/d/1OCFCDuq1xh6vp5CGEu_WOmgroRrohcE5/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="contact-menu-item"><span class="contact-menu-label">Resume</span></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('phoneVideo');
+            const menu = document.getElementById('contactMenu');
+            const header = document.querySelector('header.case-nav');
+            const phoneDisclosure = document.getElementById('phoneDisclosure');
+            const phoneDisclosureToggle = document.getElementById('phoneDisclosureToggle');
+
+            if (phoneDisclosure && phoneDisclosureToggle) {
+                phoneDisclosureToggle.addEventListener('click', () => {
+                    const isOpen = phoneDisclosure.classList.toggle('is-open');
+                    phoneDisclosureToggle.setAttribute('aria-expanded', String(isOpen));
+                });
+            }
+
+            function ensureHeaderFixed() {
+                if (!header) return;
+                header.style.position = 'fixed';
+                header.style.top = '0';
+                header.style.left = '0';
+                header.style.right = '0';
+                header.style.width = '100%';
+                header.style.zIndex = '1000';
+            }
+
+            ensureHeaderFixed();
+            window.addEventListener('scroll', ensureHeaderFixed, { passive: true });
+            window.addEventListener('resize', ensureHeaderFixed);
+
+            let menuShown = false;
+            const revealMenu = () => {
+                if (!menu || menuShown) return;
+                menuShown = true;
+                menu.classList.add('visible');
+            };
+
+            requestAnimationFrame(revealMenu);
+
+            if (video) {
+                // Reset to the beginning on each page load so each fresh visit replays the sequence.
+                try { video.currentTime = 0; } catch (err) {}
+                video.load();
+                video.play().catch(() => {});
+
+                let frozenOnLastFrame = false;
+
+                const freezeAtLastFrame = () => {
+                    if (frozenOnLastFrame) return;
+                    frozenOnLastFrame = true;
+                    if (!video.duration || Number.isNaN(video.duration)) {
+                        revealMenu();
+                        return;
+                    }
+                    video.currentTime = Math.max(0, video.duration - 0.001);
+                    video.pause();
+                    revealMenu();
+                };
+                
+                // When video ends, lock on final frame and reveal menu smoothly
+                video.addEventListener('ended', () => {
+                    freezeAtLastFrame();
+                });
+
+                // Backup path for browsers that do not dispatch ended reliably for this codec.
+                video.addEventListener('timeupdate', () => {
+                    if (!video.duration || Number.isNaN(video.duration)) return;
+
+                    // Reveal slightly before the animation fully completes.
+                    if (!menuShown && video.currentTime >= video.duration - 1.2) {
+                        revealMenu();
+                    }
+
+                    // Freeze right at the end on the final frame.
+                    if (video.currentTime >= video.duration - 0.04) {
+                        freezeAtLastFrame();
+                    }
+                });
+
+                // If this format cannot be decoded in-browser, avoid a blank state.
+                video.addEventListener('error', () => {
+                    revealMenu();
+                });
+
+                // If autoplay is blocked, reveal menu so the page still has complete content.
+                video.addEventListener('pause', () => {
+                    if (video.currentTime === 0) revealMenu();
+                });
+            }
+        });
+
+        // Return to landing page preserving state
+        (function(){
+            const back = document.getElementById('backToWorkBtn');
+            if (!back) return;
+            back.addEventListener('click', function(e){
+                const isLeftClick = (e.button === 0) && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+                const href = 'index.html?returnFromCase=true';
+                if (!isLeftClick) return;
+                e.preventDefault();
+                try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch(err) {}
+                window.location.href = href;
+            });
+        })();
+
+    </script>
+    
+    <script src="current-footer.js"></script>
+    <script>injectFooter();</script>
+</body>
+</html>

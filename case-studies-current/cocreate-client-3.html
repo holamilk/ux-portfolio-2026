@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ankita Chakrabarty — Co-Create Schools Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&amp;display=swap">
+  <link rel="stylesheet" href="../other-current/current-responsive.css?v=20260901-4">
+  <script src="../other-current/current-site.js?v=20260902-5" defer></script>
+  <style>
+    :root {
+      --accent: #1f3553;
+      --warm-accent: #e8c866;
+      --cream: #fbf8ef;
+      --bg: #ffffff;
+      --text-main: #2f3440;
+      --text-secondary: #565d68;
+      --placeholder-bg: #f5f1e6;
+      --placeholder-text: #85878a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    header.case-nav {
+      position: fixed;
+      inset: 0 0 auto;
+      width: 100%;
+      height: 70px;
+      background: var(--bg);
+      border-bottom: 1px solid #eaeaea;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+    }
+
+    .nav-left { display: flex; align-items: center; height: 100%; }
+
+    .back-to-work {
+      background: #631b17;
+      color: #fff;
+      height: 100%;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      transition: background 0.2s ease, padding 0.2s ease;
+    }
+
+    .back-to-work:hover { background: #511613; padding-left: 32px; padding-right: 48px; }
+    .nav-right { display: flex; gap: 40px; padding-right: 50px; }
+    .nav-right a { color: var(--text-main); font-size: 14px; font-weight: 400; text-decoration: none; transition: color 0.2s ease; }
+    .nav-right a:hover { color: #8f0a0a; }
+
+    .page-container {
+      display: flex;
+      max-width: 1360px;
+      margin: 140px auto;
+      padding: 0 60px;
+      gap: 120px;
+      position: relative;
+    }
+
+    aside.case-sidebar {
+      width: 180px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 130px;
+      height: calc(100vh - 180px);
+    }
+
+    .sidebar-title {
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 11px;
+      color: var(--placeholder-text);
+      margin-bottom: 24px;
+    }
+
+    .sidebar-links { display: flex; flex-direction: column; gap: 16px; list-style: none; }
+    .sidebar-links a { color: var(--text-secondary); font-size: 14px; text-decoration: none; display: inline-block; transition: color 0.2s ease, transform 0.2s ease; }
+    .sidebar-links a:hover, .sidebar-links a.active { color: #8f0a0a; transform: translateX(4px); }
+
+    main.case-content { flex-grow: 1; max-width: 880px; }
+    h1 { font-family: 'Orpheus Pro', serif; font-style: italic; font-weight: normal; }
+
+    .tag {
+      display: block;
+      margin-bottom: 20px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1.case-title { font-size: 58px; line-height: 1.1; margin-bottom: 30px; }
+    h2.section-heading { font-family: 'Poppins', sans-serif; font-size: clamp(24px, 2vw, 32px); font-style: normal; font-weight: 500; line-height: 1.2; color: #8f0a0a; margin: 90px 0 24px; }
+    p { margin-bottom: 24px; color: var(--text-secondary); font-size: 17px; }
+
+    .case-subtitle {
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 1.45;
+      color: var(--text-secondary);
+      margin: -12px 0 24px;
+    }
+
+    .project-meta-line {
+      color: var(--placeholder-text);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 42px;
+    }
+
+    .img-placeholder {
+      width: 100%;
+      background: var(--placeholder-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 60px 0;
+      border-radius: 8px;
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+    }
+
+    .img-placeholder:hover { transform: scale(1.015) translateY(-4px); box-shadow: 0 24px 48px rgba(31, 53, 83, 0.08); }
+    .img-placeholder span { padding: 20px; color: var(--placeholder-text); font-size: 12px; font-weight: 400; text-align: center; text-transform: lowercase; letter-spacing: 0.04em; }
+    .ar-16-9 { aspect-ratio: 16 / 9; }
+    .hero-first-image { margin-top: 0; }
+
+    .hook-callout {
+      background: #f4f4f2;
+      padding: 72px 64px;
+      margin: 72px 0 90px;
+      color: var(--text-main);
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    .overview-snapshot { margin: 34px 0 44px; border-top: 1px solid #e7e1d3; }
+    .overview-row { display: grid; grid-template-columns: 150px 1fr; gap: 32px; padding: 28px 0; border-bottom: 1px solid #e7e1d3; }
+    .overview-label { color: var(--text-main); font-size: 13px; font-weight: 600; }
+    .overview-copy { color: var(--text-secondary); font-size: 16px; }
+    .overview-copy a { color: #8f0a0a; text-underline-offset: 3px; }
+
+    .visual-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 44px 0 72px; }
+    .visual-strip.two-up { grid-template-columns: repeat(2, 1fr); }
+    .visual-strip .img-placeholder { aspect-ratio: 4 / 3; margin: 0; }
+
+    .project-visual {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      aspect-ratio: 4 / 3;
+    }
+
+    .project-visual img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      box-shadow: none;
+    }
+
+    .research-visual {
+      width: min(100%, 680px);
+      margin: 38px auto 72px;
+    }
+
+    .research-visual img,
+    .book-proof img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .framework-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 44px 0 30px;
+    }
+
+    .framework-strip .project-visual {
+      aspect-ratio: auto;
+      box-shadow: 0 6px 12px rgba(31, 53, 83, 0.12);
+    }
+
+    .framework-strip .project-visual img {
+      height: auto;
+      object-fit: contain;
+    }
+
+    .book-proof {
+      width: min(100%, 340px);
+      margin: 0 auto 72px;
+      border-radius: 8px;
+      box-shadow: none;
+    }
+
+    .overview-visual {
+      box-shadow: 0 8px 16px rgba(31, 53, 83, 0.14);
+    }
+
+    .supporting-visual {
+      width: min(100%, 760px);
+      margin: 38px auto 72px;
+    }
+
+    .supporting-visual img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .supporting-visual figcaption,
+    .research-visual figcaption {
+      margin-top: 12px;
+      color: var(--placeholder-text);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .website-strip {
+      overflow: hidden;
+      margin: 40px 0 70px;
+      padding: 8px 4px 20px;
+      scrollbar-width: none;
+    }
+
+    .website-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .website-track {
+      display: flex;
+      width: max-content;
+      gap: 18px;
+      animation: website-loop 28s linear infinite;
+    }
+
+    .website-strip:hover .website-track,
+    .website-strip:focus-within .website-track {
+      animation-play-state: paused;
+    }
+
+    .website-slide {
+      flex: 0 0 min(440px, 82vw);
+      margin: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      aspect-ratio: 16 / 10;
+      scroll-snap-align: start;
+    }
+
+    .website-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes website-loop {
+      to { transform: translateX(calc(-50% - 9px)); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .website-strip { overflow-x: auto; }
+      .website-track { animation: none; }
+    }
+
+    .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1024px) {
+      aside.case-sidebar { display: none; }
+      .page-container { padding: 0 30px; }
+    }
+
+    @media (max-width: 700px) {
+      .page-container { margin-top: 115px; padding: 0 22px; }
+      .nav-right { gap: 18px; padding-right: 20px; }
+      .back-to-work { padding: 0 20px; }
+      h1.case-title { font-size: 42px; }
+      .hook-callout { padding: 52px 28px; }
+      .overview-row, .visual-strip, .visual-strip.two-up { grid-template-columns: 1fr; }
+      .framework-strip { grid-template-columns: 1fr 1fr; }
+      .overview-row { gap: 10px; }
+    }
+  </style>
+</head>
+<script>
+  (function(){
+    try {
+      const transition = JSON.parse(sessionStorage.getItem('pageTransition') || 'null');
+      if (transition && (transition.direction === 'from-right' || transition.direction === 'from-left')) {
+        document.body.classList.add('transition-slide', transition.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+      }
+    } catch (error) {}
+  })();
+</script>
+<script src="../assets/transition.js"></script>
+<body>
+  <header class="case-nav">
+    <div class="nav-left">
+      <a href="../index.html" class="back-to-work" id="backToWorkBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        back to home
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="../about.html">about</a>
+      <a href="../testimonials-copy.html">testimonials</a>
+      <a href="../contact copy.html">contact</a>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <aside class="case-sidebar">
+      <div class="sidebar-title">contents</div>
+      <ul class="sidebar-links">
+        <li><a href="#overview">overview</a></li>
+        <li><a href="#research">education research</a></li>
+        <li><a href="#brand">building the brand</a></li>
+        <li><a href="#book">book illustrations</a></li>
+        <li><a href="#website">the website</a></li>
+        <li><a href="#outcome">the outcome</a></li>
+      </ul>
+    </aside>
+
+    <main class="case-content">
+      <div class="animate-on-scroll">
+        <span class="tag">Co-Create Schools</span>
+        <h1 class="case-title">Co-Create Schools</h1>
+        <p class="case-subtitle">End-to-end visual identity, book illustrations, and website for a school culture consultancy</p>
+        <p class="project-meta-line">Freelance · Visual Designer &amp; Web Designer · Dec 2025 – Jan 2026</p>
+      </div>
+
+      <div class="hook-callout animate-on-scroll">My high school English teacher reached out. She was writing a book, starting a company and needed a designer.</div>
+
+      <section id="overview" class="animate-on-scroll">
+        <h2 class="section-heading">Overview</h2>
+        <div class="overview-snapshot">
+          <div class="overview-row">
+            <div class="overview-label">The work</div>
+            <div class="overview-copy">Rachael Thrash — educator and author of <em>Let Learners Lead</em> — built Co-Create Schools to help schools shift from top-down culture mandates to student-teacher partnerships. She needed a visual identity, book illustrations, and a website to launch it.</div>
+          </div>
+          <div class="overview-row">
+            <div class="overview-label">What I delivered</div>
+            <div class="overview-copy">Complete brand identity and style guide, illustrations for the published book, and a full end-to-end website — live at <a href="https://cocreateschools.com/" target="_blank" rel="noopener noreferrer">cocreateschools.com</a>.</div>
+          </div>
+        </div>
+        <div class="visual-strip">
+          <figure class="project-visual overview-visual"><img src="../assets/case studies/cocreate/overview/1.png?v=20260901-1" alt="Let Learners Lead book cover"></figure>
+          <figure class="project-visual overview-visual"><img src="../assets/case studies/cocreate/overview/2.png?v=20260901-1" alt="Co-Create Schools brand palette"></figure>
+          <figure class="project-visual overview-visual"><img src="../assets/case studies/cocreate/overview/3.png?v=20260901-1" alt="Co-Create Schools website homepage"></figure>
+        </div>
+      </section>
+
+      <section id="research" class="animate-on-scroll">
+        <h2 class="section-heading">Researching the education space</h2>
+        <p>Before touching the brand, I looked at how similar organizations present themselves — education consultancies, school culture initiatives, student leadership platforms — to understand the visual conventions and communication norms of the space.</p>
+        <p>The goal was to find where Co-Create Schools could feel distinct while still feeling at home in the space it was trying to lead.</p>
+        <figure class="research-visual">
+          <img src="../assets/case studies/cocreate/moodboarding.png?v=20260901-1" alt="Moodboard research for the Co-Create Schools brand">
+          <figcaption>Inspiration for brand presentation</figcaption>
+        </figure>
+      </section>
+
+      <section id="brand" class="animate-on-scroll">
+        <h2 class="section-heading">Building the brand</h2>
+        <p>Co-Create Schools sits at an interesting intersection — it needs to resonate with school administrators making institutional decisions and with teachers looking for practical tools they can use Monday morning. The brand had to feel credible to both without feeling corporate to either.</p>
+        <p>Navy for authority and trust. Soft yellow and cream for warmth and approachability. Every choice was made to reflect an organization that believes schools work better when students are partners, not recipients.</p>
+        <div class="visual-strip">
+          <figure class="project-visual"><img src="../assets/case studies/cocreate/color palette.png?v=20260901-1" alt="Co-Create Schools color palette"></figure>
+          <figure class="project-visual"><img src="../assets/case studies/cocreate/typography.png?v=20260901-1" alt="Co-Create Schools typography specimen"></figure>
+          <figure class="project-visual"><img src="../assets/case studies/cocreate/style guide.png?v=20260901-1" alt="Co-Create Schools style guide"></figure>
+        </div>
+        <figure class="supporting-visual">
+          <img src="../assets/case studies/cocreate/logo ideation.png?v=20260901-1" alt="Co-Create Schools logo ideation">
+        </figure>
+      </section>
+
+      <section id="book" class="animate-on-scroll">
+        <h2 class="section-heading">The book illustrations</h2>
+        <p>I created the visual framework illustration for <em>Let Learners Lead</em> — mapping the four phases of the Co-Create process. The people who would actually use these illustrations are students in group activities and teachers facilitating them.</p>
+        <figure class="supporting-visual">
+          <img src="../assets/case studies/cocreate/tools illustration ideas.png?v=20260901-1" alt="Early inspiration for the Co-Create framework illustrations">
+        </figure>
+        <p>That meant the visuals had to be clear enough for a classroom, engaging enough for a student, and professional enough to sit inside a published book.</p>
+        <div class="framework-strip">
+          <figure class="project-visual"><img src="../assets/case studies/cocreate/four-phrase framework illustration/tool illustration 1.png?v=20260901-1" alt="Co-Create framework phase one illustration"></figure>
+          <figure class="project-visual"><img src="../assets/case studies/cocreate/four-phrase framework illustration/tool illustration 2.png?v=20260901-1" alt="Co-Create framework phase two illustration"></figure>
+          <figure class="project-visual"><img src="../assets/case studies/cocreate/four-phrase framework illustration/tool illustration 3.png?v=20260901-1" alt="Co-Create framework phase three illustration"></figure>
+          <figure class="project-visual"><img src="../assets/case studies/cocreate/four-phrase framework illustration/tool illustration 4.png?v=20260901-1" alt="Co-Create framework phase four illustration"></figure>
+        </div>
+        <div class="book-proof">
+          <img src="../assets/case studies/cocreate/final book proof.png?v=20260901-1" alt="Final Let Learners Lead book proof">
+        </div>
+      </section>
+
+      <section id="website" class="animate-on-scroll">
+        <h2 class="section-heading">The website</h2>
+        <p>Teachers are the primary visitor. They come with specific questions — does this actually work, what does the framework look like in practice, how do I bring this to my school. I structured the site around surfacing those answers quickly while giving Rachael the space to communicate her methodology and make the case for why student-led culture change works.</p>
+        <p>The tension between what a visitor needs immediately and what a client wants to say is a design problem in itself. I wrote and refined the copy for every section to resolve that — leading with the visitor's question, earning the deeper explanation.</p>
+        <div class="website-strip" aria-label="Co-Create Schools website pages">
+          <div class="website-track">
+            <figure class="website-slide"><img src="../assets/case studies/cocreate/website/homepage.png?v=20260901-1" alt="Co-Create Schools website homepage"></figure>
+            <figure class="website-slide"><img src="../assets/case studies/cocreate/website/services.png?v=20260901-1" alt="Co-Create Schools services page"></figure>
+            <figure class="website-slide"><img src="../assets/case studies/cocreate/website/purchase flow.png?v=20260901-1" alt="Co-Create Schools purchase flow"></figure>
+            <figure class="website-slide"><img src="../assets/case studies/cocreate/website/download tools.png?v=20260901-1" alt="Co-Create Schools downloadable tools page"></figure>
+            <figure class="website-slide" aria-hidden="true"><img src="../assets/case studies/cocreate/website/homepage.png?v=20260901-1" alt=""></figure>
+            <figure class="website-slide" aria-hidden="true"><img src="../assets/case studies/cocreate/website/services.png?v=20260901-1" alt=""></figure>
+            <figure class="website-slide" aria-hidden="true"><img src="../assets/case studies/cocreate/website/purchase flow.png?v=20260901-1" alt=""></figure>
+            <figure class="website-slide" aria-hidden="true"><img src="../assets/case studies/cocreate/website/download tools.png?v=20260901-1" alt=""></figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="outcome" class="animate-on-scroll">
+        <h2 class="section-heading">The outcome</h2>
+        <p>The site launched alongside the book publication. Co-Create Schools went from a placeholder domain to a live consultancy with a brand, a product, and a place to send people — built and shipped in under six weeks.</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries, instance) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          instance.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(element => observer.observe(element));
+
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.sidebar-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        if (pageYOffset >= section.offsetTop - 180) current = section.id;
+      });
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + current));
+    });
+
+    document.getElementById('backToWorkBtn').addEventListener('click', event => {
+      const isLeftClick = event.button === 0 && !(event.metaKey || event.ctrlKey || event.shiftKey || event.altKey);
+      if (!isLeftClick) return;
+      event.preventDefault();
+      try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch (error) {}
+      window.location.href = '../index.html?returnFromCase=true';
+    });
+  </script>
+  <script src="../other-current/current-footer.js"></script>
+  <script>injectFooter();</script>
+</body>
+</html>

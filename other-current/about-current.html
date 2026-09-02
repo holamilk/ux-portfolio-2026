@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankita Chakrabarty — About</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Playfair Display -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&amp;display=swap">
+    <link rel="stylesheet" href="current-responsive.css">
+    <script src="current-site.js?v=20260901-6" defer></script>
+    
+    <style>
+        :root {
+            --accent: #631B17;
+            --bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #555555;
+            --placeholder-bg: #e2e2e0;
+            --border-color: #eaeaea;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Top Navigation */
+        header.case-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: var(--bg);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            padding: 0;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .back-to-work {
+            background-color: var(--accent);
+            color: #ffffff;
+            height: 100%;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            transition: background 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .back-to-work:hover {
+            background-color: #511613;
+            padding-left: 32px;
+            padding-right: 48px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 40px;
+            padding-right: 50px;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-right a:hover {
+            color: var(--accent);
+        }
+
+        /* Page Layout Container */
+        .page-container {
+            max-width: 900px;
+            margin: 140px auto 140px auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 20;
+        }
+
+        /* Header Section */
+        .about-header {
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        h1.page-title {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-weight: normal;
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .page-lead {
+            font-size: 17px;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* Tab Switcher */
+        .tabs-nav {
+            display: flex;
+            gap: 40px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            padding-bottom: 12px;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+        }
+
+        .tab-btn.active {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        /* Tab Content Panels */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .on-clock-photo-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .on-clock-photo-frame {
+            height: clamp(190px, 28vw, 360px);
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .on-clock-photo-frame:first-child { aspect-ratio: 0.892 / 1; }
+        .on-clock-photo-frame:last-child { aspect-ratio: 1.453 / 1; }
+
+        .on-clock-photo-row img {
+            display: block;
+            width: 100%;
+            height: 100% !important;
+            object-fit: cover;
+        }
+
+        .off-clock-section {
+            margin-bottom: clamp(76px, 10vw, 128px);
+        }
+
+        .off-clock-section-header {
+            max-width: 760px;
+            margin-bottom: 28px;
+        }
+
+        .off-clock-section-name {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--accent);
+            font-family: 'Ubuntu', sans-serif !important;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        .off-clock-section-header p {
+            margin: 0;
+            color: var(--text-main);
+            font-size: clamp(19px, 2vw, 25px);
+            line-height: 1.55;
+        }
+
+        .off-clock-marquee {
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+            border-radius: 8px;
+            background: #f5f4f2;
+        }
+
+        .off-clock-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: off-clock-marquee var(--marquee-duration, 34s) linear infinite;
+            will-change: transform;
+        }
+
+        .off-clock-section:nth-child(even) .off-clock-marquee-track {
+            animation-direction: reverse;
+        }
+
+        .off-clock-marquee:hover .off-clock-marquee-track {
+            animation-play-state: paused;
+        }
+
+        .off-clock-marquee-set {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding-right: 18px;
+        }
+
+        .off-clock-marquee-item {
+            box-sizing: border-box;
+            flex: 0 0 auto;
+            height: clamp(240px, 28vw, 360px);
+            padding: 9px;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #ffffff;
+            box-shadow: 0 10px 24px rgba(35, 30, 27, 0.12);
+        }
+
+        .off-clock-marquee-item img {
+            display: block;
+            width: auto;
+            height: 100% !important;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        .off-clock-marquee-item.source-border-crop {
+            aspect-ratio: 1.42 / 1;
+        }
+
+        .source-crop-window {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .off-clock-marquee-item.source-border-crop img {
+            width: 100%;
+            height: 100% !important;
+            max-width: none;
+            object-fit: cover;
+            transform: scale(1.12);
+        }
+
+        .off-clock-closing-card {
+            position: relative;
+            display: grid;
+            min-height: 280px;
+            overflow: hidden;
+            place-items: center;
+            padding: 40px;
+            border-radius: 8px;
+            background: var(--accent);
+            color: #ffffff;
+            font-family: 'Ubuntu', sans-serif !important;
+            font-size: clamp(32px, 5vw, 60px);
+            font-weight: 500;
+            line-height: 1.1;
+            text-align: center;
+        }
+
+        .off-clock-closing-card canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .off-clock-closing-card span {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes off-clock-marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* Gallery / Bento Grid Layouts */
+        .bento-grid-off {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 2fr 1fr;
+            grid-template-rows: 240px 140px auto;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .bento-item {
+            background-color: var(--placeholder-bg);
+            border-radius: 8px;
+        }
+
+        /* Specific grid placements for Off the clock */
+        .bento-off-1 { grid-column: 1 / 2; grid-row: 1 / 3; }
+        .bento-off-2 { grid-column: 2 / 3; grid-row: 1 / 2; }
+        .bento-off-3 { grid-column: 2 / 3; grid-row: 2 / 3; }
+        .bento-off-4 { grid-column: 3 / 4; grid-row: 1 / 3; }
+        .bento-off-5 { grid-column: 4 / 5; grid-row: 1 / 3; }
+
+        .bento-off-bottom-left { grid-column: 1 / 2; grid-row: 3 / 5; height: 320px; }
+        .bento-off-row2-1 { grid-column: 2 / 3; grid-row: 3 / 4; height: 160px; }
+        .bento-off-row2-2 { grid-column: 3 / 4; grid-row: 3 / 4; height: 160px; }
+        .bento-off-row2-3 { grid-column: 4 / 5; grid-row: 3 / 4; height: 160px; }
+
+        .content-text-block {
+            font-size: 17px;
+            color: var(--text-main);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .career-reflection .section-heading {
+            font-size: 26px;
+            line-height: 1.2;
+            margin-bottom: 22px;
+        }
+
+        .content-text-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 40px;
+        }
+
+        /* On the clock Bento Grid Layout */
+        .bento-grid-on {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 2fr 1fr;
+            grid-template-rows: 240px;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .bento-on-1 { grid-column: 1 / 2; }
+        .bento-on-2 { grid-column: 2 / 3; }
+        .bento-on-3 { grid-column: 3 / 4; }
+        .bento-on-4 { grid-column: 4 / 5; }
+
+        /* Experience Section */
+        .section-heading {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+
+        .experience-list {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 60px;
+        }
+
+        .career-tabs {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 60px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .career-tab {
+            padding: 9px 16px;
+            border: 0;
+            border-radius: 999px;
+            background: #f0efed;
+            color: var(--text-secondary);
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .career-tab.active {
+            background: var(--accent);
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .career-tab:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .career-resume-link {
+            margin-left: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .career-resume-link svg {
+            width: 15px;
+            height: 15px;
+            stroke: currentColor;
+            transition: transform 0.2s ease;
+        }
+
+        .career-resume-link:hover svg {
+            transform: translate(2px, -2px);
+        }
+
+        .career-panel { display: none; }
+        .career-panel.active { display: block; }
+
+        .career-panel .experience-list { margin-bottom: 60px; }
+
+        .experience-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .exp-left h4 {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .exp-left p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .exp-time {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            flex-shrink: 0;
+            margin-left: 24px;
+            text-align: right;
+        }
+
+        /* Toolbox Section with Animation & Falling Logos */
+        .toolbox-section {
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .toolbox-section .section-heading {
+            margin-top: 0;
+            margin-bottom: 18px;
+        }
+
+        .toolbox-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            min-height: 602px;
+            position: relative;
+            margin-top: -28px;
+        }
+
+        .tool-scatter {
+            position: absolute;
+            inset: 30px 0 auto;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: repeat(10, minmax(0, 1fr));
+            grid-template-rows: repeat(4, 64px);
+            gap: 16px 24px;
+            width: 100%;
+            pointer-events: none;
+        }
+
+        .tool-item {
+            display: flex;
+            grid-column: span 2;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            opacity: 0;
+            transform: translate(var(--emerge-x, 0), 330px) scale(0.2);
+        }
+
+        .tool-item:nth-child(5n + 1) { --emerge-x: 320px; }
+        .tool-item:nth-child(5n + 2) { --emerge-x: 160px; }
+        .tool-item:nth-child(5n + 4) { --emerge-x: -160px; }
+        .tool-item:nth-child(5n + 5) { --emerge-x: -320px; }
+        .tool-item:nth-child(16) { grid-column: 2 / span 2; }
+
+        .tools-released .tool-item {
+            animation: tool-wave 1.3s cubic-bezier(0.18, 0.8, 0.28, 1) forwards;
+            animation-delay: calc(var(--tool-order) * 120ms);
+        }
+
+        .tool-item img {
+            display: block;
+            width: auto;
+            max-width: 54px;
+            height: auto;
+            max-height: 42px;
+            object-fit: contain;
+        }
+
+        .tool-item-wide img { max-width: 70px; }
+
+        .tool-item-captioned {
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .tool-item-caption {
+            color: var(--text-main);
+            font-size: 10px;
+            font-weight: 500;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        @keyframes tool-wave {
+            0% {
+                opacity: 0;
+                transform: translate(var(--emerge-x, 0), 330px) scale(0.2) rotate(-10deg);
+            }
+            55% { opacity: 1; }
+            78% { transform: translate(0, -8px) scale(1.05) rotate(2deg); }
+            100% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1) rotate(0);
+            }
+        }
+
+        .toolbox-video-wrapper {
+            width: 360px;
+            height: 260px;
+            position: relative;
+            z-index: 10;
+        }
+
+        video.toolbox-animation {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+        video.toolbox-animation::-webkit-media-controls {
+            display: none !important;
+            opacity: 0 !important;
+        }
+
+        video.toolbox-animation::-webkit-media-controls-panel {
+            display: none !important;
+            opacity: 0 !important;
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 900px) {
+            .bento-grid-off, .bento-grid-on {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+            .content-text-split {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .experience-item {
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .exp-time {
+                margin-left: 12px;
+            }
+            .career-tabs {
+                gap: 8px;
+                overflow-x: auto;
+            }
+            .career-tab {
+                flex: 0 0 auto;
+            }
+            .career-resume-link {
+                flex: 0 0 auto;
+                margin-left: 6px;
+            }
+            .toolbox-container { min-height: 660px; }
+            .tool-scatter {
+                grid-template-columns: repeat(8, minmax(0, 1fr));
+                grid-template-rows: repeat(5, 60px);
+                gap: 12px;
+            }
+            .tool-item:nth-child(16) { grid-column: span 2; }
+            .tool-item:nth-child(17) { grid-column: 2 / span 2; }
+            .tool-item:nth-child(n) { --emerge-x: 0; }
+            .tool-item img {
+                max-width: 46px;
+                max-height: 36px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .on-clock-photo-row {
+                flex-direction: column;
+            }
+
+            .on-clock-photo-frame {
+                width: 100%;
+                height: auto;
+            }
+
+            .on-clock-photo-row img {
+                width: 100%;
+                height: auto !important;
+                max-width: 100%;
+                max-height: 520px;
+            }
+
+            .off-clock-section-header p { font-size: 18px; }
+            .off-clock-marquee { padding: 14px 0; }
+            .off-clock-marquee-set { gap: 12px; padding-right: 12px; }
+            .off-clock-marquee-item {
+                height: 230px;
+                padding: 7px;
+            }
+            .off-clock-closing-card {
+                min-height: 220px;
+                padding: 28px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .tools-released .tool-item {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+            .off-clock-marquee {
+                overflow-x: auto;
+            }
+            .off-clock-marquee-track {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<script>
+    (function(){
+        try{
+            const tRaw = sessionStorage.getItem('pageTransition');
+            if (!tRaw) return;
+            const t = JSON.parse(tRaw);
+            if (t && (t.direction === 'from-right' || t.direction === 'from-left')) {
+                document.body.classList.add('transition-slide');
+                document.body.classList.add(t.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+            }
+        }catch(e){}
+    })();
+</script>
+<script src="../assets/transition.js?v=20260902-2"></script>
+<body>
+
+    <!-- Top Fixed Navigation -->
+    <header class="case-nav">
+        <div class="nav-left">
+            <a href="index.html" class="back-to-work" id="backToWorkBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                back to home
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="about.html" style="color: var(--accent); font-weight: 500;">about</a>
+            <a href="testimonials-copy.html">testimonials</a>
+            <a href="contact copy.html">contact</a>
+        </div>
+    </header>
+
+    <div class="page-container" id="pageContainer">
+        <!-- Header Section -->
+        <div class="about-header animate-on-scroll">
+            <h1 class="page-title">About</h1>
+            <p class="page-lead">A look into Ankita's life</p>
+        </div>
+
+        <!-- Tab Switcher Navigation -->
+        <div class="tabs-nav animate-on-scroll">
+            <button class="tab-btn active" data-tab="offClock">Off the clock</button>
+            <button class="tab-btn" data-tab="onClock">On the clock</button>
+        </div>
+
+        <!-- TAB 1: Off the clock -->
+        <div class="tab-content active" id="offClock">
+            <section class="off-clock-section">
+                <div class="off-clock-section-header">
+                    <span class="off-clock-section-name">A little of everything</span>
+                    <p>Growing up, I did a little of everything — music, dance, sports, art. I was that kid who wanted to try it all.</p>
+                </div>
+                <div class="off-clock-marquee" style="--marquee-duration: 30s" aria-label="Childhood activities gallery">
+                    <div class="off-clock-marquee-track">
+                        <div class="off-clock-marquee-set">
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/dance/IMG_7182.jpg" alt="Ankita dancing growing up"></div>
+                            <div class="off-clock-marquee-item source-border-crop">
+                                <div class="source-crop-window"><img src="../assets/about/off%20the%20clock/dance/Screenshot%202026-09-01%20at%2023.06.06.png" alt="Ankita exploring childhood activities"></div>
+                            </div>
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/dance/Screenshot%202026-09-01%20at%2023.06.27.png" alt="Ankita exploring childhood activities"></div>
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/dance/Screenshot%202026-09-01%20at%2023.06.41.png" alt="Ankita exploring childhood activities"></div>
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/dance/Screenshot%202026-09-01%20at%2023.06.50.png" alt="Ankita exploring childhood activities"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="off-clock-section">
+                <div class="off-clock-section-header">
+                    <span class="off-clock-section-name">Art, empathy &amp; design</span>
+                    <p>Eventually, drawing and painting won. I spent years taking commissions, freelancing, and somewhere along the way wrote a research paper on mirror neurons and empathy in art. I didn't know it yet, but I was already thinking like a designer.</p>
+                </div>
+                <div class="off-clock-marquee" style="--marquee-duration: 32s" aria-label="Drawing and painting gallery">
+                    <div class="off-clock-marquee-track">
+                        <div class="off-clock-marquee-set">
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/draw/Screenshot%202026-09-01%20at%2023.07.09.png" alt="Artwork by Ankita"></div>
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/draw/Screenshot%202026-09-01%20at%2023.07.18.png" alt="Artwork by Ankita"></div>
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/draw/Screenshot%202026-09-01%20at%2023.07.27.png" alt="Artwork by Ankita"></div>
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/draw/Screenshot%202026-09-01%20at%2023.07.33.png" alt="Artwork by Ankita"></div>
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/draw/Screenshot%202026-09-01%20at%2023.07.51.png" alt="Artwork by Ankita"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="off-clock-section">
+                <div class="off-clock-section-header">
+                    <span class="off-clock-section-name">Finding UX at SCAD</span>
+                    <p>That path led me to UX and to SCAD — where I'm part of FLUX, student ambassador programs, trying new things, meeting people who care about the same stuff I do, and having the best time doing it.</p>
+                </div>
+                <div class="off-clock-marquee" style="--marquee-duration: 28s" aria-label="SCAD life gallery">
+                    <div class="off-clock-marquee-track">
+                        <div class="off-clock-marquee-set">
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/uni/Screenshot%202026-09-01%20at%2023.08.11.png" alt="Ankita at SCAD"></div>
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/uni/Screenshot%202026-09-01%20at%2023.08.23.png" alt="Ankita at SCAD"></div>
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/uni/Screenshot%202026-09-01%20at%2023.08.37.png" alt="Ankita at SCAD"></div>
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/uni/Screenshot%202026-09-01%20at%2023.08.47.png" alt="Ankita at SCAD"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="off-clock-section">
+                <div class="off-clock-section-header">
+                    <span class="off-clock-section-name">Still dancing</span>
+                    <p>And now a recent hobby I picked up: line dancing. Three years in and I have absolutely no plans to stop — I need to start my own dancing company, and start a boot collection.</p>
+                </div>
+                <div class="off-clock-marquee" style="--marquee-duration: 20s" aria-label="Line dancing gallery">
+                    <div class="off-clock-marquee-track">
+                        <div class="off-clock-marquee-set">
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/recent%20hobbies/Screenshot%202026-09-01%20at%2023.09.35.png" alt="Ankita line dancing"></div>
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/recent%20hobbies/Screenshot%202026-09-01%20at%2023.09.52.png" alt="Ankita line dancing"></div>
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/recent%20hobbies/IMG_2116.jpg" alt="Ankita line dancing"></div>
+                            <div class="off-clock-marquee-item"><img src="../assets/about/off%20the%20clock/recent%20hobbies/IMG_7193.jpg" alt="Ankita line dancing"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="off-clock-closing-card">
+                <canvas class="closing-card-confetti" aria-hidden="true"></canvas>
+                <span>Excited for whatever's next!</span>
+            </div>
+        </div>
+
+        <!-- TAB 2: On the clock -->
+        <div class="tab-content" id="onClock">
+            <div class="on-clock-photo-row">
+                <div class="on-clock-photo-frame">
+                    <img src="../assets/about/on%20the%20clock/me/Screenshot%202026-08-28%20at%2018.33.43.png" alt="Ankita collaborating at a workshop">
+                </div>
+                <div class="on-clock-photo-frame">
+                    <img src="../assets/about/on%20the%20clock/me/Screenshot%202026-08-28%20at%2019.21.15.png" alt="Ankita presenting to a group">
+                </div>
+            </div>
+            <section class="career-reflection">
+                <div class="section-heading">What I've learned about myself as a designer</div>
+                <p class="content-text-block">I'm the connector. Across every project I've been part of, the role I naturally gravitate toward is the one that sits at the intersection — translating between research and design, between teams and stakeholders, between what users need and what the business is trying to do. I make sure everyone is working toward the same thing instead of in siloes.</p>
+                <p class="content-text-block">Yet, I don't think of myself as a generalist. I think of myself as someone who specializes in the end-to-end experience — systems thinking, service and experience design, and the kind of design leadership that keeps a project coherent from first insight to final handoff.</p>
+            </section>
+
+            <section class="career-reflection">
+                <div class="section-heading">What I want to delve into next</div>
+                <p class="content-text-block">Most of my experience has been in B2B. B2C is a space I'm looking forward to exploring — designing for a broader, more varied audience would be a great challenge to tackle. I'm also drawn to design strategy and product management, where design thinking moves upstream into how products are shaped and prioritized from the very beginning.</p>
+            </section>
+
+            <div class="career-tabs" role="tablist" aria-label="Resume sections">
+                <button class="career-tab active" type="button" role="tab" aria-selected="true" aria-controls="careerExperience" data-career-tab="careerExperience">Experience</button>
+                <button class="career-tab" type="button" role="tab" aria-selected="false" aria-controls="careerEducation" data-career-tab="careerEducation">Education</button>
+                <button class="career-tab" type="button" role="tab" aria-selected="false" aria-controls="careerLeadership" data-career-tab="careerLeadership">Leadership</button>
+                <a class="career-resume-link" href="https://drive.google.com/file/d/1OCFCDuq1xh6vp5CGEu_WOmgroRrohcE5/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    Resume
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="career-panel active" id="careerExperience" role="tabpanel">
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <div class="exp-left"><h4>UX Design Intern</h4><p>IBM</p></div>
+                        <div class="exp-time">Jun 2026 – Present</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-left"><h4>Project Manager</h4><p>Becton, Dickinson and Company × SCADpro</p></div>
+                        <div class="exp-time">Mar 2026 – May 2026</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-left"><h4>Digital Experience Designer</h4><p>Co-Create Schools</p></div>
+                        <div class="exp-time">Nov 2025 – Jan 2026</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-left"><h4>Experience Lead</h4><p>CVS Health × SCADpro</p></div>
+                        <div class="exp-time">Sep 2025 – Nov 2025</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-left"><h4>Experience Design Intern</h4><p>Lindström</p></div>
+                        <div class="exp-time">Jun 2025 – Aug 2025</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="career-panel" id="careerEducation" role="tabpanel" hidden>
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <div class="exp-left"><h4>Savannah College of Art and Design (SCAD)</h4><p>Bachelor of Fine Arts in User Experience Design, Dean’s List</p></div>
+                        <div class="exp-time">Sep 2023 – Mar 2027</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-left"><h4>International School of Helsinki</h4><p>International Baccalaureate Diploma Programme</p></div>
+                        <div class="exp-time">Aug 2019 – May 2023</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="career-panel" id="careerLeadership" role="tabpanel" hidden>
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <div class="exp-left"><h4>Communications Director</h4><p>FLUX (Future Leaders of UX), SCAD</p></div>
+                        <div class="exp-time">Jan 2026 – Present</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-left"><h4>Social Media Lead Coordinator</h4><p>Student Ambassador Program, SCAD</p></div>
+                        <div class="exp-time">Mar 2025 – Oct 2025</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-left"><h4>Student Ambassador</h4><p>Savannah College of Art and Design (SCAD)</p></div>
+                        <div class="exp-time">Jan 2024 – Mar 2025</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-left"><h4>Freelance Artist</h4><p>Independent</p></div>
+                        <div class="exp-time">Jan 2020 – Aug 2024</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-left"><h4>Pre-College Assistant</h4><p>Savannah College of Art and Design (SCAD)</p></div>
+                        <div class="exp-time">Jun 2024 – Jul 2024</div>
+                    </div>
+                    <div class="experience-item">
+                        <div class="exp-left"><h4>Co-founder and Lead of Media Communications</h4><p>Students Together Against Discrimination (STAND), International School of Helsinki</p></div>
+                        <div class="exp-time">2020 – 2023</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toolbox Section -->
+            <div class="toolbox-section">
+                <div class="section-heading">Toolbox</div>
+                <div class="toolbox-container">
+                    <div class="tool-scatter" id="toolScatter" aria-label="Tools I use">
+                        <div class="tool-item" style="--tool-order: 0"><img src="../assets/about/on%20the%20clock/tools/Figma-logo.svg.webp" alt="Figma"></div>
+                        <div class="tool-item" style="--tool-order: 5"><img src="../assets/about/on%20the%20clock/tools/miro.png" alt="Miro"></div>
+                        <div class="tool-item" style="--tool-order: 10"><img src="../assets/about/on%20the%20clock/tools/659d7f9e582a15e81030a3cf_Mural_Symbol_Multicolor_RGB.png" alt="Mural"></div>
+                        <div class="tool-item tool-item-wide" style="--tool-order: 15"><img src="../assets/about/on%20the%20clock/tools/Adobe_Corporate_wordmark.svg.webp" alt="Adobe"></div>
+                        <div class="tool-item" style="--tool-order: 1"><img src="../assets/about/on%20the%20clock/tools/Canva-logo-PNG-medium-size.png" alt="Canva"></div>
+                        <div class="tool-item" style="--tool-order: 6"><img src="../assets/about/on%20the%20clock/tools/framer.svg" alt="Framer"></div>
+                        <div class="tool-item" style="--tool-order: 11"><img src="../assets/about/on%20the%20clock/tools/Visual_Studio_Code_1.35_icon.svg.webp" alt="Visual Studio Code"></div>
+                        <div class="tool-item tool-item-wide" style="--tool-order: 16"><img src="../assets/about/on%20the%20clock/tools/Lovable_Logo_+_Wordmark_Black.png" alt="Lovable"></div>
+                        <div class="tool-item" style="--tool-order: 2"><img src="../assets/about/on%20the%20clock/tools/claude-ai.svg" alt="Claude"></div>
+                        <div class="tool-item" style="--tool-order: 7"><img src="../assets/about/on%20the%20clock/tools/Google_Gemini_icon_2025.svg.webp" alt="Google Gemini"></div>
+                        <div class="tool-item" style="--tool-order: 12"><img src="../assets/about/on%20the%20clock/tools/dalle_46093_logo_1702980542_gbe89.avif" alt="DALL-E"></div>
+                        <div class="tool-item" style="--tool-order: 17"><img src="../assets/about/on%20the%20clock/tools/logo-rounded.svg" alt="AI tool"></div>
+                        <div class="tool-item tool-item-wide" style="--tool-order: 3"><img src="../assets/about/on%20the%20clock/tools/Jira_Logo.svg.webp" alt="Jira"></div>
+                        <div class="tool-item" style="--tool-order: 8"><img src="../assets/about/on%20the%20clock/tools/Microsoft_logo.svg.webp" alt="Microsoft"></div>
+                        <div class="tool-item" style="--tool-order: 13"><img src="../assets/about/on%20the%20clock/tools/Visily-Water-Mark-Framed-Logo@4x.png" alt="Visily"></div>
+                        <div class="tool-item" style="--tool-order: 18"><img src="../assets/about/on%20the%20clock/tools/luxion-keyshot-keyshot-6-logo-final-1024px.jpg" alt="KeyShot"></div>
+                        <div class="tool-item" style="--tool-order: 4"><img src="../assets/about/on%20the%20clock/tools/rhinoceros-6.jpg" alt="Rhino"></div>
+                        <div class="tool-item tool-item-captioned" style="--tool-order: 9">
+                            <img src="../assets/about/on%20the%20clock/tools/brain.avif" alt="Illustration of a brain">
+                            <span class="tool-item-caption">My brain</span>
+                        </div>
+                        <div class="tool-item tool-item-captioned" style="--tool-order: 14">
+                            <img src="../assets/about/on%20the%20clock/tools/earth.avif" alt="Illustration of Earth">
+                            <span class="tool-item-caption">My global lens</span>
+                        </div>
+                    </div>
+                    <div class="toolbox-video-wrapper">
+                        <video id="toolboxVideo" class="toolbox-animation" src="../assets/videos/tool-box-animation.mp4" muted playsinline preload="auto" controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture>
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function(){
+            const header = document.querySelector('header.case-nav');
+            if (!header) return;
+            const ensureHeaderFixed = () => {
+                header.style.position = 'fixed';
+                header.style.top = '0';
+                header.style.left = '0';
+                header.style.right = '0';
+                header.style.width = '100%';
+                header.style.zIndex = '1000';
+            };
+            ensureHeaderFixed();
+            window.addEventListener('scroll', ensureHeaderFixed, { passive: true });
+            window.addEventListener('resize', ensureHeaderFixed);
+        })();
+
+        // Tab Switching Logic
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+
+                btn.classList.add('active');
+                const targetTab = document.getElementById(btn.getAttribute('data-tab'));
+                if (targetTab) {
+                    targetTab.classList.add('active');
+                }
+            });
+        });
+
+        const careerTabs = document.querySelectorAll('[data-career-tab]');
+        const careerPanels = document.querySelectorAll('.career-panel');
+
+        careerTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                careerTabs.forEach(item => {
+                    const isActive = item === tab;
+                    item.classList.toggle('active', isActive);
+                    item.setAttribute('aria-selected', String(isActive));
+                });
+                careerPanels.forEach(panel => {
+                    const isActive = panel.id === tab.dataset.careerTab;
+                    panel.classList.toggle('active', isActive);
+                    panel.hidden = !isActive;
+                });
+            });
+        });
+
+        document.querySelectorAll('.off-clock-marquee-track').forEach(track => {
+            const imageSet = track.querySelector('.off-clock-marquee-set');
+            if (!imageSet) return;
+            const duplicateSet = imageSet.cloneNode(true);
+            duplicateSet.setAttribute('aria-hidden', 'true');
+            track.appendChild(duplicateSet);
+        });
+
+        // Toolbox video plays when the section scrolls into view and then holds on the last frame.
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('toolboxVideo');
+            const toolScatter = document.getElementById('toolScatter');
+            const toolboxContainer = document.querySelector('.toolbox-container');
+            let hasStartedPlayback = false;
+            let isFrozenAtEnd = false;
+            let toolsReleased = false;
+
+            const releaseTools = () => {
+                if (toolsReleased || !toolScatter) return;
+                toolsReleased = true;
+                toolScatter.classList.add('tools-released');
+            };
+
+            const startToolbox = () => {
+                if (hasStartedPlayback) return;
+                hasStartedPlayback = true;
+                releaseTools();
+                video.play().catch(() => {});
+            };
+
+            const checkToolboxProximity = () => {
+                if (!toolboxContainer || hasStartedPlayback) return;
+                const bounds = toolboxContainer.getBoundingClientRect();
+                if (bounds.height > 0 && bounds.top <= window.innerHeight * 0.9 && bounds.bottom >= window.innerHeight * 0.1) {
+                    startToolbox();
+                }
+            };
+
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+                video.load();
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !hasStartedPlayback) {
+                            startToolbox();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.12,
+                    rootMargin: '0px'
+                });
+
+                observer.observe(toolboxContainer || video);
+                window.addEventListener('scroll', checkToolboxProximity, { passive: true });
+                window.addEventListener('resize', checkToolboxProximity);
+                document.querySelector('[data-tab="onClock"]')?.addEventListener('click', () => {
+                    requestAnimationFrame(checkToolboxProximity);
+                });
+                requestAnimationFrame(checkToolboxProximity);
+
+                // Freeze on last frame when video ends
+                video.addEventListener('ended', () => {
+                    if (!video.duration || Number.isNaN(video.duration)) {
+                        video.pause();
+                        return;
+                    }
+                    video.currentTime = Math.max(0, video.duration - 0.001);
+                    video.pause();
+                    isFrozenAtEnd = true;
+                });
+
+                video.addEventListener('timeupdate', () => {
+                    if (video.currentTime >= 0.7) releaseTools();
+                    if (!video.duration || Number.isNaN(video.duration) || isFrozenAtEnd) return;
+                    if (video.currentTime >= video.duration - 0.05) {
+                        video.currentTime = Math.max(0, video.duration - 0.001);
+                        video.pause();
+                        isFrozenAtEnd = true;
+                    }
+                });
+            }
+        });
+
+        // Return to landing page preserving state
+        (function(){
+            const back = document.getElementById('backToWorkBtn');
+            if (!back) return;
+            back.addEventListener('click', function(e){
+                const isLeftClick = (e.button === 0) && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+                const href = 'index.html?returnFromCase=true';
+                if (!isLeftClick) return;
+                e.preventDefault();
+                try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch(err) {}
+                window.location.href = href;
+            });
+        })();
+
+        // Staggered scroll animation observer for header & tabs
+        const observerOptions = {
+            threshold: 0.08,
+            rootMargin: '0px 0px -40px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+    
+    <script src="current-footer.js?confetti-card=1"></script>
+    <script>
+        injectFooter();
+        const closingCard = document.querySelector('.off-clock-closing-card');
+        attachConfettiTrail(closingCard, closingCard.querySelector('.closing-card-confetti'));
+    </script>
+</body>
+</html>

@@ -336,6 +336,7 @@
   if (!location.pathname.includes('/case-studies/')) return;
 
   const path = location.pathname.toLowerCase();
+  if (path.includes('playground')) return;
   let palette = null;
 
   const isIbmCase = path.includes('ibm');
@@ -572,7 +573,7 @@
       const onDarkRed = !!(
         target &&
         target.closest &&
-        target.closest('.sidebar:not(.expanded), .sidebar-header, #confetti-footer, .back-to-work')
+        target.closest('.sidebar:not(.expanded), .sidebar-header, #confetti-footer, .back-to-work, .off-clock-closing-card')
       );
       cursor.style.backgroundColor = onDarkRed ? '#FFFFFF' : '#631B17';
     };

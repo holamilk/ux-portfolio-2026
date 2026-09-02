@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Playground — Photo Masonry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&amp;display=swap">
+  <link rel="stylesheet" href="../other-current/current-responsive.css?v=20260901-4">
+  <script src="../other-current/current-site.js?v=20260902-5" defer></script>
+  <style>
+    :root {
+      --accent: #8F0A0A;
+      --bg: #ffffff;
+      --text-main: #333333;
+      --text-secondary: #555555;
+      --placeholder-bg: #f4f4f2;
+      --placeholder-text: #888888;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body { font-family: 'Poppins', sans-serif; font-weight: 300; letter-spacing: -0.01em; line-height: 1.7; }
+
+    /* Fixed Top Navigation */
+    header.case-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background-color: var(--bg);
+        border-bottom: 1px solid #eaeaea;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+        padding: 0;
+    }
+
+    .nav-left { display: flex; align-items: center; height: 100%; }
+
+    .back-to-work {
+        background-color: #631B17;
+        color: #ffffff;
+        height: 100%;
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 0.04em;
+        transition: background 0.2s ease, padding-left 0.2s ease;
+    }
+
+    .back-to-work:hover { background-color: #511613; padding-left: 32px; padding-right: 48px; }
+
+    .nav-right { display: flex; gap: 40px; padding-right: 50px; }
+
+    .nav-right a { text-decoration: none; color: var(--text-main); font-size: 14px; font-weight: 400; transition: color 0.2s ease; }
+    .nav-right a:hover { color: var(--accent); }
+
+    main {
+      width: min(1380px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 150px 0 120px;
+    }
+
+    .playground-header {
+      max-width: 760px;
+      margin-bottom: 88px;
+    }
+
+    .playground-header h1 {
+      margin-bottom: 14px;
+      color: var(--text-main);
+      font-size: clamp(48px, 7vw, 92px);
+      font-weight: 500;
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .playground-header p {
+      color: var(--text-secondary);
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.5;
+    }
+
+    .playground-section {
+      margin-bottom: 112px;
+      scroll-margin-top: 100px;
+    }
+
+    .playground-section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 30px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #dedbd7;
+    }
+
+    .playground-section-heading h2 {
+      color: var(--text-main);
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .playground-section-heading span {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .playground-grid {
+      columns: 3 300px;
+      column-gap: 22px;
+    }
+
+    .playground-piece {
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 22px;
+      padding: 8px;
+      break-inside: avoid;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 8px 24px rgba(35, 30, 27, 0.1);
+    }
+
+    .playground-piece img {
+      display: block;
+      width: 100%;
+      height: auto !important;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 720px) {
+      main {
+        width: min(100% - 32px, 1380px);
+        padding-top: 118px;
+      }
+      .playground-header { margin-bottom: 64px; }
+      .playground-section { margin-bottom: 80px; }
+      .playground-grid { columns: 2 150px; column-gap: 14px; }
+      .playground-piece { margin-bottom: 14px; padding: 6px; }
+    }
+    /* slide helpers are centralized in assets/transition.js */
+  </style>
+</head>
+<script>
+  (function(){
+    try{
+      const tRaw = sessionStorage.getItem('pageTransition');
+      if (!tRaw) return;
+      const t = JSON.parse(tRaw);
+      if (t && (t.direction === 'from-right' || t.direction === 'from-left')) {
+        document.body.classList.add('transition-slide');
+        document.body.classList.add(t.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+      }
+    }catch(e){}
+  })();
+</script>
+<script src="../assets/transition.js"></script>
+<body>
+
+  <header class="case-nav">
+    <div class="nav-left">
+      <a href="../index.html" class="back-to-work" id="backToWorkBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        back to home
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="../about.html">about</a>
+      <a href="../testimonials-copy.html">testimonials</a>
+      <a href="../contact copy.html">contact</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="playground-header">
+      <h1>Playground</h1>
+      <p>A collection of experiments, studies, and things I make beyond product design.</p>
+    </div>
+
+    <section class="playground-section" id="graphic-design">
+      <div class="playground-section-heading"><h2>Graphic Design</h2><span>06 works</span></div>
+      <div class="playground-grid">
+        <figure class="playground-piece"><img src="../assets/playground/graphic%20design/Screenshot%202026-09-01%20at%2023.25.04.png" alt="Graphic design work by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/graphic%20design/Screenshot%202026-09-01%20at%2023.25.17.png" alt="Graphic design work by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/graphic%20design/Screenshot%202026-09-01%20at%2023.25.26.png" alt="Graphic design work by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/graphic%20design/Screenshot%202026-09-01%20at%2023.25.34.png" alt="Graphic design work by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/graphic%20design/Screenshot%202026-09-01%20at%2023.25.44.png" alt="Graphic design work by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/graphic%20design/Screenshot%202026-09-01%20at%2023.26.02.png" alt="Graphic design work by Ankita" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="playground-section" id="digital-renderings">
+      <div class="playground-section-heading"><h2>Digital Renderings</h2><span>15 works</span></div>
+      <div class="playground-grid">
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.20.11.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.23.15.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.23.31.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.23.38.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.23.53.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.24.01.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.24.09.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.24.27.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.26.27.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.26.36.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.26.45.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.26.56.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.27.06.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.27.25.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/digital%20renderings/Screenshot%202026-09-01%20at%2023.27.34.png" alt="Digital rendering by Ankita" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="playground-section" id="paintings">
+      <div class="playground-section-heading"><h2>Paintings</h2><span>08 works</span></div>
+      <div class="playground-grid">
+        <figure class="playground-piece"><img src="../assets/playground/paintings/Screenshot%202026-09-01%20at%2023.38.42.png" alt="Painting by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/paintings/Screenshot%202026-09-01%20at%2023.39.02.png" alt="Painting by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/paintings/Screenshot%202026-09-01%20at%2023.39.13.png" alt="Painting by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/paintings/Screenshot%202026-09-01%20at%2023.39.27.png" alt="Painting by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/paintings/Screenshot%202026-09-01%20at%2023.39.34.png" alt="Painting by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/paintings/Screenshot%202026-09-01%20at%2023.39.42.png" alt="Painting by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/paintings/Screenshot%202026-09-01%20at%2023.39.55.png" alt="Painting by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/paintings/Screenshot%202026-09-01%20at%2023.40.03.png" alt="Painting by Ankita" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="playground-section" id="drawings">
+      <div class="playground-section-heading"><h2>Drawings</h2><span>05 works</span></div>
+      <div class="playground-grid">
+        <figure class="playground-piece"><img src="../assets/playground/drawings/Screenshot%202026-09-01%20at%2023.40.14.png" alt="Drawing by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/drawings/Screenshot%202026-09-01%20at%2023.40.23.png" alt="Drawing by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/drawings/Screenshot%202026-09-01%20at%2023.40.31.png" alt="Drawing by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/drawings/Screenshot%202026-09-01%20at%2023.40.39.png" alt="Drawing by Ankita" loading="lazy"></figure>
+        <figure class="playground-piece"><img src="../assets/playground/drawings/Screenshot%202026-09-01%20at%2023.40.49.png" alt="Drawing by Ankita" loading="lazy"></figure>
+      </div>
+    </section>
+  </main>
+  <script>
+    (function(){
+      const back = document.getElementById('backToWorkBtn');
+      if (!back) return;
+      back.addEventListener('click', function(e){
+        const isLeftClick = (e.button === 0) && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+        const href = back.getAttribute('href') || '../index.html';
+        if (!isLeftClick) return;
+        e.preventDefault();
+        try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch(err) {}
+        window.location.href = href;
+      });
+    })();
+  </script>
+    <script src="../other-current/current-footer.js"></script>
+    <script>injectFooter();</script>
+  </body>
+  </html>

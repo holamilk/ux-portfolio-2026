@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBM Case Study — Ankita's Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&amp;display=swap">
+    <link rel="stylesheet" href="../other-current/current-responsive.css?v=20260901-4">
+    <script src="../other-current/current-site.js?v=20260902-6" defer></script>
+    <script src="../assets/transition.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent: #8F0A0A;
+            --bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #555555;
+            --placeholder-bg: #f4f4f2;
+            --placeholder-text: #888888;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Fixed Top Navigation */
+        header.case-nav {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 70px;
+            background-color: var(--bg);
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+                z-index: 1000 !important;
+            padding: 0;
+            transform: none !important;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .back-to-work {
+            background-color: #631B17;
+            color: #ffffff;
+            height: 100%;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            transition: background 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .back-to-work:hover {
+            background-color: #511613;
+            padding-left: 32px;
+            padding-right: 48px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 40px;
+            padding-right: 50px;
+        }
+
+        .nav-right a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-right a:hover {
+            color: var(--accent);
+        }
+
+        /* Page Layout Container */
+        .page-container {
+            display: flex;
+            max-width: 1360px;
+            margin: 140px auto 140px auto;
+            padding: 0 60px;
+            gap: 120px;
+            position: relative;
+        }
+
+        /* Sticky Left Sidebar Navigation (Anchors) */
+        aside.case-sidebar {
+            width: 180px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 130px;
+            height: calc(100vh - 180px);
+        }
+
+        .sidebar-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 11px;
+            color: var(--placeholder-text);
+            margin-bottom: 24px;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            list-style: none;
+        }
+
+        .sidebar-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .sidebar-links a:hover, .sidebar-links a.active {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .sidebar-sublinks {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 12px 0 0 12px;
+            list-style: none;
+        }
+
+        .sidebar-sublinks a {
+            font-size: 12px;
+        }
+
+        /* Main Content Area */
+        main.case-content {
+            flex-grow: 1;
+            max-width: 880px;
+        }
+
+        /* --- PASSWORD GATE --- */
+        .password-gate {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100vw;
+            height: calc(100vh - 70px);
+            max-height: calc(100vh - 70px);
+            background-color: var(--bg);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.4s ease;
+            padding: 24px 0;
+            overflow: hidden; /* prevent gate causing page scroll */
+        }
+
+        /* gate-logo removed - header provides navigation */
+
+        .gate-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 400px;
+            width: 100%;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .gate-label {
+            font-size: 11px;
+            font-weight: 300;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 24px;
+        }
+
+        .gate-input {
+            width: 280px;
+            padding: 12px 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            font-size: 14px;
+            border: 1.5px solid rgba(0,0,0,0.12);
+            border-radius: 12px;
+            outline: none;
+            transition: border-color 0.2s ease;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .gate-input:focus {
+            border-color: var(--accent);
+        }
+
+        .gate-btn {
+            background: var(--accent);
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            border-radius: 12px;
+            padding: 12px 32px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            width: 280px;
+        }
+
+        .gate-btn:hover {
+            background: #780808;
+        }
+
+        .gate-help {
+            margin-top: 20px;
+            font-size: 12px;
+            font-weight: 300;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .gate-help:hover {
+            text-decoration: underline;
+        }
+
+        .gate-error {
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 400;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .shake {
+            animation: shake 0.4s ease;
+            border-color: var(--accent) !important;
+        }
+
+        /* --- CASE STUDY CONTENT (Hidden by default) --- */
+        .case-study-content {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .case-study-content.unlocked {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* --- SHARED TYPOGRAPHY & COMPONENTS --- */
+        .tag {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 12px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        h1.case-title {
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+            color: #111111;
+        }
+
+        h2.section-heading {
+            font-size: 42px;
+            margin: 90px 0 24px 0;
+            line-height: 1.15;
+            color: #111111;
+        }
+
+        main.case-content #workflow1 h2.section-heading.workflow-subtitle,
+        main.case-content #workflow2 h2.section-heading.workflow-subtitle {
+            color: var(--text-secondary) !important;
+        }
+
+        h3.subsection-heading {
+            margin: 0 0 14px;
+            font-size: 30px;
+            line-height: 1.2;
+            color: #111111;
+        }
+
+        p {
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            font-size: 17px;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 400;
+            background: linear-gradient(180deg, rgba(143,10,10,0) 70%, rgba(143,10,10,0.1) 30%);
+        }
+
+        .hero-lead {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+
+        .project-meta-line {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--placeholder-text);
+            margin-bottom: 16px;
+        }
+
+        .hero-first-image {
+            margin: 12px 0 70px;
+        }
+
+        .hook-callout {
+            width: 100%;
+            background: #F5F5F3;
+            padding: 62px 30px;
+            margin: 30px 0 68px;
+            text-align: center;
+            border-radius: 2px;
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 34px;
+            line-height: 1.2;
+            color: #2f2f2f;
+        }
+
+        .overview-snapshot {
+            border-top: 1px solid #e7e7e7;
+            border-bottom: 1px solid #e7e7e7;
+            margin: 16px 0 32px;
+        }
+
+        .overview-row {
+            display: grid;
+            grid-template-columns: 170px 1fr;
+            gap: 24px;
+            padding: 20px 0;
+        }
+
+        .overview-row + .overview-row {
+            border-top: 1px solid #efefef;
+        }
+
+        .overview-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 0.02em;
+        }
+
+        .overview-copy {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .overview-screen-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 34px;
+        }
+
+        .overview-screen-strip .img-placeholder {
+            margin: 0;
+            aspect-ratio: 16 / 10;
+        }
+
+        .doc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 0 0 38px;
+        }
+
+        .doc-grid .img-placeholder {
+            margin: 0;
+        }
+
+        .doc-grid .img-placeholder:nth-child(1) { aspect-ratio: 16 / 10; }
+        .doc-grid .img-placeholder:nth-child(2) { aspect-ratio: 4 / 3; }
+        .doc-grid .img-placeholder:nth-child(3) { aspect-ratio: 16 / 9; }
+        .doc-grid .img-placeholder:nth-child(4) { aspect-ratio: 4 / 3; }
+
+        .strip-caption {
+            font-size: 12px;
+            color: #6f6f6f;
+            line-height: 1.5;
+            margin-top: 8px;
+            margin-bottom: 4px;
+        }
+
+        .before-after-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 26px;
+            margin-top: 10px;
+            margin-bottom: 24px;
+        }
+
+        .before-after-pair {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f5f5f3;
+            border-radius: 2px;
+            padding: 18px;
+        }
+
+        .before-after-label {
+            margin-top: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #4b4b4b;
+            text-align: center;
+        }
+
+        .before-after-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .before-after-pair .img-placeholder {
+            margin: 0;
+            aspect-ratio: 16 / 10;
+        }
+
+        .comparison-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+        }
+
+        .gap-closed-callout {
+            margin: 18px 0 28px;
+            padding: 26px 24px;
+            border-radius: 2px;
+            background: #f7f7f5;
+            border-left: 4px solid #8F0A0A;
+        }
+
+        .gap-closed-callout .highlight {
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .redesign-strip {
+            overflow: hidden;
+            margin: 18px 0 34px;
+            padding: 8px 0 14px;
+            scrollbar-width: none;
+        }
+
+        .redesign-strip::-webkit-scrollbar {
+            display: none;
+        }
+
+        .redesign-track {
+            display: flex;
+            width: max-content;
+            gap: 18px;
+            animation: redesign-loop 24s linear infinite;
+        }
+
+        .redesign-strip:hover .redesign-track {
+            animation-play-state: paused;
+        }
+
+        .redesign-slide {
+            flex: 0 0 min(760px, 78vw);
+            margin: 0;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .redesign-slide img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        @keyframes redesign-loop {
+            to { transform: translateX(calc(-50% - 9px)); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .redesign-strip {
+                overflow-x: auto;
+            }
+
+            .redesign-track {
+                animation: none;
+            }
+        }
+
+        .pair-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #8a8a8a;
+            margin-bottom: 8px;
+        }
+
+        .pair-caption {
+            margin-top: 10px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #666666;
+        }
+
+        .stats-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 34px;
+            margin: 20px 0 34px;
+        }
+
+        .stat-panel {
+            padding: 18px 0;
+            border-top: 1px solid #ececec;
+            border-bottom: 1px solid #ececec;
+        }
+
+        .stat-value {
+            font-size: 56px;
+            line-height: 1;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin-bottom: 6px;
+        }
+
+        .stat-note {
+            font-size: 15px;
+            color: #777777;
+        }
+
+        .workflow-screen-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 0 0 34px;
+        }
+
+        .workflow-screen-pair figure {
+            margin: 0;
+        }
+
+        .workflow-screen-pair .img-placeholder {
+            margin: 0;
+            aspect-ratio: 16 / 10;
+        }
+
+        .workflow-screen-pair figcaption {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #6f6f6f;
+            line-height: 1.45;
+        }
+
+        .workflow-screen-single {
+            width: min(100%, 720px);
+            margin: 0 auto 34px;
+        }
+
+        .workflow-screen-single img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .workflow-screen-single figcaption {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #6f6f6f;
+            line-height: 1.45;
+            text-align: center;
+        }
+
+        .impact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-left: 20px;
+            margin-top: 6px;
+        }
+
+        .impact-list li {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        .impact-list strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .takeaway-callout {
+            width: 100%;
+            background: #F5F5F3;
+            padding: 56px 28px;
+            margin-top: 16px;
+            text-align: center;
+            border-radius: 2px;
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 31px;
+            line-height: 1.3;
+            color: #2f2f2f;
+        }
+
+        .editorial-quote {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 30px;
+            line-height: 1.35;
+            color: var(--text-main);
+            margin: 50px 0;
+            padding-left: 32px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .editorial-box {
+            background-color: #faf9f6;
+            padding: 48px;
+            margin: 50px 0;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .editorial-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background-color: var(--accent);
+        }
+
+        /* Interactive Image Placeholders */
+        .img-placeholder {
+            background-color: var(--placeholder-bg);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 60px 0;
+            border-radius: 8px;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+            cursor: pointer;
+        }
+
+        .img-placeholder:hover {
+            transform: scale(1.015) translateY(-4px);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.06);
+        }
+
+        .img-placeholder span {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            color: var(--placeholder-text);
+            text-transform: lowercase;
+            letter-spacing: 0.04em;
+        }
+
+        .ar-16-9 { aspect-ratio: 16 / 9; }
+        .ar-4-3 { aspect-ratio: 4 / 3; }
+        .ar-21-9 { aspect-ratio: 21 / 9; }
+
+        .tradeoff-visual {
+            width: 100%;
+            margin: 60px 0;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 16 / 9;
+        }
+
+        .tradeoff-visual img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .building-patterns-visual {
+            width: min(100%, 560px);
+            margin: 34px auto 60px;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .building-patterns-visual img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin: 34px 0 60px;
+        }
+
+        .workshop-visual {
+            margin: 0;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .workshop-visual img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .dev-handoff-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            margin: 34px 0 60px;
+        }
+
+        .dev-handoff-visual {
+            margin: 0;
+            overflow: hidden;
+            border-radius: 4px;
+            aspect-ratio: 16 / 10;
+            background: #f5f5f3;
+        }
+
+        .dev-handoff-visual img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .ai-output-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+            width: min(100%, 720px);
+            margin: 34px auto 48px;
+            align-items: start;
+        }
+
+        .ai-output-visual {
+            margin: 0;
+            overflow: hidden;
+            border-radius: 4px;
+            background: transparent;
+        }
+
+        .ai-output-visual img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .ai-output-visual figcaption {
+            padding: 12px 14px;
+            color: #6f6f6f;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 50px 0;
+        }
+
+        /* Custom IBM components matching Lindstrom aesthetic */
+        .pill-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .pill-tag {
+            background-color: #FDE8E5;
+            color: var(--accent);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 12px;
+            padding: 8px 16px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .workflow-card {
+            border-left: 3px solid var(--accent);
+            background: #faf9f6;
+            padding: 36px 40px;
+            margin-bottom: 24px;
+            border-radius: 0 2px 2px 0;
+        }
+
+        .workflow-name {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            color: #111111;
+            margin-bottom: 8px;
+        }
+
+        /* Outcome Statistics Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background-color: #faf9f6;
+            padding: 40px 32px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            background-color: #f2f0eb;
+        }
+
+        .stat-number {
+            font-family: 'Orpheus Pro', serif;
+            font-style: italic;
+            font-size: 36px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Scroll Micro-animations / Fade Ins */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            aside.case-sidebar {
+                display: none;
+            }
+            .page-container {
+                padding: 0 30px;
+            }
+            .split-grid, .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .overview-row,
+            .overview-screen-strip,
+            .doc-grid,
+            .before-after-grid,
+            .ai-output-grid,
+            .dev-handoff-grid,
+            .workshop-grid,
+            .stats-pair,
+            .workflow-screen-pair {
+                grid-template-columns: 1fr;
+            }
+            .hook-callout,
+            .takeaway-callout {
+                font-size: 25px;
+                padding: 40px 20px;
+            }
+            .stat-value {
+                font-size: 44px;
+            }
+        }
+    </style>
+
+    <script>
+        (function(){
+            try{
+                const tRaw = sessionStorage.getItem('pageTransition');
+                if (!tRaw) return;
+                const t = JSON.parse(tRaw);
+                if (t && (t.direction === 'from-right' || t.direction === 'from-left')) {
+                    document.body.classList.add('transition-slide');
+                    document.body.classList.add(t.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+                }
+            }catch(e){}
+        })();
+    </script>
+<body>
+
+    <!-- PASSWORD GATE -->
+    <div class="password-gate" id="passwordGate">
+        <div class="gate-container">
+            <span class="gate-label">This case study is password protected.</span>
+            <input type="password" id="passwordInput" class="gate-input" placeholder="Enter password" autocomplete="current-password">
+            <button id="submitBtn" type="button" class="gate-btn">Enter</button>
+            <span id="errorText" class="gate-error">Incorrect password.</span>
+            <a href="../contact copy.html" class="gate-help">Request access via the contact page</a>
+        </div>
+    </div>
+
+    <!-- Top Fixed Navigation -->
+    <header class="case-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="back-to-work" id="backToWorkBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                back to home
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="../about.html">about</a>
+            <a href="../testimonials-copy.html">testimonials</a>
+            <a href="../contact copy.html">contact</a>
+        </div>
+    </header>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+            const passwordGate = document.getElementById('passwordGate');
+            const passwordInput = document.getElementById('passwordInput');
+            const submitBtn = document.getElementById('submitBtn');
+            const errorText = document.getElementById('errorText');
+            const caseStudyContent = document.getElementById('caseStudyContent');
+
+            const CORRECT_PASSWORD = 'verycoolsecrets2026';
+            const SESSION_UNLOCK_KEY = 'ibm_unlocked';
+
+            try{ localStorage.removeItem('ibm_unlocked_persistent'); }catch(e){}
+
+            // prevent page scroll while gate is visible
+            try{
+                if (passwordGate && window.getComputedStyle(passwordGate).display !== 'none'){
+                    document.documentElement.style.overflow = 'hidden';
+                    document.body.style.overflow = 'hidden';
+                }
+            }catch(e){}
+
+            // Ensure header stays fixed even when body transforms are applied during transitions
+            function ensureHeaderFixed(){
+                try{
+                    const header = document.querySelector('header.case-nav');
+                    if(header){
+                        header.style.position = 'fixed';
+                        header.style.top = '0';
+                        header.style.left = '0';
+                        header.style.width = '100%';
+                        header.style.zIndex = '6000';
+                        header.style.transform = 'none';
+                    }
+                }catch(e){}
+            }
+
+            // Clear any body transforms/classes that break fixed positioning when unlocked prior
+            const isUnlocked = (() => {
+                try {
+                    return sessionStorage.getItem(SESSION_UNLOCK_KEY) === 'true';
+                } catch (e) {
+                    return false;
+                }
+            })();
+
+            if (isUnlocked) {
+                if(passwordGate) passwordGate.style.display = 'none';
+                if(caseStudyContent) caseStudyContent.classList.add('unlocked');
+                document.documentElement.style.overflow = '';
+                document.body.style.overflow = '';
+                try{ document.body.style.transform = ''; document.body.classList.remove('pre-slide-right','pre-slide-left','transition-slide'); }catch(e){}
+                ensureHeaderFixed();
+                try{ window.dispatchEvent(new Event('scroll')); }catch(e){}
+            }
+
+            // After any transition that uses body transform, re-enforce header fixed behavior.
+            try{
+                document.body.addEventListener('transitionend', function(ev){
+                    if(ev.propertyName === 'transform'){
+                        try{ document.body.style.transform = ''; document.body.classList.remove('pre-slide-right','pre-slide-left','transition-slide'); }catch(e){}
+                        ensureHeaderFixed();
+                        try{ window.dispatchEvent(new Event('scroll')); }catch(e){}
+                    }
+                });
+            }catch(e){}
+
+            // Fallback: enforce header fixed after the expected transition duration
+            setTimeout(() => { ensureHeaderFixed(); try{ window.dispatchEvent(new Event('scroll')); }catch(e){} }, 1500);
+
+            function handleUnlock() {
+                const val = passwordInput ? (passwordInput.value || '').trim() : '';
+                if (val === CORRECT_PASSWORD) {
+                    try{ sessionStorage.setItem(SESSION_UNLOCK_KEY,'true'); }catch(e){}
+                    if (passwordGate) {
+                        passwordGate.style.opacity = '0';
+                        setTimeout(() => {
+                            passwordGate.style.display = 'none';
+                            if(caseStudyContent) caseStudyContent.classList.add('unlocked');
+                            document.documentElement.style.overflow = '';
+                            document.body.style.overflow = '';
+                            try{ window.dispatchEvent(new Event('ibmCaseUnlocked')); }catch(e){}
+                        }, 400);
+                    }
+
+                    // clear any page-level transforms and pre-slide classes
+                    try{ document.body.style.transform = ''; document.body.classList.remove('pre-slide-right','pre-slide-left','transition-slide'); }catch(e){}
+
+                    // ensure header fixed
+                    try{ ensureHeaderFixed(); }catch(e){}
+
+                    // reveal animate elements
+                    try{ document.querySelectorAll('.animate-on-scroll').forEach(el => el.classList.add('visible')); }catch(e){}
+                    try{ window.dispatchEvent(new Event('scroll')); }catch(e){}
+
+                            // Ensure the centralized footer is injected after unlock.
+                            try{
+                                if (typeof injectFooter === 'function') {
+                                    injectFooter();
+                                } else {
+                                    const _int = setInterval(() => {
+                                        if (typeof injectFooter === 'function') {
+                                            clearInterval(_int);
+                                            try{ injectFooter(); }catch(e){}
+                                        }
+                                    }, 100);
+                                    // stop waiting after 5s
+                                    setTimeout(() => clearInterval(_int), 5000);
+                                }
+                            }catch(e){}
+
+                } else {
+                    if (passwordInput) { passwordInput.classList.add('shake'); setTimeout(()=> passwordInput.classList.remove('shake'),400); }
+                    if (errorText) errorText.style.opacity = '1';
+                }
+            }
+
+            submitBtn && submitBtn.addEventListener('click', handleUnlock);
+            passwordInput && passwordInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleUnlock(); else if(errorText) errorText.style.opacity = '0'; });
+
+            // Staggered scroll animation observer for editorial fade-ins
+            const observerOptions = {
+                threshold: 0.08,
+                rootMargin: '0px 0px -40px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Sidebar active link tracking on scroll
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.sidebar-links a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 180) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Return to landing page preserving state with left-slide transition
+            const back = document.getElementById('backToWorkBtn');
+            if (back) {
+                back.addEventListener('click', function(e){
+                    const isLeftClick = (e.button === 0) && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+                    const href = '../index.html?returnFromCase=true';
+                    if (!isLeftClick) return;
+                    e.preventDefault();
+                    try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch(err) {}
+                    window.location.href = href;
+                });
+            }
+            try{ window.dispatchEvent(new Event('scroll')); }catch(e){}
+    });
+    </script>
+
+    <!-- CASE STUDY CONTENT -->
+    <div class="case-study-content" id="caseStudyContent">
+        <div class="page-container">
+            <!-- Sticky Left Anchor Navigation -->
+            <aside class="case-sidebar">
+                <div class="sidebar-title">contents</div>
+                <ul class="sidebar-links">
+                    <li><a href="#overview">overview</a></li>
+                    <li>
+                        <a href="#part1">Part One (Redesign)</a>
+                        <ul class="sidebar-sublinks">
+                            <li><a href="#stakeholder-collaboration">Stakeholder Collaboration</a></li>
+                            <li><a href="#carbon-design-system">Carbon Design System</a></li>
+                            <li><a href="#final-design">Final Design</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#part2">Part Two (AI Tools)</a>
+                        <ul class="sidebar-sublinks">
+                            <li><a href="#workflow1">AI Workflow 1</a></li>
+                            <li><a href="#workflow2">AI Workflow 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#impact">impact</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Case Study Content -->
+            <main class="case-content">
+                
+                <div class="animate-on-scroll">
+                    <span class="tag">IBM zSecure Detection: Designing Inside an Acquisition</span>
+                    <h1 class="case-title">IBM Z Mainframe Security</h1>
+                    <p class="hero-lead">Designing to mitigate security vulnerabilities and accelerate future design workflows through AI</p>
+                    <p class="project-meta-line">UX Design Intern · IBM · Summer 2026 · Enterprise Security</p>
+                </div>
+
+                <div class="hook-callout animate-on-scroll">
+                    A product shipped before it was unified.
+                </div>
+
+                <section id="overview" class="animate-on-scroll">
+                    <h2 class="section-heading">Overview</h2>
+                    <div class="overview-snapshot">
+                        <div class="overview-row">
+                            <div class="overview-label">Problem</div>
+                            <div class="overview-copy">IBM acquired a threat detection and response product for IBM Z mainframe environments and GA'd zSecure Detection by combining 5 standalone products under one name before they were actually unified. The recently acquired product ran on outdated components with security vulnerabilities.</div>
+                        </div>
+                        <div class="overview-row">
+                            <div class="overview-label">What I did</div>
+                            <div class="overview-copy">
+                                <ol>
+                                    <li>Migrated the acquired product into IBM's Carbon design system and shipped it to customers.</li>
+                                    <li>Co-facilitated design thinking & engineering workshops to align on a shared goal and action plan.</li>
+                                    <li>Built 2 AI workflows now being used in the org.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="part1" class="animate-on-scroll">
+                    <h2 class="section-heading">Part One — Carbonizing Threat Detection Product</h2>
+                    <div class="editorial-box">
+                        <p>Before design started there was a business decision to make. Ship the Carbonized screens early in a split release, or hold and ship the full product in Q4. Splitting would have hit a closer deadline but fractured the experience right as customers were adjusting to the new platform.</p>
+                        <p style="margin-bottom: 0;"><span class="highlight">We pushed for shipping it whole.</span> One quarter later, customers got a coherent product.</p>
+                    </div>
+                    <figure class="tradeoff-visual">
+                        <img src="../assets/case studies/ibm/tradeoff.png?v=20260901-1" alt="Timeline comparing split and full product release tradeoffs">
+                    </figure>
+                    <h3 class="subsection-heading">Time crunch meant unconventional route</h3>
+                    <p>I had no time to conduct research, complete competitive benchmarking, or even create low-fidelity wireframes. We jumped straight into design.</p>
+                    <p>This wasn't a component swap. Before touching a single screen, I used object-oriented UX to map the product's structure — core objects, attributes, and relationships — and asked how this acquisition fit into the broader portfolio. That systemic foundation let me simplify the UI, improve interactions, and make critical threat response features accessible within a dense security environment.</p>
+
+                    <h3 id="stakeholder-collaboration" class="subsection-heading">Ultimate stakeholder collaboration</h3>
+                    <p>Since we couldn't delve into traditional UX processes, this project demanded collaboration and communication more than ever. We spent several weeks in stakeholder meetings to understand how the product worked and how best to design for it.</p>
+                    <div class="workshop-grid">
+                        <figure class="workshop-visual"><img src="../assets/case studies/ibm/workshop/in person workshop.png?v=20260901-1" alt="In-person stakeholder workshop for IBM Threat Detection"></figure>
+                        <figure class="workshop-visual"><img src="../assets/case studies/ibm/workshop/virtual workshop.png?v=20260901-1" alt="Virtual stakeholder workshop for IBM Threat Detection"></figure>
+                    </div>
+
+                    <h3 id="carbon-design-system" class="subsection-heading">Working with Carbon Design System</h3>
+                    <p>Going in, I assumed Carbon would make things straightforward — the components are there, you use them. What I didn't anticipate was how much judgment still goes into it. Design systems create consistency, but it's on the designer to adapt patterns to the actual product context. For this product, that meant applying enterprise components to dense security data that cybersecurity professionals need to read and act on fast. The system gives you the building blocks. What you do with them is still entirely yours.</p>
+                    <figure class="building-patterns-visual">
+                        <img src="../assets/case studies/ibm/building patterns.png?v=20260901-1" alt="Carbon Design System components and patterns developed for Threat Detection">
+                    </figure>
+
+                    <h3 class="subsection-heading">Working with our amazing devs</h3>
+                    <p>Collaborating with our developer team and scoping out release plans with them was a very fruitful process. I learned a lot about best practices for handoffs and presenting designs to any kind of audience, thanks to my lead, Julia.</p>
+                    <div class="dev-handoff-grid">
+                        <figure class="dev-handoff-visual"><img src="../assets/case studies/ibm/dev handoff/dev handoff 1.png?v=20260901-1" alt="Developer handoff flow overview"></figure>
+                        <figure class="dev-handoff-visual"><img src="../assets/case studies/ibm/dev handoff/dev handoff 2.png?v=20260901-1" alt="Developer handoff annotation for alert statuses"></figure>
+                        <figure class="dev-handoff-visual"><img src="../assets/case studies/ibm/dev handoff/dev handoff 3.png?v=20260901-1" alt="Developer handoff component mapping"></figure>
+                        <figure class="dev-handoff-visual"><img src="../assets/case studies/ibm/dev handoff/dev handoff 4.png?v=20260901-1" alt="Developer handoff presentation with the engineering team"></figure>
+                    </div>
+
+                    <h3 id="final-design" class="subsection-heading">Final redesigns that shipped</h3>
+                    <p>After weeks of work, the design is in development and shipping in Q4. This was a shared product, but I stepped in as an individual contributor and took full ownership of significant chunks end to end — from design decisions to developer handoff — and I am really proud of that accomplishment.</p>
+                    <p class="gap-closed-callout"><strong class="highlight">Gap closed:</strong> This tool helps automate consistency auditing processes across vast portfolios that can be a very manual and slow process. Using this tool can help achieve alignment faster and start taking action.</p>
+                    <div class="before-after-stack">
+                        <figure class="before-after-pair">
+                            <img class="comparison-image" src="../assets/case studies/ibm/compare 1.png?v=20260901-1" alt="Before and after comparison of the Early Warning interface">
+                            <figcaption class="before-after-label">Before: Legacy</figcaption>
+                        </figure>
+
+                        <figure class="before-after-pair">
+                            <img class="comparison-image" src="../assets/case studies/ibm/compare 2.png?v=20260901-1" alt="Before and after comparison of the ProdConfigs resource set interface">
+                            <figcaption class="before-after-label">After: Carbonized</figcaption>
+                        </figure>
+
+                        <div class="redesign-strip" aria-label="Redesigned IBM Threat Monitor screens">
+                            <div class="redesign-track">
+                                <figure class="redesign-slide"><img src="../assets/case studies/ibm/redesign/redesign 1.png?v=20260901-1" alt="Redesigned IBM Threat Monitor interface screen one"></figure>
+                                <figure class="redesign-slide"><img src="../assets/case studies/ibm/redesign/redesign 2.png?v=20260901-1" alt="Redesigned IBM Threat Monitor interface screen two"></figure>
+                                <figure class="redesign-slide"><img src="../assets/case studies/ibm/redesign/redesign 3.png?v=20260901-1" alt="Redesigned IBM Threat Monitor interface screen three"></figure>
+                                <figure class="redesign-slide" aria-hidden="true"><img src="../assets/case studies/ibm/redesign/redesign 1.png?v=20260901-1" alt=""></figure>
+                                <figure class="redesign-slide" aria-hidden="true"><img src="../assets/case studies/ibm/redesign/redesign 2.png?v=20260901-1" alt=""></figure>
+                                <figure class="redesign-slide" aria-hidden="true"><img src="../assets/case studies/ibm/redesign/redesign 3.png?v=20260901-1" alt=""></figure>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section id="part2" class="animate-on-scroll">
+                    <h2 class="section-heading">Part Two — An AI side quest that became something bigger</h2>
+                    <p>After Threat Monitor shipped I kept thinking about how tight the timeline was. The design ramp alone, understanding an acquired product deeply enough to redesign it well, took weeks. With four more products to unify, that wasn't going away.</p>
+                    <p>I started talking to designers across other product teams and orgs, asking how they were working. Most teams were using AI for ideation at best. Nobody had built workflows specific to design delivery. I saw a gap and built two workflows to close it.</p>
+                </section>
+
+                <section id="workflow1" class="animate-on-scroll">
+                    <h2 class="section-heading workflow-subtitle">Workflow 1 — Product Analyser</h2>
+                    <p>Takes an acquired product's technical docs and legacy UI screenshots. Outputs a product summary, an object model, and Carbon v11 layout previews in one pass.</p>
+                    <p><strong class="highlight">Gap closed:</strong> This tool helps accelerate the initial stages of understanding and defining a product. It also gives designers a head start on creating components and patterns, the building blocks of any product. Entering the design stage with that foundation can help teams stay on track for quarterly releases.</p>
+                    <div class="stats-pair">
+                        <div class="stat-panel">
+                            <div class="stat-value">1.5–2 weeks</div>
+                            <div class="stat-note">Manual</div>
+                        </div>
+                        <div class="stat-panel">
+                            <div class="stat-value">3–4 days</div>
+                            <div class="stat-note">With AI</div>
+                        </div>
+                    </div>
+                    <div class="ai-output-grid">
+                        <figure class="ai-output-visual">
+                            <img src="../assets/case studies/ibm/ai tool 1/tool 1 output 1.png?v=20260901-2" alt="Product Analyser generated interface overlay states">
+                            <figcaption>Carbonized version of legacy components</figcaption>
+                        </figure>
+                        <figure class="ai-output-visual">
+                            <img src="../assets/case studies/ibm/ai tool 1/tool 1 output 2.png?v=20260901-1" alt="Product Analyser generated edit-action interface">
+                            <figcaption>Carbonized version of legacy components</figcaption>
+                        </figure>
+                        <figure class="ai-output-visual">
+                            <img src="../assets/case studies/ibm/ai tool 1/tool 1 output 3.png?v=20260901-1" alt="Product Analyser generated object model">
+                            <figcaption>Object-oriented Programming map to help dev documentation</figcaption>
+                        </figure>
+                        <figure class="ai-output-visual">
+                            <img src="../assets/case studies/ibm/ai tool 1/tool 1 output 4.png?v=20260901-1" alt="Product Analyser generated screen and object mapping">
+                            <figcaption>Object-oriented UX map to understand a new UI</figcaption>
+                        </figure>
+                    </div>
+                </section>
+
+                <section id="workflow2" class="animate-on-scroll">
+                    <h2 class="section-heading workflow-subtitle">Workflow 2 — Consistency Auditor</h2>
+                    <p>Audits screens against a baseline from another product in the portfolio. Checks discrepancies that are not easily caught by the eye: terminology, spacing, fonts, color tokens, and detached variables. Outputs a severity-triaged report that also includes solutions on how to rectify the inconsistency, with screen overlays to point to the problem area and Dev Mode annotations.</p>
+                    <p>The first time I ran it on my project, the deviations it caught were implemented the same day. It is now named in an official project proposal and in active use by another designer on the team.</p>
+                    <div class="stats-pair">
+                        <div class="stat-panel">
+                            <div class="stat-value">Months</div>
+                            <div class="stat-note">Manual Audit</div>
+                        </div>
+                        <div class="stat-panel">
+                            <div class="stat-value">Weeks/Days</div>
+                            <div class="stat-note">With AI</div>
+                        </div>
+                    </div>
+                    <figure class="workflow-screen-single">
+                        <img src="../assets/case studies/ibm/ai tool 2/tool 2 output 1.png?v=20260901-1" alt="Consistency Auditor output highlighting inconsistencies in a severity-triaged report">
+                        <figcaption>Highlighted inconsistencies and severity-triaged report</figcaption>
+                    </figure>
+                </section>
+
+                <section id="impact" class="animate-on-scroll">
+                    <h2 class="section-heading">Impact</h2>
+                    <ul class="impact-list">
+                        <li>Accelerated the design workflow 2x, helping Threat Monitor ship within the planned release window</li>
+                        <li>Built reusable components and patterns on the Carbon design system, now available for other IBM security product teams</li>
+                        <li>Co-facilitated unification workshops that produced a shared architecture plan and aligned requirements across design and engineering</li>
+                        <li>Built AI tools that automate repetitive design tasks and free teams to focus on the decisions that actually require human judgment</li>
+                    </ul>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="../other-current/current-footer.js"></script>
+    <script>injectFooter();</script>
+
+</body>
+</html>

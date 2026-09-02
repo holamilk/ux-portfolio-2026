@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ankita Chakrabarty - Acclio Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&amp;display=swap">
+  <link rel="stylesheet" href="../other-current/current-responsive.css?v=20260901-4">
+  <script src="../other-current/current-site.js?v=20260902-5" defer></script>
+  <style>
+    :root {
+      --accent: #8F0A0A;
+      --bg: #ffffff;
+      --text-main: #333333;
+      --text-secondary: #555555;
+      --placeholder-bg: #f4f4f2;
+      --placeholder-text: #888888;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    header.case-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background-color: var(--bg);
+      border-bottom: 1px solid #eaeaea;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      padding: 0;
+    }
+
+    .nav-left { display: flex; align-items: center; height: 100%; }
+
+    .back-to-work {
+      background-color: #631B17;
+      color: #ffffff;
+      height: 100%;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      transition: background 0.2s ease, padding-left 0.2s ease;
+    }
+
+    .back-to-work:hover {
+      background-color: #511613;
+      padding-left: 32px;
+      padding-right: 48px;
+    }
+
+    .nav-right { display: flex; gap: 40px; padding-right: 50px; }
+    .nav-right a { text-decoration: none; color: var(--text-main); font-size: 14px; font-weight: 400; transition: color 0.2s ease; }
+    .nav-right a:hover { color: var(--accent); }
+
+    .page-container {
+      display: flex;
+      max-width: 1360px;
+      margin: 140px auto 140px auto;
+      padding: 0 60px;
+      gap: 120px;
+      position: relative;
+    }
+
+    aside.case-sidebar {
+      width: 180px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 130px;
+      height: calc(100vh - 180px);
+    }
+
+    .sidebar-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 11px;
+      color: var(--placeholder-text);
+      margin-bottom: 24px;
+    }
+
+    .sidebar-links { display: flex; flex-direction: column; gap: 16px; list-style: none; }
+    .sidebar-links a { text-decoration: none; color: var(--text-secondary); font-size: 14px; transition: color 0.2s ease, transform 0.2s ease; display: inline-block; }
+    .sidebar-links a:hover, .sidebar-links a.active { color: var(--accent); transform: translateX(4px); }
+
+    main.case-content { flex-grow: 1; max-width: 880px; }
+
+    h1, h2, h3 {
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-weight: normal;
+    }
+
+    .tag {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    h1.case-title {
+      font-size: 58px;
+      line-height: 1.1;
+      margin-bottom: 30px;
+      letter-spacing: -0.02em;
+    }
+
+    h2.section-heading {
+      font-size: 42px;
+      margin: 90px 0 24px 0;
+      line-height: 1.15;
+    }
+
+    p { margin-bottom: 24px; color: var(--text-secondary); font-size: 17px; }
+
+    .hero-lead {
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--text-main);
+      margin-bottom: 50px;
+      font-weight: 300;
+    }
+
+    .case-subtitle {
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 1.45;
+      color: var(--text-secondary);
+      margin: -12px 0 24px;
+    }
+
+    .project-meta-line {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--placeholder-text);
+      margin-bottom: 42px;
+    }
+
+    .hero-first-image { margin-top: 0; }
+
+    .hook-callout {
+      background: #f7f4f2;
+      padding: 72px 64px;
+      margin: 72px 0 90px;
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.3;
+      text-align: center;
+      color: var(--text-main);
+    }
+
+    .overview-snapshot {
+      margin: 34px 0 44px;
+      border-top: 1px solid #e7e1dd;
+    }
+
+    .overview-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 32px;
+      padding: 28px 0;
+      border-bottom: 1px solid #e7e1dd;
+    }
+
+    .overview-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .overview-copy {
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+
+    .visual-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 44px 0 72px;
+    }
+
+    .visual-strip.two-up { grid-template-columns: repeat(2, 1fr); }
+
+    .visual-strip .img-placeholder {
+      aspect-ratio: 3 / 4;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .overview-carousel {
+      overflow: hidden;
+      margin: 44px 0 72px;
+      scrollbar-width: none;
+    }
+
+    .overview-carousel-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: overview-carousel-loop 32s linear infinite;
+    }
+
+    .overview-carousel-slide {
+      flex: 0 0 min(320px, 36vw);
+      margin: 0;
+    }
+
+    .overview-carousel-slide img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    @keyframes overview-carousel-loop {
+      to { transform: translateX(calc(-50% - 8px)); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .overview-carousel { overflow-x: auto; }
+      .overview-carousel-track { animation: none; }
+    }
+
+    .isolated-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin: 52px 0 76px;
+      padding: 42px 0;
+      border-top: 1px solid #e7e1dd;
+      border-bottom: 1px solid #e7e1dd;
+    }
+
+    .isolated-stat { text-align: center; }
+
+    .isolated-stat-value {
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: 54px;
+      line-height: 1;
+      color: var(--accent);
+    }
+
+    .isolated-stat-label {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--placeholder-text);
+    }
+
+    .section-intro {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: 22px;
+    }
+
+    .findings-list {
+      list-style: none;
+      margin: 34px 0 56px;
+    }
+
+    .findings-list li {
+      padding: 22px 0;
+      border-top: 1px solid #e7e1dd;
+      color: var(--text-secondary);
+      font-size: 16px;
+    }
+
+    .findings-list li:last-child { border-bottom: 1px solid #e7e1dd; }
+
+    .findings-list strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .gaps-table {
+      margin: 38px 0 54px;
+    }
+
+    .gaps-head,
+    .gaps-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+    }
+
+    .gaps-head {
+      padding: 0 0 12px;
+      color: var(--placeholder-text);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .gaps-row {
+      padding: 25px 0;
+      border-bottom: 1px solid #e7e1dd;
+      color: var(--text-secondary);
+      font-size: 16px;
+    }
+
+    .strategy-visual {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 36px 0 64px;
+      border-radius: 8px;
+    }
+
+    .value-matrix-visual {
+      width: min(100%, 620px);
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .relocation-visual {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 90px minmax(0, 1fr);
+      align-items: center;
+      gap: 18px;
+      margin: 42px 0 72px;
+    }
+
+    .relocation-visual img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .relocation-arrow {
+      position: relative;
+      height: 0;
+      border-top: 2px dashed var(--accent);
+    }
+
+    .relocation-arrow::after {
+      content: '';
+      position: absolute;
+      right: -1px;
+      top: -6px;
+      width: 9px;
+      height: 9px;
+      border-top: 2px solid var(--accent);
+      border-right: 2px solid var(--accent);
+      transform: rotate(45deg);
+    }
+
+    .longevity-timeline {
+      margin: 0 0 72px;
+      padding: 42px 44px 36px;
+      overflow-x: auto;
+      background: #fffbf5;
+      border-radius: 8px;
+    }
+
+    .longevity-label {
+      margin-bottom: 30px;
+      color: #c49a2a;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .longevity-stage {
+      position: relative;
+      min-width: 620px;
+      padding-top: 230px;
+    }
+
+    .longevity-rail {
+      position: relative;
+      height: 1px;
+      background: rgba(196, 154, 42, 0.4);
+    }
+
+    .timeline-node {
+      position: absolute;
+      top: 0;
+      width: 120px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--text-secondary);
+      font: inherit;
+      cursor: pointer;
+      transform: translate(-50%, -9px);
+    }
+
+    .timeline-node:first-child { left: 33%; }
+    .timeline-node:last-child { left: 67%; }
+
+    .timeline-node-dot {
+      display: block;
+      width: 18px;
+      height: 18px;
+      margin: 0 auto 12px;
+      border: 5px solid #c49a2a;
+      border-radius: 50%;
+      background: #ffffff;
+      transition: transform 0.3s ease;
+    }
+
+    .timeline-node:hover .timeline-node-dot,
+    .timeline-node:focus-visible .timeline-node-dot,
+    .timeline-node.is-active .timeline-node-dot {
+      transform: scale(1.1);
+    }
+
+    .timeline-node-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .timeline-card {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: min(430px, 70%);
+      padding: 24px 26px;
+      border: 1px solid rgba(196, 154, 42, 0.3);
+      border-radius: 12px;
+      background: #fffef7;
+      box-shadow: 0 12px 28px rgba(95, 72, 25, 0.1);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, -8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .timeline-card.is-active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, 0);
+    }
+
+    .timeline-card::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      width: 1px;
+      height: 25px;
+      background: rgba(196, 154, 42, 0.45);
+    }
+
+    .timeline-card-time {
+      margin-bottom: 12px;
+      color: #c49a2a;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .timeline-card ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .timeline-card li {
+      padding-top: 8px;
+      border-top: 1px solid rgba(196, 154, 42, 0.18);
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .timeline-card-closing {
+      margin: 16px 0 0;
+      color: #77716a;
+      font-size: 13px;
+      font-style: italic;
+    }
+
+    .longevity-postcards {
+      margin: 0 0 72px;
+      padding: 48px 40px;
+      background: #fffbf5;
+      border-radius: 8px;
+    }
+
+    .postcard-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 340px));
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .postcard {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 480px;
+      padding: 28px 26px 24px;
+      overflow: hidden;
+      border-radius: 12px;
+      background-color: #fffef7;
+      background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 27px, rgba(116, 108, 98, 0.1) 27px, rgba(116, 108, 98, 0.1) 28px);
+      box-shadow: 0 14px 34px rgba(95, 72, 25, 0.14);
+    }
+
+    .postcard-stamp {
+      position: absolute;
+      top: 22px;
+      right: 24px;
+      width: 38px;
+      height: 44px;
+      border: 2px dotted rgba(255, 255, 255, 0.75);
+      background: #c49a2a;
+      box-shadow: 0 0 0 2px #c49a2a;
+    }
+
+    .postcard-date {
+      margin-bottom: 28px;
+      color: #c49a2a;
+      font-family: 'Orpheus Pro', Georgia, serif;
+      font-size: 25px;
+      font-style: italic;
+    }
+
+    .postcard-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .postcard-tab {
+      padding: 8px 13px;
+      border: 0;
+      border-radius: 999px;
+      background: #e8e4de;
+      color: #6d6862;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .postcard-tab.is-active {
+      background: #c49a2a;
+      color: #ffffff;
+    }
+
+    .postcard:first-child .postcard-tab {
+      background: #c49a2a;
+      color: #ffffff;
+    }
+
+    .postcard-tab:focus-visible {
+      outline: 2px solid #7b4f2e;
+      outline-offset: 2px;
+    }
+
+    .postcard-content {
+      min-height: 0;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+
+    .postcard-panel {
+      display: none;
+      opacity: 0;
+    }
+
+    .postcard-panel.is-active {
+      display: block;
+      animation: postcard-fade 0.25s ease forwards;
+    }
+
+    .postcard-line {
+      margin: 0;
+      padding: 10px 0;
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .postcard-closing {
+      margin: auto 0 0;
+      padding-top: 18px;
+      color: #77716a;
+      font-size: 12px;
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    @keyframes postcard-fade {
+      to { opacity: 1; }
+    }
+
+    .longevity-quote {
+      background: #faf7f5;
+      border-left: 3px solid var(--accent);
+      margin: 42px 0;
+      padding: 38px 42px;
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: 28px;
+      line-height: 1.4;
+      color: var(--text-main);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 38px 0 48px;
+    }
+
+    .feature-card {
+      background: #faf7f5;
+      padding: 28px 22px;
+      border-top: 2px solid rgba(143, 10, 10, 0.35);
+    }
+
+    .feature-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+
+    .screen-carousel {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      width: calc(100% + 140px);
+      margin: 0 0 70px -70px;
+      padding: 8px 0 20px;
+    }
+
+    .screen-carousel figure {
+      margin: 0;
+    }
+
+    .final-design-label {
+      margin: 28px 0 0;
+      color: var(--text-main);
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .final-design-label:first-child { margin-top: 0; }
+
+    .screen-carousel img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .testing-visual {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 36px 0 72px;
+      border-radius: 8px;
+    }
+
+    .trust-box {
+      background: #faf7f5;
+      border-left: 3px solid var(--accent);
+      margin: 34px 0 50px;
+      padding: 38px 42px;
+    }
+
+    .trust-box p:last-child { margin-bottom: 0; }
+
+    .editorial-quote {
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: 30px;
+      line-height: 1.35;
+      color: var(--text-main);
+      margin: 50px 0;
+      padding-left: 32px;
+      border-left: 2px solid var(--accent);
+    }
+
+    .editorial-box {
+      background-color: #faf9f6;
+      padding: 48px;
+      margin: 50px 0;
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .editorial-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background-color: var(--accent);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin: 50px 0 70px 0;
+      padding: 30px 0;
+      border-top: 1px solid #eaeaea;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .meta-item span.label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--placeholder-text);
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .meta-item span.val { font-size: 14px; color: var(--text-main); font-weight: 500; }
+
+    .img-placeholder {
+      background-color: var(--placeholder-bg);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 60px 0;
+      border-radius: 8px;
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+      cursor: pointer;
+    }
+
+    .img-placeholder:hover {
+      transform: scale(1.015) translateY(-4px);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.06);
+    }
+
+    .img-placeholder span {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      color: var(--placeholder-text);
+      text-transform: lowercase;
+      letter-spacing: 0.04em;
+    }
+
+    .ar-16-9 { aspect-ratio: 16 / 9; }
+    .ar-4-3 { aspect-ratio: 4 / 3; }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin: 50px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 60px 0;
+    }
+
+    .stat-card {
+      background-color: #faf9f6;
+      padding: 40px 32px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      background-color: #f2f0eb;
+    }
+
+    .stat-number {
+      font-family: 'Orpheus Pro', serif;
+      font-style: italic;
+      font-size: 48px;
+      color: var(--accent);
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .stat-label { font-size: 13px; color: var(--text-secondary); font-weight: 400; }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1024px) {
+      aside.case-sidebar { display: none; }
+      .page-container { padding: 0 30px; }
+      .split-grid { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 700px) {
+      h1.case-title { font-size: 42px; }
+      .hook-callout { padding: 52px 28px; }
+      .overview-row,
+      .visual-strip,
+      .visual-strip.two-up,
+      .isolated-stats,
+      .gaps-head,
+      .gaps-row,
+      .feature-grid { grid-template-columns: 1fr; }
+      .overview-row { gap: 10px; }
+      .overview-carousel-slide { flex-basis: 62vw; }
+      .isolated-stats { gap: 42px; }
+      .gaps-head { display: none; }
+      .gaps-row { gap: 10px; }
+      .gaps-row span:first-child::before,
+      .gaps-row span:last-child::before {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--placeholder-text);
+        font-size: 10px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .gaps-row span:first-child::before { content: 'Gap'; }
+      .gaps-row span:last-child::before { content: 'Move'; }
+      .longevity-quote,
+      .trust-box { padding: 30px 26px; }
+
+      .relocation-visual {
+        grid-template-columns: 1fr;
+      }
+
+      .relocation-arrow {
+        width: 54px;
+        margin: 8px auto;
+        transform: rotate(90deg);
+      }
+
+      .longevity-timeline {
+        padding: 34px 24px;
+        overflow: visible;
+      }
+
+      .longevity-stage {
+        min-width: 0;
+        padding: 0 0 0 30px;
+      }
+
+      .longevity-rail {
+        display: grid;
+        gap: 20px;
+        height: auto;
+        background: linear-gradient(rgba(196, 154, 42, 0.4), rgba(196, 154, 42, 0.4)) 8px 0 / 1px 100% no-repeat;
+      }
+
+      .timeline-node {
+        position: relative;
+        left: auto !important;
+        top: auto;
+        width: 100%;
+        text-align: left;
+        transform: none;
+      }
+
+      .timeline-node-dot {
+        position: absolute;
+        left: -30px;
+        top: 0;
+        margin: 0;
+      }
+
+      .timeline-card {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        margin-top: 14px;
+        display: none;
+        transform: translateY(-8px);
+      }
+
+      .timeline-card.is-active {
+        display: block;
+        transform: translateY(0);
+      }
+
+      .timeline-card::after { display: none; }
+
+      .longevity-postcards { padding: 34px 24px; }
+      .postcard-grid { grid-template-columns: minmax(0, 340px); }
+      .screen-carousel {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<script>
+  (function(){
+    try{
+      const tRaw = sessionStorage.getItem('pageTransition');
+      if (!tRaw) return;
+      const t = JSON.parse(tRaw);
+      if (t && (t.direction === 'from-right' || t.direction === 'from-left')) {
+        document.body.classList.add('transition-slide');
+        document.body.classList.add(t.direction === 'from-right' ? 'pre-slide-right' : 'pre-slide-left');
+      }
+    }catch(e){}
+  })();
+</script>
+<script src="../assets/transition.js"></script>
+<body>
+
+  <header class="case-nav">
+    <div class="nav-left">
+      <a href="../index.html" class="back-to-work" id="backToWorkBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        back to home
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="../about.html">about</a>
+      <a href="../testimonials-copy.html">testimonials</a>
+      <a href="../contact copy.html">contact</a>
+    </div>
+  </header>
+
+  <div class="page-container">
+    <aside class="case-sidebar">
+      <div class="sidebar-title">contents</div>
+      <ul class="sidebar-links">
+        <li><a href="#overview">overview</a></li>
+        <li><a href="#why">why I built this</a></li>
+        <li><a href="#research">research</a></li>
+        <li><a href="#strategy">strategy</a></li>
+        <li><a href="#product">what I built</a></li>
+        <li><a href="#trust">trust &amp; safety</a></li>
+        <li><a href="#testing">testing</a></li>
+        <li><a href="#reflection">reflection</a></li>
+      </ul>
+    </aside>
+
+    <main class="case-content">
+      <div class="animate-on-scroll">
+        <span class="tag">Relocation Experience</span>
+        <h1 class="case-title">Acclio: Settle In, Stress Less</h1>
+        <p class="case-subtitle">Designing for belonging, not just bureaucracy</p>
+        <p class="project-meta-line">Solo Passion Project · UX Design · Service Design · Mobile App</p>
+      </div>
+
+      <div class="hook-callout animate-on-scroll">Paperwork was never the hard part. Belonging was.</div>
+
+      <section id="overview" class="animate-on-scroll">
+        <h2 class="section-heading">Overview</h2>
+        <div class="overview-snapshot">
+          <div class="overview-row">
+            <div class="overview-label">Problem</div>
+            <div class="overview-copy">Government tools help immigrants with documentation. Nobody helps them with the rest — understanding cultural norms, finding community, navigating daily life in an unfamiliar place. The emotional side of settling in goes completely unaddressed.</div>
+          </div>
+          <div class="overview-row">
+            <div class="overview-label">Solution</div>
+            <div class="overview-copy">Acclio is a culturally adaptive platform that helps newcomers navigate local services and ease the emotional stress of settling in — practical guidance, community connection, and personalized support in one place.</div>
+          </div>
+        </div>
+        <div class="overview-carousel" aria-label="Acclio overview screens">
+          <div class="overview-carousel-track">
+            <figure class="overview-carousel-slide"><img src="../assets/case studies/acclio/overview/Screenshot 2026-09-01 at 20.51.00.png?v=20260901-1" alt="Acclio overview screen one"></figure>
+            <figure class="overview-carousel-slide"><img src="../assets/case studies/acclio/overview/Screenshot 2026-09-01 at 20.51.20.png?v=20260901-1" alt="Acclio overview screen two"></figure>
+            <figure class="overview-carousel-slide"><img src="../assets/case studies/acclio/overview/Screenshot 2026-09-01 at 20.51.29.png?v=20260901-1" alt="Acclio overview screen three"></figure>
+            <figure class="overview-carousel-slide"><img src="../assets/case studies/acclio/overview/Screenshot 2026-09-01 at 20.51.39.png?v=20260901-1" alt="Acclio overview screen four"></figure>
+            <figure class="overview-carousel-slide"><img src="../assets/case studies/acclio/overview/Screenshot 2026-09-01 at 20.51.48.png?v=20260901-1" alt="Acclio overview screen five"></figure>
+            <figure class="overview-carousel-slide" aria-hidden="true"><img src="../assets/case studies/acclio/overview/Screenshot 2026-09-01 at 20.51.00.png?v=20260901-1" alt=""></figure>
+            <figure class="overview-carousel-slide" aria-hidden="true"><img src="../assets/case studies/acclio/overview/Screenshot 2026-09-01 at 20.51.20.png?v=20260901-1" alt=""></figure>
+            <figure class="overview-carousel-slide" aria-hidden="true"><img src="../assets/case studies/acclio/overview/Screenshot 2026-09-01 at 20.51.29.png?v=20260901-1" alt=""></figure>
+            <figure class="overview-carousel-slide" aria-hidden="true"><img src="../assets/case studies/acclio/overview/Screenshot 2026-09-01 at 20.51.39.png?v=20260901-1" alt=""></figure>
+            <figure class="overview-carousel-slide" aria-hidden="true"><img src="../assets/case studies/acclio/overview/Screenshot 2026-09-01 at 20.51.48.png?v=20260901-1" alt=""></figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="why" class="animate-on-scroll">
+        <h2 class="section-heading">Why I built this</h2>
+        <p>I moved from Mumbai to Helsinki. The cultural gap was enormous and I had no single place to go for help — not with the unwritten social rules, not with finding community, not with the loneliness that comes before you feel at home anywhere. I built Acclio because I needed it and it didn't exist.</p>
+        <p>This project focuses on research, concept development, service design thinking, and user journey design rather than high-fidelity UI alone. I wanted to explore viability, scalability, and long-term impact — not just ship screens.</p>
+        <div class="relocation-visual" aria-label="Move from India to Finland">
+          <img src="../assets/case studies/acclio/why this app/india.jpg?v=20260901-1" alt="Life in India before moving abroad">
+          <div class="relocation-arrow" aria-hidden="true"></div>
+          <img src="../assets/case studies/acclio/why this app/finland.jpg?v=20260901-1" alt="Life in Finland after moving abroad">
+        </div>
+      </section>
+
+      <section id="research" class="animate-on-scroll">
+        <h2 class="section-heading">What the research said</h2>
+        <p>I started with secondary research — government reports, academic studies, migration stress literature — before running 50+ surveys and 4 contextual interviews to validate and pressure-test what I found.</p>
+        <div class="isolated-stats">
+          <div class="isolated-stat"><div class="isolated-stat-value">67%</div><div class="isolated-stat-label">feel overwhelmed accessing basic services in their first year</div></div>
+          <div class="isolated-stat"><div class="isolated-stat-value">58%</div><div class="isolated-stat-label">report moderate to severe homesickness</div></div>
+          <div class="isolated-stat"><div class="isolated-stat-value">87%</div><div class="isolated-stat-label">named making friends their hardest challenge</div></div>
+        </div>
+        <p class="section-intro">Five things only the interviews told me:</p>
+        <ul class="findings-list">
+          <li><strong>Trust comes first.</strong> People fear being scammed or overcharged by unfamiliar services. They want community-verified recommendations and privacy by default.</li>
+          <li><strong>The unwritten rules matter more than the written ones.</strong> Nobody wants to be the person who got the sauna etiquette wrong.</li>
+          <li><strong>Humans beat interfaces.</strong> Generic advice frustrates people. They want guidance shaped to their background, language, and life stage.</li>
+          <li><strong>Small unknowns cost real time.</strong> Over-preparing for appointments, guessing at appliances, skipping food because the label is unreadable.</li>
+          <li><strong>People expect to outgrow it.</strong> They treat Acclio as a phase tool — which means the information has to stay verified and current while they use it.</li>
+        </ul>
+      </section>
+
+      <section id="strategy" class="animate-on-scroll">
+        <h2 class="section-heading">Four gaps, four moves</h2>
+        <div class="gaps-table">
+          <div class="gaps-head"><span>Gap</span><span>Move</span></div>
+          <div class="gaps-row"><span>Scattered service info, language barriers, bureaucratic confusion</span><span>One local hub with plain-language guidance for your city</span></div>
+          <div class="gaps-row"><span>Homesickness and cultural disconnection go unaddressed</span><span>Recommendations that find a piece of home in the new place</span></div>
+          <div class="gaps-row"><span>No easy channel to meet locals or other newcomers</span><span>Events, interest groups, and a buddy system built in</span></div>
+          <div class="gaps-row"><span>Official tools handle documents and stop there</span><span>Practical and emotional support in the same product</span></div>
+        </div>
+        <img class="strategy-visual value-matrix-visual" src="../assets/case studies/acclio/value matrix.png?v=20260901-1" alt="Acclio value versus effort matrix">
+
+        <h2 class="section-heading">The question every settlement app has to answer</h2>
+        <p>Settling in is temporary. If the app only serves week one, it gets deleted by month three. So I mapped the full user journey and asked what a user three months into a new city still opens it for — and what keeps them a year in.</p>
+        <div class="longevity-quote">The value has to move with the user: from surviving, to socializing, to belonging.</div>
+        <img class="strategy-visual" src="../assets/case studies/acclio/user journey map.png?v=20260901-1" alt="Acclio user journey and experience map">
+
+        <div class="longevity-postcards">
+          <div class="longevity-label">Life with Acclio</div>
+          <div class="postcard-grid">
+            <article class="postcard" data-postcard>
+              <span class="postcard-stamp" aria-hidden="true"></span>
+              <div class="postcard-date">Month 3</div>
+              <div class="postcard-tabs" role="tablist" aria-label="Month 3 experience">
+                <button class="postcard-tab is-active" type="button" role="tab" aria-selected="true" data-postcard-tab="daily-month-3">Daily Life</button>
+                <button class="postcard-tab" type="button" role="tab" aria-selected="false" data-postcard-tab="social-month-3">Social Life</button>
+              </div>
+              <div class="postcard-content">
+                <div class="postcard-panel is-active" role="tabpanel" data-postcard-panel="daily-month-3">
+                  <p class="postcard-line">Checks Acclio for upcoming local events and community meetups</p>
+                  <p class="postcard-line">Uses the Learn tab for daily Finnish phrase challenges</p>
+                  <p class="postcard-line">Relies on resource guides for new situations — jobs, health services, bureaucracy</p>
+                  <p class="postcard-line">Uses the AR camera for unfamiliar signs and machines</p>
+                </div>
+                <div class="postcard-panel" role="tabpanel" data-postcard-panel="social-month-3">
+                  <p class="postcard-line">Uses the community and buddy system to meet people with similar interests</p>
+                  <p class="postcard-line">Made her closest friends through group meetups suggested by the app</p>
+                  <p class="postcard-line">Regularly explores new local spots from the Discover tab — cafes, libraries, neighbourhoods</p>
+                </div>
+              </div>
+              <p class="postcard-closing">“Acclio remains her trusted companion for integrating smoothly and feeling at home.”</p>
+            </article>
+            <article class="postcard" data-postcard>
+              <span class="postcard-stamp" aria-hidden="true"></span>
+              <div class="postcard-date">Year 1</div>
+              <div class="postcard-tabs" role="tablist" aria-label="Year 1 experience">
+                <button class="postcard-tab is-active" type="button" role="tab" aria-selected="true" data-postcard-tab="daily-year-1">Daily Life</button>
+                <button class="postcard-tab" type="button" role="tab" aria-selected="false" data-postcard-tab="social-year-1">Social Life</button>
+              </div>
+              <div class="postcard-content">
+                <div class="postcard-panel is-active" role="tabpanel" data-postcard-panel="daily-year-1">
+                  <p class="postcard-line">Mainly uses Discover for personalized local recommendations</p>
+                  <p class="postcard-line">Gets suggestions the algorithm surfaces that a Google search never would</p>
+                  <p class="postcard-line">Attends cultural events and group discussions through the app</p>
+                </div>
+                <div class="postcard-panel" role="tabpanel" data-postcard-panel="social-year-1">
+                  <p class="postcard-line">Mentors newcomers who are where she once was</p>
+                  <p class="postcard-line">Participates in group discussions and community forums</p>
+                  <p class="postcard-line">Acclio is no longer a survival tool — it's how she stays rooted and connected</p>
+                </div>
+              </div>
+              <p class="postcard-closing">“Acclio supports her ongoing integration — a sense of belonging, not just survival.”</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="product" class="animate-on-scroll">
+        <h2 class="section-heading">What I built</h2>
+        <div class="feature-grid">
+          <article class="feature-card"><h3>Home tab</h3><p>Quick links to essentials, a personalized three-stage settlement plan, local and national alerts, and an AR camera that explains unfamiliar objects and cultural equivalents.</p></article>
+          <article class="feature-card"><h3>Community tab</h3><p>Local events, interest-based groups, a Q&amp;A forum, and a Buddy system for connecting with locals or fellow immigrants individually or in groups.</p></article>
+          <article class="feature-card"><h3>Discover tab</h3><p>Personalized local recommendations based on onboarding preferences, plus a directory of essentials and favorites nearby.</p></article>
+          <article class="feature-card"><h3>Learn tab</h3><p>Tips, guides, and language lessons that help newcomers navigate daily life with more confidence over time.</p></article>
+        </div>
+        <div class="screen-carousel" aria-label="Acclio feature screens">
+          <h3 class="final-design-label">Onboarding</h3>
+          <figure><img src="../assets/case studies/acclio/final design/onboarding.png?v=20260901-1" alt="Acclio onboarding final design"></figure>
+          <h3 class="final-design-label">Home</h3>
+          <figure><img src="../assets/case studies/acclio/final design/home.png?v=20260901-1" alt="Acclio Home tab final design"></figure>
+          <figure><img src="../assets/case studies/acclio/final design/home 2.png?v=20260901-1" alt="Acclio Home tab final design, part two"></figure>
+          <h3 class="final-design-label">Community</h3>
+          <figure><img src="../assets/case studies/acclio/final design/community.png?v=20260901-1" alt="Acclio Community tab final design"></figure>
+          <figure><img src="../assets/case studies/acclio/final design/community 2.png?v=20260901-1" alt="Acclio Community tab final design, part two"></figure>
+          <h3 class="final-design-label">Discover and Learn</h3>
+          <figure><img src="../assets/case studies/acclio/final design/discover.png?v=20260901-1" alt="Acclio Discover tab final design"></figure>
+        </div>
+      </section>
+
+      <section id="trust" class="animate-on-scroll">
+        <h2 class="section-heading">A note on trust and safety</h2>
+        <div class="trust-box">
+          <p>Trust was a core theme in my research. Newcomers are in a vulnerable position — they don't know yet who or what to rely on. I designed with that in mind throughout.</p>
+          <p>The Buddy system uses badge verification so users know who they're connecting with. The Q&amp;A forum is moderated. Onboarding only collects what directly improves the experience — nothing more. Data transparency is built in so users can see what's stored and delete it. Safety isn't a feature. It's the foundation the whole product sits on.</p>
+        </div>
+      </section>
+
+      <section id="testing" class="animate-on-scroll">
+        <h2 class="section-heading">What testing told me</h2>
+        <p>Users responded well to personalization, the AR feature, and the onboarding flow. The thing they asked for that I hadn't built yet: a community Q&amp;A forum. They wanted to ask questions and get answers from real people — not just browse curated content. I built it. When they tested it again, they said it was exactly what they had pictured.</p>
+        <img class="testing-visual" src="../assets/case studies/acclio/user testing.png?v=20260901-1" alt="Acclio user testing findings and interface iterations">
+      </section>
+
+      <section id="reflection" class="animate-on-scroll">
+        <h2 class="section-heading">What I'd do differently</h2>
+        <p>The trust infrastructure needs more design depth — verification, moderation, and safety flows for the Buddy system especially. The AR feature is genuinely useful but probably the wrong MVP priority given its technical complexity. And I designed the first 90 days really well. The transition out — when users start to outgrow the app — deserves further development.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    const observerOptions = { threshold: 0.08, rootMargin: '0px 0px -40px 0px' };
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('[data-postcard]').forEach(postcard => {
+      const tabs = postcard.querySelectorAll('[data-postcard-tab]');
+      const panels = postcard.querySelectorAll('[data-postcard-panel]');
+
+      tabs.forEach(tab => tab.addEventListener('click', () => {
+        tabs.forEach(item => {
+          const isActive = item === tab;
+          item.classList.toggle('is-active', isActive);
+          item.setAttribute('aria-selected', String(isActive));
+        });
+        panels.forEach(panel => panel.classList.toggle('is-active', panel.dataset.postcardPanel === tab.dataset.postcardTab));
+      }));
+    });
+
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.sidebar-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 180) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+      });
+    });
+
+    (function(){
+      const back = document.getElementById('backToWorkBtn');
+      if (!back) return;
+      back.addEventListener('click', function(e){
+        const isLeftClick = (e.button === 0) && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey);
+        const href = '../index.html?returnFromCase=true';
+        if (!isLeftClick) return;
+        e.preventDefault();
+        try { sessionStorage.setItem('pageTransition', JSON.stringify({ direction: 'from-left' })); } catch(err) {}
+        window.location.href = href;
+      });
+    })();
+  </script>
+
+  <script src="../other-current/current-footer.js"></script>
+  <script>injectFooter();</script>
+</body>
+</html>
