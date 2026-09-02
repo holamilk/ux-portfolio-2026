@@ -1,0 +1,41 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "git-status-check",
+			"type": "shell",
+			"command": "git status --short --branch && printf '\\n---\\n' && git diff --name-only",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "git-status-tracked",
+			"type": "shell",
+			"command": "git status --short --branch --untracked-files=no",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "echo-test",
+			"type": "shell",
+			"command": "echo hello",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "git-prod-stage-check",
+			"type": "shell",
+			"command": "/usr/bin/git remote set-url origin https://github.com/holamilk/ux-portfolio-2026.git && /usr/bin/git add -- assets case-studies-current other-current index.html .vscode && /usr/bin/git status --short --branch && printf '\\n--- staged names ---\\n' && /usr/bin/git diff --cached --name-only | cat",
+			"isBackground": false
+		},
+		{
+			"label": "git-final-build-push",
+			"type": "shell",
+			"command": "/usr/bin/git remote set-url origin https://github.com/holamilk/ux-portfolio-2026.git && /usr/bin/git add -- assets case-studies-current other-current index.html .vscode && ( /usr/bin/git diff --cached --quiet || /usr/bin/git commit -m 'final build' ) && /usr/bin/git push origin main && /usr/bin/git status --short --branch",
+			"isBackground": false
+		}
+	]
+}
